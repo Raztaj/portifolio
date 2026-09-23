@@ -44,6 +44,12 @@ export interface ResultBit {
   value: string;
 }
 
+export interface MediaImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface Project {
   slug: string;
   index: string;
@@ -69,4 +75,5 @@ export interface Project {
   };
   whatsBroken: Broken[];
   result: ResultBit[];
+  media?: MediaImage[];
 }

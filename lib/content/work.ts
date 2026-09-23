@@ -130,6 +130,28 @@ export const projects: Project[] = [
       { label: "CMS", value: "PROJECTS · STORIES" },
       { label: "AUDIENCE", value: "PUBLIC + ADMIN" },
     ],
+    media: [
+      {
+        src: "/work/hasdo/map.jpg",
+        alt: "HASDO interactive Sudan map",
+        caption: "INTERACTIVE SUDAN MAP — d3-GEO · OFFLINE OCHA GEOJSON",
+      },
+      {
+        src: "/work/hasdo/home.jpg",
+        alt: "HASDO Arabic RTL home page",
+        caption: "ARABIC-FIRST HOME — FULL RTL · IBM PLEX SANS ARABIC",
+      },
+      {
+        src: "/work/hasdo/projects.jpg",
+        alt: "HASDO projects directory",
+        caption: "PROJECTS DIRECTORY — CONTENT FROM THE ADMIN CMS",
+      },
+      {
+        src: "/work/hasdo/login.jpg",
+        alt: "HASDO admin login",
+        caption: "ADMIN GATE — EMAIL AUTH · SECURED ROUTES",
+      },
+    ],
   },
   {
     slug: "easily",
@@ -266,6 +288,130 @@ export const projects: Project[] = [
       { label: "LOGS", value: "IMMUTABLE" },
       { label: "TICKETS", value: "QR + PDF" },
       { label: "IMPORT", value: "XLSX" },
+    ],
+    media: [
+      {
+        src: "/work/easily/login.jpg",
+        alt: "EASILY sign-in screen",
+        caption: "SIGN-IN — THE ENTRY TO THE TICKETING CONSOLE",
+      },
+    ],
+  },
+  {
+    slug: "darthvader",
+    index: "03",
+    kind: "SECURITY TOOLING",
+    title: "DARTHVADER",
+    year: "2025",
+    status: "ACTIVE",
+    description:
+      "Reconnaissance CLI that automates discovery and layered security checks with scope enforcement first.",
+    tagline:
+      "Automated reconnaissance that treats authorization as a first-class control — quiet where it should be quiet.",
+    stack: ["Python", "Bash", "HTTP/DNS/TLS", "CLI"],
+    links: [],
+    problem: [
+      "Scanning tools come by default as noise machines — loud, unthrottled, and happy to hit anything.",
+      "Authorization is usually a flag you pass, not a control the tool itself enforces.",
+      "Findings die as terminal output — nothing survives for a report or a retest.",
+      "Verifying a fix means re-running the same scan and eyeballing the diff.",
+    ],
+    constraints: [
+      { id: "SCOPE", label: "SCOPE-FIRST" },
+      { id: "QUIET", label: "QUIET BY DEFAULT" },
+      { id: "EVIDENCE", label: "EVIDENCE AT SCAN TIME" },
+      { id: "REPORTS", label: "REPORT GENERATION" },
+      { id: "RETEST", label: "SCAN COMPARISON" },
+      { id: "SANDBOX", label: "SANDBOXED RUN" },
+    ],
+    architectureIntro:
+      "A single CLI pipeline. Scope gates every phase, each check class emits structured evidence, and results feed risk scoring and reports.",
+    architectureNodes: [
+      { id: "target", label: "TARGET", sub: "authorized scope" },
+      { id: "scope", label: "SCOPE CHECK", sub: "gate · refuse out of bounds" },
+      { id: "discovery", label: "DISCOVERY", sub: "hosts · subdomains · ports" },
+      { id: "checks", label: "LAYERED CHECKS", sub: "DNS · TLS · HTTP · API/CMS" },
+      { id: "evidence", label: "EVIDENCE", sub: "findings → report" },
+    ],
+    architectureEdges: [
+      { from: "target", to: "scope" },
+      { from: "scope", to: "discovery" },
+      { from: "discovery", to: "checks" },
+      { from: "checks", to: "evidence" },
+    ],
+    decisions: [
+      {
+        title: "Why scope enforcement first?",
+        body: "A scanner pointed at the wrong host is a liability. Target definitions are checked at every phase, and out-of-bounds actions report an authorization refusal, not a result.",
+      },
+      {
+        title: "Why quiet by default?",
+        body: "Noise is a risk, not a feature — loud tools get ignored and can burn an engagement. The default profile is deliberate and throttled, so attention stays on evidence.",
+      },
+      {
+        title: "Why evidence at scan time?",
+        body: "The state is in front of the tool exactly once. Collecting evidence then — headers, responses, anomalies — beats reconstructing it later from memory or logs.",
+      },
+      {
+        title: "Why layered checks instead of one scanner?",
+        body: "DNS, TLS, HTTP, and API posture fail in different ways. Class-based modules run independently with a stable schema, so one broken phase can't cascade.",
+      },
+      {
+        title: "Why scan comparison and retest?",
+        body: "A fix is only verified when the same check reports a lower risk score against a stored snapshot — comparison is the difference between patched and believed patched.",
+      },
+    ],
+    tradeoffs: [
+      { decision: "Quiet, throttled by default", cost: "Slower across large attack surfaces" },
+      { decision: "Evidence-first collection", cost: "Disk and schema overhead per scan" },
+      { decision: "Scope as a hard gate", cost: "Operators must define targets precisely" },
+      { decision: "Local sandboxed execution", cost: "No cloud orchestrator out of the box" },
+    ],
+    security: {
+      note: "The tool is a liability if it forgets consent. Every phase re-checks scope; nothing interactive is built in.",
+      threatModel: [
+        "Scanning outside authorized scope",
+        "Crossing from informational to disruptive checks",
+        "Findings or reports leaking to unintended readers",
+        "The tool being repurposed as a foothold",
+      ],
+      mitigation: [
+        "Scope check gates every phase and refuses out-of-bounds targets",
+        "Read-only, non-invasive checks by default",
+        "Redaction and local-only report storage",
+        "No interactive reverse-shell primitives; sandboxed execution",
+      ],
+    },
+    whatsBroken: [
+      {
+        assumption: "earlier recon was a bash one-liner against a live host",
+        failure:
+          "No record survived — rerunning meant re-hammering the same target from scratch.",
+        solution:
+          "Evidence collection and persisted snapshots at scan time, so a retest compares against a real baseline.",
+      },
+      {
+        assumption: "scope would be a launch flag",
+        failure:
+          "A flag is a suggestion — the tool happily scanned anything it was pointed at.",
+        solution:
+          "A hard scope gate evaluated per phase; refusals report authorization, not results.",
+      },
+      {
+        assumption: "more checks always means more clarity",
+        failure:
+          "Parallel checks produced noisy, hard-to-compare output and louder traffic.",
+        solution:
+          "Class-based sequential checks with a stable schema and comparison-friendly output.",
+      },
+    ],
+    result: [
+      { label: "STATUS", value: "ACTIVE" },
+      { label: "SCOPE", value: "HARD GATE" },
+      { label: "CHECKS", value: "DNS · TLS · HTTP" },
+      { label: "EVIDENCE", value: "STURDY REPORTS" },
+      { label: "RETEST", value: "SNAPSHOTS" },
+      { label: "CONDUCT", value: "QUIET" },
     ],
   },
 ];

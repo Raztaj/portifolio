@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "@/components/nav";
@@ -7,6 +8,7 @@ import PageHeader from "@/components/page-header";
 import ArchDiagram from "@/components/arch-diagram";
 import { MonoLabel, Chip, Divider } from "@/components/ui";
 import { projects, getProject } from "@/lib/content/work";
+import type { MediaImage } from "@/lib/content/types";
 
 export const dynamicParams = false;
 
@@ -160,6 +162,60 @@ function WhatBroke({ items }: { items: { assumption: string; failure: string; so
   );
 }
 
+function MediaGallery({ media }: { media: MediaImage[] }) {
+  const [first, ...rest] = media;
+  return (
+    <section className="py-14 sm:py-16">
+      <div className="mb-8">
+        <MonoLabel>00 / INTERFACE</MonoLabel>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+          Captured from the running system — the surface the end user actually reaches.
+        </p>
+      </div>
+      <div className="overflow-hidden border border-line bg-surface">
+        <Image
+          src={first.src}
+          alt={first.alt}
+          width={1080}
+          height={675}
+          priority
+          className="block h-auto w-full"
+        />
+        <div className="flex items-center gap-2 border-t border-line px-4 py-2.5">
+          <span className="font-mono text-[11px] text-accent">01</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            {first.caption}
+          </span>
+        </div>
+      </div>
+      {rest.length > 0 && (
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {rest.map((m, i) => (
+            <figure key={m.src} className="border border-line bg-surface">
+              <Image
+                src={m.src}
+                alt={m.alt}
+                width={1080}
+                height={675}
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className="block h-auto w-full"
+              />
+              <figcaption className="flex items-center gap-2 border-t border-line px-4 py-2.5">
+                <span className="font-mono text-[11px] text-accent">
+                  {String(i + 2).padStart(2, "0")}
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                  {m.caption}
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default async function WorkPage({
   params,
 }: {
@@ -214,6 +270,8 @@ export default async function WorkPage({
             </div>
           )}
         </section>
+
+        {project.media && project.media.length > 0 && <MediaGallery media={project.media} />}
       </div>
 
       <NumberedBlock index="01" title="THE PROBLEM" body={project.problem} />
