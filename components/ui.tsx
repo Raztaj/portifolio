@@ -74,7 +74,9 @@ export function ArrowLink({
       className={`group inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg ${className}`}
     >
       {children}
-      <span className="transition-transform group-hover:translate-x-0.5">→</span>
+      <span className="transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">
+        →
+      </span>
     </a>
   );
 }

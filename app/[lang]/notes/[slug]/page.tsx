@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Locale } from "@/lib/i18n";
+import { isLocale, getDictionary } from "@/lib/i18n";
+import { getNoteBySlug, getNotes, localizeHref } from "@/lib/content/locale";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import { MonoLabel, Divider } from "@/components/ui";
-import { notes, getNote } from "@/lib/content/notes";
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return notes.map((n) => ({ slug: n.slug }));
+  const locales: Locale[] = ["en", "ar"];
+  return locales.flatMap((lang) =>
+    getNotes(lang).map((n) => ({ lang, slug: n.slug }))
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const note = getNote(slug);
+  const { lang, slug } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const note = getNoteBySlug(slug, locale);
   if (!note) return {};
   return {
     title: `${note.title} — NOTES / TAJELSIR SYSTEMS`,
@@ -30,27 +36,31 @@ export async function generateMetadata({
 export default async function NotePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const note = getNote(slug);
+  const { lang, slug } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const dict = getDictionary(locale);
+  const notes = getNotes(locale);
+  const note = notes.find((n) => n.slug === slug);
   if (!note) notFound();
 
   const others = notes.filter((n) => n.slug !== slug);
 
   return (
     <main>
-      <Nav />
+      <Nav lang={locale} />
       <PageHeader
-        crumb={`NOTE ${note.index}`}
+        lang={locale}
+        crumb={`${dict.notes.note} ${note.index}`}
         backHref="/notes"
-        backLabel="NOTES"
+        backLabel={dict.notes.back}
         title={note.title}
         sub={`${note.date} · ${note.words}`}
       />
 
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <p className="mb-10 border-l-2 border-accent pl-4 font-sans text-lg font-medium leading-relaxed tracking-tight text-fg">
+        <p className="mb-10 border-s-2 border-accent ps-4 font-sans text-lg font-medium leading-relaxed tracking-tight text-fg">
           {note.intro}
         </p>
         <div className="space-y-12">
@@ -79,25 +89,26 @@ export default async function NotePage({
         <div className="flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:justify-between">
           {others.length > 0 ? (
             <a
-              href={`/notes/${others[0].slug}`}
+              href={localizeHref(locale, `/notes/${others[0].slug}`)}
               className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
             >
-              ← NEXT NOTE / {others[0].title}
+              <span className="rtl:inline rtl:rotate-180">←</span> {dict.notes.next} /{" "}
+              {others[0].title}
             </a>
           ) : (
             <span />
           )}
           <Link
-            href="/notes"
+            href={localizeHref(locale, "/notes")}
             className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
-            ALL NOTES →
+            {dict.notes.all} <span className="rtl:inline rtl:rotate-180">→</span>
           </Link>
         </div>
       </div>
 
       <Divider />
-      <Footer />
+      <Footer lang={locale} />
     </main>
   );
 }

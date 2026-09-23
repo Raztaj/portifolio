@@ -12,12 +12,17 @@
   --color-success: #69e6a5;
   --color-warning: #ffc857;
   --color-error: #ff667a;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo, monospace;
+  --font-sans: var(--font-inter), var(--font-arabic), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), var(--font-arabic), ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo, monospace;
 }
 
 :root {
   color-scheme: dark;
+}
+
+html[lang="ar"] * {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
 }
 
 html {

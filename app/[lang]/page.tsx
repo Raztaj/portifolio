@@ -1,43 +1,72 @@
 import Link from "next/link";
+import type { Locale } from "@/lib/i18n";
+import { isLocale, getDictionary } from "@/lib/i18n";
+import { getLabEntries, getNotes, getProjects, localizeHref } from "@/lib/content/locale";
+import { site, stack } from "@/lib/site";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import Grid from "@/components/grid";
 import StatusConsole from "@/components/status-console";
 import WorkRows from "@/components/work-rows";
 import { MonoLabel, SectionHeading, Divider, ArrowLink } from "@/components/ui";
-import { site, philosophy, interests, stack, timeline } from "@/lib/site";
-import { projects } from "@/lib/content/work";
-import { labEntries } from "@/lib/content/lab";
-import { notes } from "@/lib/content/notes";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const dict = getDictionary(locale);
+  const projects = getProjects(locale);
+  const labEntries = getLabEntries(locale);
+  const notes = getNotes(locale);
+
+  const contactHrefs = [
+    { label: dict.home.contactLinks[0], href: `mailto:${site.email}` },
+    { label: dict.home.contactLinks[1], href: site.github },
+    { label: dict.home.contactLinks[2], href: site.linkedin },
+  ];
+
   return (
     <main>
-      <Nav />
+      <Nav lang={locale} />
 
       <section className="relative overflow-hidden">
         <Grid className="opacity-60" />
         <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-8">
-              <MonoLabel accent={false}>SOFTWARE ENGINEER</MonoLabel>
+              <MonoLabel accent={false}>{dict.hero.eyebrow}</MonoLabel>
               <h1 className="mt-3 font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-fg sm:text-6xl">
-                SYSTEMS
+                {dict.hero.heading[0]}
                 <br />
-                BUILDER<span className="text-accent">.</span>
+                {dict.hero.heading[1]}
+                <span className="text-accent">.</span>
               </h1>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
-                I build software for real-world constraints.
+                {dict.hero.blurb}
               </p>
               <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-fg/80">
-                Software · Automation · Security
+                {dict.hero.sub}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5">
+                {dict.hero.metaBar.map((m) => (
+                  <span
+                    key={m}
+                    className="flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
+                  >
+                    <span className="inline-block h-1 w-1 rounded-full bg-accent/60" />
+                    {m}
+                  </span>
+                ))}
               </div>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
-                  href="#work"
+                  href={localizeHref(locale, "/#work")}
                   className="group inline-flex items-center gap-2 border border-line bg-surface-2 px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.2em] text-fg transition-colors hover:border-accent hover:text-accent"
                 >
-                  VIEW WORK
+                  {dict.hero.viewWork}
                   <span className="transition-transform group-hover:translate-y-0.5">
                     ↓
                   </span>
@@ -48,15 +77,19 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 px-2 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
                 >
-                  GITHUB
-                  <span className="text-accent transition-transform group-hover:translate-x-0.5">
+                  {dict.hero.github}
+                  <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">
                     ↗
                   </span>
                 </a>
               </div>
             </div>
             <div className="lg:col-span-4 lg:pt-2">
-              <StatusConsole projects={projects.length} labs={labEntries.length} />
+              <StatusConsole
+                lang={locale}
+                projects={projects.length}
+                labs={labEntries.length}
+              />
             </div>
           </div>
         </div>
@@ -65,12 +98,12 @@ export default function Home() {
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-            I don&apos;t collect technologies.
+            {dict.home.quote[0]}
             <br />
-            I build systems.
+            {dict.home.quote[1]}
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {philosophy.map((p) => (
+            {dict.home.philosophy.map((p) => (
               <div
                 key={p}
                 className="border border-line bg-bg px-4 py-3 font-mono text-[12px] uppercase tracking-[0.15em] text-fg"
@@ -85,45 +118,31 @@ export default function Home() {
       <section className="scroll-mt-16" id="work">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="mb-10 flex items-end justify-between">
-            <SectionHeading index="01 / WORK" title="Selected Work" accent />
-            <MonoLabel accent={false}>{String(projects.length).padStart(2, "0")} SYSTEMS</MonoLabel>
+            <SectionHeading index={dict.home.workIndex} title={dict.home.workTitle} accent />
+            <MonoLabel accent={false}>
+              {String(projects.length).padStart(2, "0")} {dict.home.systemsCount}
+            </MonoLabel>
           </div>
-          <WorkRows />
+          <WorkRows lang={locale} />
         </div>
       </section>
 
       <section className="border-y border-line bg-surface-2/40">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <div className="mb-8">
-            <SectionHeading index="02 / ENGINEERING" title="Where the work lives" />
+            <SectionHeading index={dict.home.engIndex} title={dict.home.engTitle} />
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                n: "A",
-                t: "ARCHITECTURE",
-                d: "Every system includes decisions, trade-offs, and the shape that fell out of them.",
-              },
-              {
-                n: "B",
-                t: "SECURITY",
-                d: "Threat models where they matter — not theater everywhere.",
-              },
-              {
-                n: "C",
-                t: "AUTOMATION",
-                d: "Removing keystrokes from repetitive work, cheap and observable.",
-              },
-            ].map((item) => (
-              <div key={item.n} className="border border-line bg-bg p-5">
+            {dict.home.engCards.map((item) => (
+              <div key={item.index} className="border border-line bg-bg p-5">
                 <div className="font-mono text-[11px] tracking-[0.2em] text-accent">
-                  {item.n}
+                  {item.index}
                 </div>
                 <div className="mt-3 font-mono text-sm font-semibold tracking-tight text-fg">
-                  {item.t}
+                  {item.title}
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {item.d}
+                  {item.desc}
                 </p>
               </div>
             ))}
@@ -134,13 +153,13 @@ export default function Home() {
       <section className="scroll-mt-16">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="mb-10 flex items-end justify-between">
-            <SectionHeading index="03 / LAB" title="Experiments" />
-            <ArrowLink href="/lab">ALL ENTRIES</ArrowLink>
+            <SectionHeading index={dict.home.labIndex} title={dict.home.labTitle} />
+            <ArrowLink href={localizeHref(locale, "/lab")}>{dict.home.allEntries}</ArrowLink>
           </div>
 
           <div className="border border-line bg-bg">
             <div className="border-b border-line px-4 py-2.5 font-mono text-[11px] text-fg">
-              <span className="text-accent">$</span> ls experiments
+              <span className="text-accent">$</span> {dict.home.labCmd}
             </div>
             <div className="grid gap-x-8 gap-y-2 px-4 py-5 font-mono text-[12px] sm:grid-cols-2 lg:grid-cols-3">
               {labEntries
@@ -149,14 +168,14 @@ export default function Home() {
                 .map((e) => (
                   <Link
                     key={e.slug}
-                    href={`/lab/${e.slug}`}
+                    href={localizeHref(locale, `/lab/${e.slug}`)}
                     className="text-muted transition-colors hover:text-accent"
                   >
-                    {e.name.toLowerCase()}/<span className="text-line">_</span>
+                    {e.name}/<span className="text-line">_</span>
                   </Link>
                 ))}
               <Link
-                href="/lab"
+                href={localizeHref(locale, "/lab")}
                 className="text-muted transition-colors hover:text-accent"
               >
                 <span className="text-accent">…</span>
@@ -169,8 +188,10 @@ export default function Home() {
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="mb-10 flex items-end justify-between">
-            <SectionHeading index="04 / RESEARCH" title="Investigations" />
-            <ArrowLink href="/research">VIEW RESEARCH</ArrowLink>
+            <SectionHeading index={dict.home.researchIndex} title={dict.home.researchTitle} />
+            <ArrowLink href={localizeHref(locale, "/research")}>
+              {dict.home.viewResearch}
+            </ArrowLink>
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
             {labEntries
@@ -178,7 +199,7 @@ export default function Home() {
               .map((e) => (
                 <Link
                   key={e.slug}
-                  href={`/lab/${e.slug}`}
+                  href={localizeHref(locale, `/lab/${e.slug}`)}
                   className="group border border-line bg-bg p-5 transition-colors hover:border-accent"
                 >
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
@@ -199,14 +220,14 @@ export default function Home() {
       <section className="scroll-mt-16">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="mb-10 flex items-end justify-between">
-            <SectionHeading index="05 / NOTES" title="Engineering Notes" />
-            <ArrowLink href="/notes">ALL NOTES</ArrowLink>
+            <SectionHeading index={dict.home.notesIndex} title={dict.home.notesTitle} />
+            <ArrowLink href={localizeHref(locale, "/notes")}>{dict.home.allNotes}</ArrowLink>
           </div>
           <div className="divide-y divide-line border-b border-t border-line">
             {notes.map((n) => (
               <Link
                 key={n.slug}
-                href={`/notes/${n.slug}`}
+                href={localizeHref(locale, `/notes/${n.slug}`)}
                 className="group flex flex-wrap items-baseline justify-between gap-2 py-5"
               >
                 <span className="font-sans text-lg font-medium tracking-tight text-fg transition-colors group-hover:text-accent">
@@ -224,18 +245,18 @@ export default function Home() {
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="mb-10 flex items-end justify-between">
-            <SectionHeading index="06 / ABOUT" title="Tajelsir Khalid" />
-            <ArrowLink href="/about">FULL PROFILE</ArrowLink>
+            <SectionHeading index={dict.home.aboutIndex} title={dict.home.aboutTitle} />
+            <ArrowLink href={localizeHref(locale, "/about")}>
+              {dict.home.fullProfile}
+            </ArrowLink>
           </div>
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
               <p className="max-w-md text-base leading-relaxed text-muted">
-                Software engineer focused on building practical systems, automation
-                and security-oriented software. I enjoy working where the obvious
-                solution stops working because the environment is messy.
+                {dict.home.aboutP1} {dict.home.aboutP2}
               </p>
               <div className="mt-6 grid grid-cols-2 gap-2">
-                {interests.map((i) => (
+                {dict.home.interests.map((i) => (
                   <div key={i} className="font-mono text-[12px] uppercase tracking-[0.12em] text-fg/90">
                     {i}
                   </div>
@@ -244,7 +265,7 @@ export default function Home() {
             </div>
             <div>
               <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                Stack
+                {dict.home.stackLabel}
               </div>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {stack.map((s) => (
@@ -257,10 +278,10 @@ export default function Home() {
                 ))}
               </div>
               <div className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                Timeline
+                {dict.home.timelineLabel}
               </div>
               <div className="mt-3 space-y-3">
-                {timeline.map((t) => (
+                {dict.home.timeline.map((t) => (
                   <div key={t.year} className="grid grid-cols-[64px_1fr] items-baseline gap-4">
                     <span className="font-mono text-[12px] text-accent">{t.year}</span>
                     <div>
@@ -278,38 +299,36 @@ export default function Home() {
       <section className="relative overflow-hidden" id="contact">
         <Grid className="opacity-40" />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <MonoLabel>HAVE A PROBLEM?</MonoLabel>
+          <MonoLabel>{dict.home.contactEyebrow}</MonoLabel>
           <h2 className="mt-4 max-w-2xl font-sans text-3xl font-semibold leading-tight tracking-tight text-fg sm:text-5xl">
-            If you have a project, system, or particularly annoying technical
-            problem:
+            {dict.home.contactText}
           </h2>
           <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-            {[
-              { label: "EMAIL", href: `mailto:${site.email}` },
-              { label: "GITHUB", href: site.github },
-              { label: "LINKEDIN", href: site.linkedin },
-            ].map((l) => (
+            {contactHrefs.map((l) => (
               <a
-                key={l.label}
+                key={l.href}
                 href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className="font-mono text-[13px] uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
               >
-                {l.label} →
+                {l.label} <span className="rtl:inline rtl:rotate-180">→</span>
               </a>
             ))}
           </div>
           <div className="mt-16 font-sans text-xl font-semibold tracking-tight text-fg sm:text-2xl">
-            LET&apos;S<br />
-            BUILD<br />
-            SOMETHING<span className="text-accent">.</span>
+            {dict.home.letsBuild[0]}
+            <br />
+            {dict.home.letsBuild[1]}
+            <br />
+            {dict.home.letsBuild[2]}
+            <span className="text-accent">.</span>
           </div>
         </div>
       </section>
 
       <Divider />
-      <Footer />
+      <Footer lang={locale} />
     </main>
   );
 }

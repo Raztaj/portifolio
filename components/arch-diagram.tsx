@@ -153,7 +153,7 @@ export default function ArchDiagram({
                   x={BOX_W / 2}
                   y={BOX_H / 2 + 14}
                   textAnchor="middle"
-                  fontFamily="JetBrains Mono, ui-monospace, monospace"
+                  fontFamily="IBM Plex Sans Arabic, ui-sans-serif, system-ui, sans-serif"
                   fontSize="9"
                   letterSpacing="0.5"
                   fill="#8d96a3"

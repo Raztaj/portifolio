@@ -1,13 +1,17 @@
 import Link from "next/link";
-import { projects } from "@/lib/content/work";
+import type { Locale } from "@/lib/i18n";
+import { getDictionary } from "@/lib/i18n";
+import { getProjects, localizeHref } from "@/lib/content/locale";
 
-export default function WorkRows() {
+export default function WorkRows({ lang }: { lang: Locale }) {
+  const dict = getDictionary(lang);
+  const projects = getProjects(lang);
   return (
     <div>
       {projects.map((p) => (
         <Link
           key={p.slug}
-          href={`/work/${p.slug}`}
+          href={localizeHref(lang, `/work/${p.slug}`)}
           className="group block border-b border-line"
         >
           <div className="grid grid-cols-12 items-center gap-4 py-8 transition-colors sm:py-10">
@@ -44,9 +48,9 @@ export default function WorkRows() {
                 {p.status}
               </span>
               <span className="hidden items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-accent sm:inline-flex">
-                OPEN
+                {dict.work.open}
                 <span className="inline-block h-px w-6 bg-current transition-all group-hover:w-12" />
-                →
+                <span className="rtl:inline rtl:rotate-180">→</span>
               </span>
             </div>
           </div>

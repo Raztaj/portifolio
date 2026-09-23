@@ -1,46 +1,62 @@
 import type { Metadata } from "next";
+import type { Locale } from "@/lib/i18n";
+import { isLocale, getDictionary } from "@/lib/i18n";
+import { stack, socials } from "@/lib/site";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import { MonoLabel, Divider } from "@/components/ui";
-import { interests, stack, timeline, socials } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "ABOUT — TAJELSIR / SYSTEMS",
-  description: "Software engineer focused on practical systems, automation and security-oriented software.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const dict = getDictionary(locale);
+  return {
+    title: "ABOUT — TAJELSIR / SYSTEMS",
+    description: dict.about.statementLead,
+  };
+}
 
-export default function AboutPage() {
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const dict = getDictionary(locale);
+
   return (
     <main>
-      <Nav />
+      <Nav lang={locale} />
       <PageHeader
+        lang={locale}
         crumb="ABOUT /"
         backHref="/"
-        backLabel="SYSTEMS"
+        backLabel={dict.about.back}
         title="Tajelsir Khalid"
-        sub="Software engineer focused on building practical systems, automation and security-oriented software."
+        sub={dict.about.statementLead}
       />
 
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <MonoLabel accent={false}>01 / STATEMENT</MonoLabel>
+            <MonoLabel accent={false}>{dict.about.statement}</MonoLabel>
             <p className="mt-4 max-w-2xl font-sans text-xl font-medium leading-relaxed tracking-tight text-fg sm:text-2xl">
-              I build software for real-world constraints — systems that keep working
-              when the environment stops cooperating.
+              {dict.about.statementLead}
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              I enjoy working where the obvious solution stops working because the
-              environment is messy: unreliable networks, Arabic-first audiences, field
-              teams, zero budgets. The interesting engineering lives in the gap between
-              what the tutorials assume and what actually happens.
+              {dict.about.statementBody}
             </p>
 
             <div className="mt-10">
-              <MonoLabel accent={false}>02 / CURRENTLY INTERESTED IN</MonoLabel>
+              <MonoLabel accent={false}>{dict.about.interests}</MonoLabel>
               <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {interests.map((i) => (
+                {dict.home.interests.map((i) => (
                   <div
                     key={i}
                     className="border border-line bg-surface px-4 py-3 font-mono text-[12px] uppercase tracking-[0.12em] text-fg"
@@ -52,7 +68,7 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-10">
-              <MonoLabel accent={false}>03 / CONTACT</MonoLabel>
+              <MonoLabel accent={false}>{dict.about.contact}</MonoLabel>
               <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
                 {socials.map((s) => (
                   <a
@@ -62,7 +78,7 @@ export default function AboutPage() {
                     rel="noopener noreferrer"
                     className="font-mono text-[13px] uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
                   >
-                    {s.label} →
+                    {s.label} <span className="rtl:inline rtl:rotate-180">→</span>
                   </a>
                 ))}
               </div>
@@ -71,7 +87,7 @@ export default function AboutPage() {
 
           <aside className="space-y-10">
             <div>
-              <MonoLabel accent={false}>STACK</MonoLabel>
+              <MonoLabel accent={false}>{dict.about.stack}</MonoLabel>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {stack.map((s) => (
                   <span
@@ -85,10 +101,10 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <MonoLabel accent={false}>TIMELINE</MonoLabel>
+              <MonoLabel accent={false}>{dict.about.timeline}</MonoLabel>
               <div className="mt-4 space-y-4">
-                {timeline.map((t) => (
-                  <div key={t.year} className="border-l border-line pl-4">
+                {dict.home.timeline.map((t) => (
+                  <div key={t.year} className="border-s border-line ps-4">
                     <div className="font-mono text-[12px] text-accent">{t.year}</div>
                     <div className="mt-1 font-sans text-sm font-semibold text-fg">
                       {t.role}
@@ -103,7 +119,7 @@ export default function AboutPage() {
       </div>
 
       <Divider />
-      <Footer />
+      <Footer lang={locale} />
     </main>
   );
 }

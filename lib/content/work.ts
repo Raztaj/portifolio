@@ -157,7 +157,7 @@ export const projects: Project[] = [
     slug: "easily",
     index: "02",
     kind: "WEB SYSTEM",
-    title: "EASILY",
+    title: "TICKETING SYSTEM",
     year: "2026",
     status: "ACTIVE",
     description:
@@ -292,7 +292,7 @@ export const projects: Project[] = [
     media: [
       {
         src: "/work/easily/login.jpg",
-        alt: "EASILY sign-in screen",
+        alt: "TICKETING SYSTEM sign-in screen",
         caption: "SIGN-IN — THE ENTRY TO THE TICKETING CONSOLE",
       },
     ],
@@ -412,6 +412,136 @@ export const projects: Project[] = [
       { label: "EVIDENCE", value: "STURDY REPORTS" },
       { label: "RETEST", value: "SNAPSHOTS" },
       { label: "CONDUCT", value: "QUIET" },
+    ],
+  },
+  {
+    slug: "shockwave",
+    index: "04",
+    kind: "SERVICE PLATFORM",
+    title: "SHOCK WAVE",
+    year: "2026",
+    status: "ACTIVE",
+    description:
+      "Automated order, customer and inventory systems for WhatsApp-first Sudanese businesses — built on the tools they already use.",
+    tagline:
+      "From WhatsApp chaos to a single ordered workflow — automation that starts where the business actually operates.",
+    stack: ["Google Sheets", "Apps Script", "AppSheet", "Google Forms", "WhatsApp", "HTML/CSS/JS"],
+    links: [{ label: "WHAT'S YOUR WORKFLOW?", href: "https://wa.me/249101062021" }],
+    problem: [
+      "Local businesses run on WhatsApp, Instagram DMs and a notebook — the tools are fine until order volume outgrows them.",
+      "Orders get lost, customers drift, stock counts lie, and the information lives in five different places.",
+      "The standard answer — a $50-a-month SaaS — is the wrong price and the wrong shape for a Khartoum SME.",
+      "Automation that ignores the real workflow (WhatsApp-first, delivery riders, social sales) gets abandoned.",
+    ],
+    constraints: [
+      { id: "WA", label: "WHATSAPP-FIRST" },
+      { id: "COST", label: "NO MONTHLY FEES" },
+      { id: "SHEETS", label: "SHEETS-CLASS" },
+      { id: "RTL", label: "ARABIC / RTL" },
+      { id: "SIMPLE", label: "OBVIOUS SCREENS" },
+      { id: "BESPOKE", label: "BUILT AROUND THE JOB" },
+    ],
+    architectureIntro:
+      "No platform. Orders, customers and stock live in the tools the team already uses; scripts and workflows wire them together and push notifications to WhatsApp.",
+    architectureNodes: [
+      { id: "forms", label: "GOOGLE FORMS", sub: "order intake link" },
+      { id: "sheets", label: "GOOGLE SHEETS", sub: "orders · customers · stock" },
+      { id: "scripts", label: "APPS SCRIPT", sub: "workflow automation" },
+      { id: "wa", label: "WHATSAPP", sub: "confirmations · alerts" },
+      { id: "dash", label: "DASHBOARD", sub: "tracking · reports" },
+    ],
+    architectureEdges: [
+      { from: "forms", to: "sheets" },
+      { from: "sheets", to: "scripts" },
+      { from: "scripts", to: "wa" },
+      { from: "sheets", to: "dash" },
+      { from: "scripts", to: "dash" },
+    ],
+    decisions: [
+      {
+        title: "Why Google Workspace instead of a custom app?",
+        body: "The team already lives in Sheets and WhatsApp. If the simplest correct answer is a sheet plus a script, that is the product — a custom app costs more to build and more to maintain.",
+      },
+      {
+        title: "Why WhatsApp as the notification rail?",
+        body: "It is where the customer already is. Confirmations, status updates and alerts land inside the conversation they are already having, not in a new inbox they have to learn.",
+      },
+      {
+        title: "Why sell time saved, not tools?",
+        body: "The end state is a business that stops re-typing the same rows every day. Framing the deliverable as saved hours keeps the scope honest and the invoice explainable.",
+      },
+      {
+        title: "Why Arabic-first screens?",
+        body: "The operators think, speak and type in Arabic. Screens, statuses and reports are RTL Arabic by default, so adoption is the starting point rather than a migration.",
+      },
+      {
+        title: "Why no monthly SaaS?",
+        body: "A fixed $50 a month is the wrong shape for a growing Khartoum SME. Free tiers, one-time builds and tools the business already pays for keep the cost aligned with the need.",
+      },
+    ],
+    tradeoffs: [
+      { decision: "Sheets-class automation", cost: "Not the right ceiling for very large catalogs" },
+      { decision: "WhatsApp as the rail", cost: "Depends on platform availability and account health" },
+      { decision: "No recurring fees", cost: "Engagement is project-based, not subscription" },
+      { decision: "Bespoke per business", cost: "Slower onboarding than flipping on a SaaS" },
+    ],
+    security: {
+      note: "Handing over shared accounts, spreadsheets and scripts needs hygiene, so a small shop doesn't collapse into a shared-credential maze.",
+      threatModel: [
+        "Shared Google account misuse",
+        "Customer data leaking off the business",
+        "Scripts granted more permissions than they need",
+        "Order and stock data being silently edited",
+      ],
+      mitigation: [
+        "Scope scripts to the minimum tables and cells",
+        "Controlled sharing instead of blanket editor access",
+        "Apps Script bound to the business owner's account",
+        "Logs on destructive sheet operations",
+      ],
+    },
+    whatsBroken: [
+      {
+        assumption: "one automation template would fit every shop",
+        failure:
+          "Every business runs its own ritual — WhatsApp lists, group chats, hand-tied notes.",
+        solution:
+          "Start from the observed workflow and generate the sheet and script per business.",
+      },
+      {
+        assumption: "the dashboard is the deliverable",
+        failure:
+          "Owners check WhatsApp, not dashboards, so the nice UI went unopened.",
+        solution:
+          "Push confirmations and daily summaries into WhatsApp; treat the dashboard as secondary.",
+      },
+      {
+        assumption: "spreadsheets scale forever",
+        failure:
+          "At a few thousand rows, formula slowness and edit conflicts start showing.",
+        solution:
+          "Split sheets by period, then hand off to a small database once a client crosses the threshold.",
+      },
+    ],
+    result: [
+      { label: "STATUS", value: "ACTIVE" },
+      { label: "AUDIENCE", value: "SUDANESE SME" },
+      { label: "RAIL", value: "WHATSAPP-FIRST" },
+      { label: "STACK", value: "SHEETS + SCRIPTS" },
+      { label: "PRICING", value: "NO MONTHLY FEE" },
+      { label: "LANG", value: "ARABIC / RTL" },
+    ],
+    media: [
+      {
+        src: "/work/shockwave/hero.jpg",
+        alt: "SHOCK WAVE website hero",
+        caption: "SITE HERO — ARABIC RTL · MATRIX HEADER",
+      },
+      {
+        src: "/work/shockwave/services.jpg",
+        alt: "SHOCK WAVE service line",
+        caption: "SERVICE LINE — ORDERS · CLIENTS · STOCK · RIDERS",
+      },
     ],
   },
 ];

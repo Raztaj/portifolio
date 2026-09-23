@@ -2,27 +2,33 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Locale } from "@/lib/i18n";
+import { isLocale, getDictionary } from "@/lib/i18n";
+import { getProjectBySlug, getProjects, localizeHref } from "@/lib/content/locale";
+import type { MediaImage } from "@/lib/content/types";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import ArchDiagram from "@/components/arch-diagram";
 import { MonoLabel, Chip, Divider } from "@/components/ui";
-import { projects, getProject } from "@/lib/content/work";
-import type { MediaImage } from "@/lib/content/types";
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  const locales: Locale[] = ["en", "ar"];
+  return locales.flatMap((lang) =>
+    getProjects(lang).map((p) => ({ lang, slug: p.slug }))
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const project = getProject(slug);
+  const { lang, slug } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const project = getProjectBySlug(slug, locale);
   if (!project) return {};
   return {
     title: `${project.title} — WORK / TAJELSIR SYSTEMS`,
@@ -30,7 +36,35 @@ export async function generateMetadata({
   };
 }
 
-function NumberedBlock({ index, title, body }: { index: string; title: string; body: string[] }) {
+type Labels = {
+  problem: string;
+  constraints: string;
+  architecture: string;
+  decisions: string;
+  tradeoffs: string;
+  whatBroke: string;
+  security: string;
+  result: string;
+  interface: string;
+  interfaceNote: string;
+  decision: string;
+  cost: string;
+  threatModel: string;
+  mitigation: string;
+  assumption: string;
+  failed: string;
+  fix: string;
+};
+
+function NumberedBlock({
+  index,
+  title,
+  body,
+}: {
+  index: string;
+  title: string;
+  body: string[];
+}) {
   return (
     <section className="py-12 sm:py-16">
       <div className="mb-8">
@@ -43,7 +77,7 @@ function NumberedBlock({ index, title, body }: { index: string; title: string; b
       <div className="max-w-3xl space-y-4">
         {body.map((b, i) => (
           <p key={i} className="text-base leading-relaxed text-muted">
-            <span className="mr-3 font-mono text-[11px] text-accent">
+            <span className="ms-3 font-mono text-[11px] text-accent">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-fg/90">{b}</span>
@@ -54,14 +88,20 @@ function NumberedBlock({ index, title, body }: { index: string; title: string; b
   );
 }
 
-function ConstraintGrid({ labels }: { labels: { label: string; note?: string }[] }) {
+function ConstraintGrid({
+  labels,
+  list,
+}: {
+  labels: Labels;
+  list: { label: string; note?: string }[];
+}) {
   return (
     <section className="border-y border-line bg-surface py-12 sm:py-16">
       <div className="mb-8">
-        <MonoLabel>02 / CONSTRAINTS</MonoLabel>
+        <MonoLabel>{labels.constraints}</MonoLabel>
       </div>
       <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-3 lg:grid-cols-6">
-        {labels.map((c) => (
+        {list.map((c) => (
           <div key={c.label} className="bg-surface p-4">
             <div className="font-mono text-[11px] font-semibold leading-snug tracking-tight text-fg">
               {c.label}
@@ -89,31 +129,37 @@ function DecisionCard({ title, body }: { title: string; body: string }) {
   );
 }
 
-function TradeoffTable({ rows }: { rows: { decision: string; cost: string }[] }) {
+function TradeoffTable({
+  labels,
+  rows,
+}: {
+  labels: Labels;
+  rows: { decision: string; cost: string }[];
+}) {
   return (
     <section className="border-y border-line py-12 sm:py-16">
       <div className="mb-8">
-        <MonoLabel>05 / TRADE-OFFS</MonoLabel>
+        <MonoLabel>{labels.tradeoffs}</MonoLabel>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr className="border-b border-line">
-              <th className="py-3 pr-4 text-left font-mono text-[11px] font-normal uppercase tracking-[0.2em] text-muted">
-                Decision
+              <th className="py-3 pe-4 text-start font-mono text-[11px] font-normal uppercase tracking-[0.2em] text-muted">
+                {labels.decision}
               </th>
-              <th className="py-3 pl-4 text-left font-mono text-[11px] font-normal uppercase tracking-[0.2em] text-muted">
-                Cost
+              <th className="py-3 ps-4 text-start font-mono text-[11px] font-normal uppercase tracking-[0.2em] text-muted">
+                {labels.cost}
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-line">
             {rows.map((r) => (
               <tr key={r.decision}>
-                <td className="py-4 pr-4 font-mono text-[12px] uppercase tracking-[0.05em] text-fg">
+                <td className="py-4 pe-4 font-mono text-[12px] uppercase tracking-[0.05em] text-fg">
                   {r.decision}
                 </td>
-                <td className="py-4 pl-4 text-sm text-muted">{r.cost}</td>
+                <td className="py-4 ps-4 text-sm text-muted">{r.cost}</td>
               </tr>
             ))}
           </tbody>
@@ -123,11 +169,17 @@ function TradeoffTable({ rows }: { rows: { decision: string; cost: string }[] })
   );
 }
 
-function WhatBroke({ items }: { items: { assumption: string; failure: string; solution: string }[] }) {
+function WhatBroke({
+  labels,
+  items,
+}: {
+  labels: Labels;
+  items: { assumption: string; failure: string; solution: string }[];
+}) {
   return (
     <section className="py-12 sm:py-16">
       <div className="mb-8">
-        <MonoLabel>06 / WHAT BROKE</MonoLabel>
+        <MonoLabel>{labels.whatBroke}</MonoLabel>
       </div>
       <div className="space-y-6">
         {items.map((b, i) => (
@@ -137,21 +189,21 @@ function WhatBroke({ items }: { items: { assumption: string; failure: string; so
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                assumption
+                {labels.assumption}
               </span>
             </div>
             <p className="px-4 py-3 text-sm leading-relaxed text-fg/90">
-              The first implementation assumed {b.assumption}
+              {b.assumption}
             </p>
             <div className="flex items-center gap-2 border-t border-line bg-bg px-4 py-2">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-error">
-                that failed
+                {labels.failed}
               </span>
             </div>
             <p className="bg-bg px-4 pb-3 text-sm leading-relaxed text-muted">{b.failure}</p>
             <div className="flex items-center gap-2 border-t border-line bg-bg px-4 py-2">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-success">
-                the fix
+                {labels.fix}
               </span>
             </div>
             <p className="bg-bg px-4 pb-4 text-sm leading-relaxed text-fg/90">{b.solution}</p>
@@ -162,14 +214,20 @@ function WhatBroke({ items }: { items: { assumption: string; failure: string; so
   );
 }
 
-function MediaGallery({ media }: { media: MediaImage[] }) {
+function MediaGallery({
+  labels,
+  media,
+}: {
+  labels: Labels;
+  media: MediaImage[];
+}) {
   const [first, ...rest] = media;
   return (
     <section className="py-14 sm:py-16">
       <div className="mb-8">
-        <MonoLabel>00 / INTERFACE</MonoLabel>
+        <MonoLabel>{labels.interface}</MonoLabel>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-          Captured from the running system — the surface the end user actually reaches.
+          {labels.interfaceNote}
         </p>
       </div>
       <div className="overflow-hidden border border-line bg-surface">
@@ -219,23 +277,47 @@ function MediaGallery({ media }: { media: MediaImage[] }) {
 export default async function WorkPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const project = getProject(slug);
+  const { lang, slug } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const dict = getDictionary(locale);
+  const projects = getProjects(locale);
+  const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
   const i = projects.indexOf(project);
   const prev = projects[(i - 1 + projects.length) % projects.length];
   const next = projects[(i + 1) % projects.length];
 
+  const labels: Labels = {
+    problem: dict.work.problem,
+    constraints: dict.work.constraints,
+    architecture: dict.work.architecture,
+    decisions: dict.work.decisions,
+    tradeoffs: dict.work.tradeoffs,
+    whatBroke: dict.work.whatBroke,
+    security: dict.work.security,
+    result: dict.work.result,
+    interface: dict.work.interface,
+    interfaceNote: dict.work.interfaceNote,
+    decision: dict.work.decision,
+    cost: dict.work.cost,
+    threatModel: dict.work.threatModel,
+    mitigation: dict.work.mitigation,
+    assumption: dict.work.assumption,
+    failed: dict.work.failed,
+    fix: dict.work.fix,
+  };
+
   return (
     <main>
-      <Nav />
+      <Nav lang={locale} />
       <PageHeader
+        lang={locale}
         crumb={`${project.index} / ${project.kind}`}
         backHref="/#work"
-        backLabel="WORK"
+        backLabel={dict.work.back}
         title={project.title}
         sub={project.description}
       />
@@ -245,7 +327,7 @@ export default async function WorkPage({
           {project.stack.map((s) => (
             <Chip key={s}>{s}</Chip>
           ))}
-          <span className="ml-auto font-mono text-[11px] uppercase tracking-[0.2em] text-success">
+          <span className="ms-auto font-mono text-[11px] uppercase tracking-[0.2em] text-success">
             ● {project.status}
           </span>
         </div>
@@ -271,18 +353,26 @@ export default async function WorkPage({
           )}
         </section>
 
-        {project.media && project.media.length > 0 && <MediaGallery media={project.media} />}
+        {project.media && project.media.length > 0 && (
+          <MediaGallery labels={labels} media={project.media} />
+        )}
       </div>
 
-      <NumberedBlock index="01" title="THE PROBLEM" body={project.problem} />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <NumberedBlock
+          index="01"
+          title={labels.problem.split(" / ")[1]}
+          body={project.problem}
+        />
+      </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <ConstraintGrid labels={project.constraints} />
+        <ConstraintGrid labels={labels} list={project.constraints} />
       </div>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="mb-8">
-          <MonoLabel>03 / ARCHITECTURE</MonoLabel>
+          <MonoLabel>{labels.architecture}</MonoLabel>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
             {project.architectureIntro}
           </p>
@@ -293,7 +383,7 @@ export default async function WorkPage({
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <section className="py-12 sm:py-16">
           <div className="mb-8">
-            <MonoLabel>04 / ENGINEERING DECISIONS</MonoLabel>
+            <MonoLabel>{labels.decisions}</MonoLabel>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {project.decisions.map((d) => (
@@ -304,14 +394,14 @@ export default async function WorkPage({
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <TradeoffTable rows={project.tradeoffs} />
+        <TradeoffTable labels={labels} rows={project.tradeoffs} />
       </div>
 
       {project.security && (
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <section className="border-y border-line bg-surface-2/40 py-12 sm:py-16">
             <div className="mb-8">
-              <MonoLabel>07 / SECURITY</MonoLabel>
+              <MonoLabel>{labels.security}</MonoLabel>
               {project.security.note && (
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                   {project.security.note}
@@ -321,7 +411,7 @@ export default async function WorkPage({
             <div className="grid gap-6 lg:grid-cols-2">
               <div>
                 <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                  Threat model
+                  {labels.threatModel}
                 </div>
                 <ol className="space-y-2">
                   {project.security.threatModel.map((t, idx) => (
@@ -336,7 +426,7 @@ export default async function WorkPage({
               </div>
               <div>
                 <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                  Mitigation
+                  {labels.mitigation}
                 </div>
                 <ul className="space-y-2">
                   {project.security.mitigation.map((m) => (
@@ -353,13 +443,13 @@ export default async function WorkPage({
       )}
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <WhatBroke items={project.whatsBroken} />
+        <WhatBroke labels={labels} items={project.whatsBroken} />
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <section className="border-t border-line py-12 sm:py-16">
           <div className="mb-8">
-            <MonoLabel>08 / RESULT</MonoLabel>
+            <MonoLabel>{labels.result}</MonoLabel>
           </div>
           <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-3">
             {project.result.map((r) => (
@@ -379,22 +469,22 @@ export default async function WorkPage({
       <div className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <div className="flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:justify-between">
           <Link
-            href={`/work/${prev.slug}`}
+            href={localizeHref(locale, `/work/${prev.slug}`)}
             className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
-            ← {prev.index} / {prev.title}
+            <span className="rtl:inline rtl:rotate-180">←</span> {prev.index} / {prev.title}
           </Link>
           <Link
-            href={`/work/${next.slug}`}
+            href={localizeHref(locale, `/work/${next.slug}`)}
             className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
-            {next.index} / {next.title} →
+            {next.index} / {next.title} <span className="rtl:inline rtl:rotate-180">→</span>
           </Link>
         </div>
       </div>
 
       <Divider />
-      <Footer />
+      <Footer lang={locale} />
     </main>
   );
 }
