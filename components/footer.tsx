@@ -75,7 +75,7 @@ export default function Footer({ lang }: { lang: Locale }) {
               <br />© {site.year} {site.engineer}
               <br />
               <Link
-                href={site.github}
+                href={site.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:text-fg"

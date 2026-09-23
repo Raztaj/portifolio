@@ -24,8 +24,7 @@ export default async function Home({
 
   const contactHrefs = [
     { label: dict.home.contactLinks[0], href: `mailto:${site.email}` },
-    { label: dict.home.contactLinks[1], href: site.github },
-    { label: dict.home.contactLinks[2], href: site.linkedin },
+    { label: dict.home.contactLinks[1], href: site.linkedin },
   ];
 
   return (
@@ -72,12 +71,12 @@ export default async function Home({
                   </span>
                 </a>
                 <a
-                  href={site.github}
+                  href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 px-2 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
                 >
-                  {dict.hero.github}
+                  {dict.hero.linkedin}
                   <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">
                     ↗
                   </span>

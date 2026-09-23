@@ -35,11 +35,11 @@ export async function generateMetadata({
   return {
     title: "TAJELSIR / SYSTEMS",
     description: dict.metadata.description,
-    metadataBase: new URL("https://github.com/Raztaj"),
+    metadataBase: new URL("https://portifolio-pink-gamma.vercel.app"),
     openGraph: {
       title: "TAJELSIR / SYSTEMS",
       description: dict.metadata.ogDescription,
-      url: "https://github.com/Raztaj",
+      url: "https://portifolio-pink-gamma.vercel.app",
       siteName: "TAJELSIR / SYSTEMS",
       locale: locale === "ar" ? "ar_AR" : "en_US",
       type: "website",

@@ -6,10 +6,9 @@ export const site = {
   role2: "SYSTEMS BUILDER",
   blurb: "I build software for real-world constraints.",
   email: "tsgo132@gmail.com",
-  github: "https://github.com/Raztaj",
-  githubHandle: "Raztaj",
   linkedin:
     "https://www.linkedin.com/in/tajelsir-khalid-%D8%AA%D8%A7%D8%AC-%D8%A7%D9%84%D8%B3%D8%B1-%D8%AE%D8%A7%D9%84%D8%AF-4aba312b1/",
+  linkedinHandle: "tajelsir-khalid",
   location: "Khartoum, Sudan",
   city: "Khartoum",
   country: "Sudan",
@@ -82,7 +81,6 @@ export const timeline = [
 ];
 
 export const socials = [
-  { label: "GitHub", href: site.github },
   { label: "LinkedIn", href: site.linkedin },
   { label: "Email", href: `mailto:${site.email}` },
 ];

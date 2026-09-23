@@ -80,12 +80,12 @@ export default function Nav({ lang }: { lang: Locale }) {
             );
           })}
           <a
-            href={site.github}
+            href={site.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
-            {dict.nav.github}
+            {dict.nav.linkedin}
             <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">
               ↗
             </span>
@@ -139,12 +139,12 @@ export default function Nav({ lang }: { lang: Locale }) {
               );
             })}
             <a
-              href={site.github}
+              href={site.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between border border-line bg-surface px-4 py-3 font-mono text-[12px] uppercase tracking-[0.2em] text-fg transition-colors hover:text-accent"
             >
-              {dict.nav.github}
+              {dict.nav.linkedin}
               <span className="text-accent">↗</span>
             </a>
             <div className="flex items-center justify-between px-1 pt-2">

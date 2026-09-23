@@ -198,7 +198,7 @@ export default async function LabSlugPage({
         <SectionBlock label={`06 / ${dict.lab.source}`}>
           <p className="font-mono text-[12px] text-muted">
             <span className="text-accent">$</span> {dict.lab.sourceCmd}
-            {site.githubHandle}
+            {site.linkedinHandle}
           </p>
         </SectionBlock>
 

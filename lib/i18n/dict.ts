@@ -11,7 +11,7 @@ export const dictionaryEn = {
     research: "RESEARCH",
     notes: "NOTES",
     about: "ABOUT",
-    github: "GITHUB",
+    linkedin: "LINKEDIN",
     openMenu: "Open menu",
     closeMenu: "Close menu",
     menu: "MENU",
@@ -23,7 +23,7 @@ export const dictionaryEn = {
     blurb: "I build software for real-world constraints.",
     sub: "Software · Automation · Security",
     viewWork: "VIEW WORK",
-    github: "GITHUB",
+    linkedin: "LINKEDIN",
     metaBar: ["Khartoum, Sudan", "Local-first", "Zero-budget systems"],
   },
 
@@ -106,7 +106,7 @@ export const dictionaryEn = {
     contactEyebrow: "HAVE A PROBLEM?",
     contactText:
       "If you have a project, system, or particularly annoying technical problem:",
-    contactLinks: ["EMAIL", "GITHUB", "LINKEDIN"],
+    contactLinks: ["EMAIL", "LINKEDIN"],
     letsBuild: ["LET'S", "BUILD", "SOMETHING"],
   },
 
@@ -146,7 +146,7 @@ export const dictionaryEn = {
     result: "RESULT",
     learned: "WHAT I LEARNED",
     source: "SOURCE",
-    sourceCmd: "archived locally · github.com/",
+    sourceCmd: "archived locally · linkedin.com/in/",
     open: "OPEN",
     filters: ["ALL", "SECURITY", "AUTOMATION", "SYSTEMS", "RESEARCH"],
     categories: {
@@ -198,7 +198,7 @@ export const dictionaryEn = {
     site: "SITE",
     colophon: "COLOPHON",
     builtWith: "Built with",
-    viewSource: "[ VIEW SOURCE ]",
+    viewSource: "[ VIEW PROFILE ]",
     language: "LANGUAGE",
   },
 

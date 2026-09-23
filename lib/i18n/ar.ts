@@ -13,7 +13,7 @@ export const dictionaryAr: Dictionary = {
     research: "أبحاث",
     notes: "الملاحظات",
     about: "عن",
-    github: "GITHUB",
+    linkedin: "LINKEDIN",
     openMenu: "افتح القائمة",
     closeMenu: "أغلق القائمة",
     menu: "القائمة",
@@ -25,7 +25,7 @@ export const dictionaryAr: Dictionary = {
     blurb: "أبني برمجيات تعيش في الواقع بكل قيوده.",
     sub: "برمجيات · أتمتة · أمن",
     viewWork: "استعرض المشاريع",
-    github: "GITHUB",
+    linkedin: "LINKEDIN",
     metaBar: ["الخرطوم، السودان", "محلي أولًا", "أنظمة بميزانية صفر"],
   },
 
@@ -106,7 +106,7 @@ export const dictionaryAr: Dictionary = {
     ],
     contactEyebrow: "عندك مشكلة؟",
     contactText: "إن كان عندك مشروع أو نظام أو مشكلة تقنية عنيدة:",
-    contactLinks: ["بريد", "GITHUB", "LINKEDIN"],
+    contactLinks: ["بريد", "LINKEDIN"],
     letsBuild: ["لنبنِ", "شيئًا", "معًا"],
   },
 
@@ -147,7 +147,7 @@ export const dictionaryAr: Dictionary = {
     result: "النتيجة",
     learned: "ما تعلمته",
     source: "المصدر",
-    sourceCmd: "مؤرشف محليًا · github.com/",
+    sourceCmd: "مؤرشف محليًا · linkedin.com/in/",
     open: "افتح",
     filters: ["الكل", "أمن", "أتمتة", "أنظمة", "بحوث"],
     categories: {
@@ -199,7 +199,7 @@ export const dictionaryAr: Dictionary = {
     site: "الموقع",
     colophon: "خاتمة",
     builtWith: "بُني بـ",
-    viewSource: "[ شاهد المصدر ]",
+    viewSource: "[ عرض الملف ]",
     language: "اللغة",
   },
 
