@@ -21,12 +21,12 @@ export const dictionaryAr: Dictionary = {
 
   hero: {
     eyebrow: "مهندس برمجيات",
-    heading: ["الأنظمة", "بانيُها"],
+    heading: ["الأنظمة", "بانيها"],
     blurb: "أبني برمجيات تعمل في قلب العالم الحقيقي بكل قيوده.",
     sub: "برمجيات · أتمتة · أمن",
     viewWork: "استعرض الأعمال",
     github: "GITHUB",
-    metaBar: ["الخرطوم، السودان", "محلي أولًا", "أنظمة صفر الميزانية"],
+    metaBar: ["الخرطوم، السودان", "محلي أولًا", "أنظمة بميزانية صفر"],
   },
 
   status: {
@@ -50,7 +50,7 @@ export const dictionaryAr: Dictionary = {
       {
         index: "أ",
         title: "البنية",
-        desc: "كل نظام يوثّق قراراته ومفاضلاته والشكل النهائي الذي نبعت منه.",
+        desc: "كل نظام يوثّق قراراته ومفاضلاته والشكل النهائي الذي انبثق منه.",
       },
       {
         index: "ب",
@@ -127,7 +127,7 @@ export const dictionaryAr: Dictionary = {
     decision: "القرار",
     cost: "الثمن",
     threatModel: "نموذج التهديد",
-    mitigation: "المعالَج",
+    mitigation: "المعالجة",
     assumption: "الافتراض",
     failed: "فشل",
     fix: "الإصلاح",

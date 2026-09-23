@@ -120,7 +120,7 @@ export const arProjects: Project[] = [
       {
         src: "/work/hasdo/home.jpg",
         alt: "الصفحة الرئيسية العربية في HASDO",
-        caption: "الرئيسية عربية أولًا — RTL كامل ·IBM Plex Sans Arabic",
+        caption: "الرئيسية عربية أولًا — RTL كامل · IBM Plex Sans Arabic",
       },
       {
         src: "/work/hasdo/projects.jpg",
@@ -831,7 +831,7 @@ export const arLabEntries: LabEntry[] = [
     result: "جرد يقارب 1,730 سطرًا بصيغة Markdown — خط أساس منظم وموثق للقطاع.",
     learned: [
       "خط الأساس يحوّل «هل هذا سيئ؟» إلى «هل تغيّر هذا؟».",
-      "للبحث بهذا النوع ثقلٌ أخلاقي؛ إذ يجب أن يظل رصديًا وقابلًا للمشاركة دون سلاحٍ من التفاصيل.",
+      "للبحث بهذا النوع ثقلٌ أخلاقي؛ إذ يجب أن يظل رصديًا وقابلًا للمشاركة دون تفاصيل قابلة للتسليح.",
     ],
     note: "جرد رصدي لأسطح عامة.",
   },
