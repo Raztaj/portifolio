@@ -6,6 +6,7 @@ import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
 import { getProjectBySlug, getProjects, localizeHref } from "@/lib/content/locale";
 import type { MediaImage } from "@/lib/content/types";
+import { site } from "@/lib/site";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -462,6 +463,36 @@ export default async function WorkPage({
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <section className="border-y border-line bg-surface py-12 sm:py-16">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-center">
+            <div>
+              <MonoLabel>{dict.work.cta.title}</MonoLabel>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
+                {dict.work.cta.body}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 lg:justify-end">
+              <a
+                href={`mailto:${site.email}`}
+                className="group inline-flex items-center gap-2 border border-accent bg-accent px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.2em] text-bg transition-colors hover:bg-transparent hover:text-accent"
+              >
+                {dict.work.cta.email}
+                <span className="transition-transform group-hover:-translate-y-0.5">→</span>
+              </a>
+              <a
+                href={site.waLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 border border-line bg-surface-2 px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.2em] text-fg transition-colors hover:border-accent hover:text-accent"
+              >
+                {dict.work.cta.whatsapp} ↗
+              </a>
+            </div>
           </div>
         </section>
       </div>

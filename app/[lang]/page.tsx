@@ -25,6 +25,7 @@ export default async function Home({
   const contactHrefs = [
     { label: dict.home.contactLinks[0], href: `mailto:${site.email}` },
     { label: dict.home.contactLinks[1], href: site.linkedin },
+    { label: dict.home.contactLinks[2], href: site.waLink },
   ];
 
   return (
@@ -163,8 +164,13 @@ export default async function Home({
 
       <section className="scroll-mt-16">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div className="mb-10 flex items-end justify-between">
-            <SectionHeading index={dict.home.labIndex} title={dict.home.labTitle} />
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-3">
+            <div className="flex items-end gap-4">
+              <SectionHeading index={dict.home.labIndex} title={dict.home.labTitle} />
+              <span className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+                {dict.home.expCount}
+              </span>
+            </div>
             <ArrowLink href={localizeHref(locale, "/lab")}>{dict.home.allEntries}</ArrowLink>
           </div>
 

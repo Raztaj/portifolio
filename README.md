@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TAJELSIR / SYSTEMS
 
-## Getting Started
+Personal portfolio and engineering write-up: software, automation, and security for real-world constraints — bilingual (EN / AR), dark, terminal-flavoured.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js** (App Router, RSC, statically prerendered routes)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **i18n**: `lib/i18n` (EN + AR dictionaries, full RTL support) + `lib/content` (project / lab / notes content per locale)
+
+## Project structure
+
+```
+app/
+  [lang]/        localized pages (work, lab, research, notes, about)
+  icon.svg       favicon
+  robots.ts      robots.txt
+  sitemap.ts     sitemap.xml (all EN + AR routes)
+components/      nav, footer, page-header, arch-diagram, ui primitives
+lib/
+  i18n/          config, dictionaries (dict = EN, ar.ts = AR)
+  content/       projects, lab entries, notes (EN + AR)
+proxy.ts         root-level middleware: rewrites "/" → "/en" (English-first)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Routing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Unprefixed paths (`/`, `/work/hasdo`) resolve to English.
+- `/ar/...` serves the Arabic version (RTL).
+- `proxy.ts` handles the `/ → /en` rewrite; language toggle links between the two locales.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+```bash
+npm run dev       # development server on :3000
+npm run build     # production build
+npm run start     # serve the production build
+npx tsc --noEmit  # type-check
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deployed on Vercel. Canonical/OG URLs currently use the preview domain —
+update `app/robots.ts`, `app/sitemap.ts`, and `app/[lang]/layout.tsx` (metadataBase)
+when a custom domain is attached.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## TODO
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Analytics**: none yet — add Vercel Analytics or Plausible when credentials are available.

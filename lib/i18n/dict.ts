@@ -65,6 +65,7 @@ export const dictionaryEn = {
     ],
     labIndex: "03 / LAB",
     labTitle: "Experiments",
+    expCount: "16 ENTRIES",
     allEntries: "ALL ENTRIES",
     labCmd: "ls experiments",
     researchIndex: "04 / RESEARCH",
@@ -108,7 +109,7 @@ export const dictionaryEn = {
     contactEyebrow: "HAVE A PROBLEM?",
     contactText:
       "If you have a project, system, or particularly annoying technical problem:",
-    contactLinks: ["EMAIL", "LINKEDIN"],
+    contactLinks: ["EMAIL", "LINKEDIN", "WHATSAPP"],
     letsBuild: ["LET'S", "BUILD", "SOMETHING"],
   },
 
@@ -132,6 +133,12 @@ export const dictionaryEn = {
     assumption: "assumption",
     failed: "that failed",
     fix: "the fix",
+    cta: {
+      title: "NEED SOMETHING LIKE THIS?",
+      body: "A system built for your reality — made to survive contact with it. Local-first, Arabic-first, low-budget.",
+      email: "EMAIL ME",
+      whatsapp: "WHATSAPP",
+    },
   },
 
   lab: {

@@ -67,6 +67,7 @@ export const dictionaryAr: Dictionary = {
     ],
     labIndex: "03 / التجارب",
     labTitle: "تجارب",
+    expCount: "16 تجربة",
     allEntries: "كل المدخلات",
     labCmd: "ls experiments",
     researchIndex: "04 / أبحاث",
@@ -108,7 +109,7 @@ export const dictionaryAr: Dictionary = {
     ],
     contactEyebrow: "عندك مشكلة؟",
     contactText: "عندك مشروع أو نظام أو مشكلة تقنية ما انحلَّت؟",
-    contactLinks: ["بريد", "LINKEDIN"],
+    contactLinks: ["بريد", "LINKEDIN", "WHATSAPP"],
     letsBuild: ["لنبنِ", "شيئًا", "معًا"],
   },
 
@@ -133,6 +134,12 @@ export const dictionaryAr: Dictionary = {
     assumption: "الافتراض",
     failed: "ما انهار",
     fix: "الإصلاح",
+    cta: {
+      title: "تحتاج شيئًا مثل هذا؟",
+      body: "نظام يليق بواقعك — يُبنى كي يعيش تحت أزماته: محلي أولًا، عربي أولًا، وبميزانية رشيقة.",
+      email: "راسلني",
+      whatsapp: "واتساب",
+    },
   },
 
   lab: {

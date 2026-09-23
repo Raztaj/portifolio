@@ -43,6 +43,20 @@ export async function generateMetadata({
       siteName: "TAJELSIR / SYSTEMS",
       locale: locale === "ar" ? "ar_AR" : "en_US",
       type: "website",
+      images: [
+        {
+          url: "/social-og.png",
+          width: 1080,
+          height: 1080,
+          alt: "TAJELSIR / SYSTEMS — software for real-world constraints",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "TAJELSIR / SYSTEMS",
+      description: dict.metadata.ogDescription,
+      images: ["/social-og.png"],
     },
   };
 }
@@ -57,6 +71,7 @@ export default async function RootLayout({
   const { lang = "en" } = (await params) ?? {};
   const locale: Locale = isLocale(lang) ? lang : "en";
   const dir = getLocaleDir(locale);
+  const layoutDict = getDictionary(locale);
   return (
     <html
       lang={locale}
@@ -66,6 +81,22 @@ export default async function RootLayout({
     >
       <body className="bg-bg text-fg font-sans">
         <Cursor />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Tajelsir Khalid",
+              url: "https://portifolio-pink-gamma.vercel.app",
+              jobTitle: "Software Engineer",
+              description:
+                layoutDict.metadata.description,
+              email: "mailto:tsgo132@gmail.com",
+              knowsAbout: ["Software engineering", "Automation", "Application security"],
+            }),
+          }}
+        />
         {children}
       </body>
     </html>

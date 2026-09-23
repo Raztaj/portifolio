@@ -9,6 +9,8 @@ export const site = {
   linkedin:
     "https://www.linkedin.com/in/tajelsir-khalid-%D8%AA%D8%A7%D8%AC-%D8%A7%D9%84%D8%B3%D8%B1-%D8%AE%D8%A7%D9%84%D8%AF-4aba312b1/",
   linkedinHandle: "tajelsir-khalid",
+  whatsapp: "249101062021",
+  waLink: "https://wa.me/249101062021",
   location: "Khartoum, Sudan",
   city: "Khartoum",
   country: "Sudan",
