@@ -46,6 +46,9 @@ export default async function Home({
               <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
                 {dict.hero.blurb}
               </p>
+              <p className="mt-3 max-w-md font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+                {dict.hero.marketing}
+              </p>
               <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-fg/80">
                 {dict.hero.sub}
               </div>
@@ -61,6 +64,15 @@ export default async function Home({
                 ))}
               </div>
               <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a
+                  href={localizeHref(locale, "/#contact")}
+                  className="group inline-flex items-center gap-2 border border-accent bg-accent px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.2em] text-bg transition-colors hover:bg-transparent hover:text-accent"
+                >
+                  {dict.hero.cta}
+                  <span className="transition-transform group-hover:translate-y-0.5">
+                    ↓
+                  </span>
+                </a>
                 <a
                   href={localizeHref(locale, "/#work")}
                   className="group inline-flex items-center gap-2 border border-line bg-surface-2 px-4 py-2.5 font-mono text-[12px] uppercase tracking-[0.2em] text-fg transition-colors hover:border-accent hover:text-accent"
