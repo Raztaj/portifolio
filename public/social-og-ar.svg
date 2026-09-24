@@ -34,50 +34,50 @@
     <text x="72" y="86" font-size="32" font-weight="700" fill="#F1F3F5" letter-spacing="1">TK<tspan fill="#35D0FF">/</tspan></text>
     <text x="72" y="132" font-size="16" fill="#8D96A3" letter-spacing="6">TAJELSIR / SYSTEMS</text>
     <text x="72" y="158" font-size="11" fill="#8D96A3" letter-spacing="2">BUILD 02 · OG/1080</text>
-    <text text-anchor="end" x="1008" y="86" font-family="'JetBrains Mono','Cascadia Mono','Roboto Mono',ui-monospace,'Courier New',monospace" font-size="20" fill="#35D0FF"  letter-spacing="6">BUILDING FOR A BROKEN GRID.</text>
+    <text text-anchor="end" x="1008" y="86" font-family="'Noto Kufi Arabic','Noto Sans Arabic','Amiri','Tahoma','Segoe UI',sans-serif" font-size="20" fill="#35D0FF" >نبني لشبكةٍ مقطوعة.</text>
   </g>
 
   <line x1="72" y1="178" x2="1008" y2="178" stroke="#242A33" stroke-width="1"/>
   <rect x="72" y="174" width="8" height="8" fill="#35D0FF"/>
 
   <!-- eyebrow + headline -->
-  <g font-family="'Manrope','Inter','Segoe UI','Helvetica Neue',Arial,sans-serif">
-    <text  x="72" y="268" font-size="26" font-weight="600" fill="#8D96A3"  letter-spacing="10">SOFTWARE ENGINEER</text>
-    <text  x="72" y="392" font-size="112" font-weight="700" fill="#F1F3F5"  letter-spacing="-1">BROKEN</text>
-    <text  x="72" y="492" font-size="112" font-weight="700" fill="#F1F3F5"  letter-spacing="-1">GRI<tspan fill="#35D0FF">D</tspan></text>
+  <g font-family="'Noto Kufi Arabic','Noto Sans Arabic','Amiri','Tahoma','Segoe UI',sans-serif">
+    <text text-anchor="end" x="616" y="268" font-size="26" font-weight="600" fill="#8D96A3" >مهندس برمجيات</text>
+    <text text-anchor="end" x="616" y="392" font-size="112" font-weight="700" fill="#F1F3F5" >شبكةٌ</text>
+    <text text-anchor="end" x="616" y="492" font-size="112" font-weight="700" fill="#F1F3F5" >مقطوع<tspan fill="#35D0FF">ة</tspan></text>
   </g>
   <g>
-    <rect x="72" y="508" width="56" height="4" fill="#35D0FF"/>
-    <rect x="128" y="505" width="10" height="10" fill="#35D0FF" opacity="0.35"/>
+    <rect x="560" y="508" width="56" height="4" fill="#35D0FF"/>
+    <rect x="550" y="505" width="10" height="10" fill="#35D0FF" opacity="0.35"/>
   </g>
 
   <!-- marketing copy -->
-  <g font-family="'Manrope','Inter','Segoe UI','Helvetica Neue',Arial,sans-serif">
-    <text  x="72" y="572" font-size="28" font-weight="500" fill="#8D96A3">Systems built for the real</text>
-    <text  x="72" y="612" font-size="28" font-weight="500" fill="#8D96A3">world — Arabic-first,</text>
-    <text  x="72" y="652" font-size="28" font-weight="500" fill="#8D96A3">local-first, zero-budget.</text>
+  <g font-family="'Noto Kufi Arabic','Noto Sans Arabic','Amiri','Tahoma','Segoe UI',sans-serif">
+    <text text-anchor="end" x="616" y="572" font-size="28" font-weight="500" fill="#8D96A3">بناء نظم في وجه قيود الواقع —</text>
+    <text text-anchor="end" x="616" y="612" font-size="28" font-weight="500" fill="#8D96A3">عربية أولاً، محلية أولاً،</text>
+    <text text-anchor="end" x="616" y="652" font-size="28" font-weight="500" fill="#8D96A3">وبميزانية صفرية.</text>
   </g>
 
   <rect width="1080" height="1080" fill="#000" filter="url(#grain)" opacity="0.045"/>
 
   <!-- chips -->
-  <g font-family="'Manrope','Inter','Segoe UI','Helvetica Neue',Arial,sans-serif">
-    <rect x="72" y="700" width="180" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
-    <text  x="94" y="727" font-size="16" letter-spacing="2.5" fill="#8D96A3">AUTOMATION</text>
-    <rect x="272" y="700" width="285" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
-    <text  x="294" y="727" font-size="16" letter-spacing="2.5" fill="#8D96A3">SECURITY-RESEARCH</text>
-    <rect x="72" y="760" width="195" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
-    <text  x="94" y="787" font-size="16" letter-spacing="2.5" fill="#8D96A3">LOCAL-FIRST</text>
-    <rect x="287" y="760" width="255" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
-    <text  x="309" y="787" font-size="16" letter-spacing="2.5" fill="#8D96A3">BILINGUAL AR/EN</text>
+  <g font-family="'Noto Kufi Arabic','Noto Sans Arabic','Amiri','Tahoma','Segoe UI',sans-serif">
+    <rect x="388" y="700" width="74" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
+    <text text-anchor="end" x="440" y="727" font-size="16" fill="#8D96A3">أتمتة</text>
+    <rect x="294" y="700" width="134" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
+    <text text-anchor="end" x="406" y="727" font-size="16" fill="#8D96A3">أبحاث أمنية</text>
+    <rect x="328" y="760" width="124" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
+    <text text-anchor="end" x="430" y="787" font-size="16" fill="#8D96A3">محلي أولاً</text>
+    <rect x="184" y="760" width="144" height="44" rx="22" fill="#0E1116" stroke="#242A33"/>
+    <text text-anchor="end" x="306" y="787" font-size="16" fill="#8D96A3">عربي/إنجليزي</text>
     
   </g>
 
   <!-- QR panel -->
-  <g font-family="'JetBrains Mono','Cascadia Mono','Roboto Mono',ui-monospace,'Courier New',monospace">
+  <g font-family="'Noto Kufi Arabic','Noto Sans Arabic','Amiri','Tahoma','Segoe UI',sans-serif">
     <rect x="636" y="540" width="360" height="440" rx="18" fill="#0E1116" stroke="#242A33"/>
-    <text  x="660" y="576" font-size="20" fill="#35D0FF" letter-spacing="5">SCAN</text>
-    <text  x="660" y="602" font-size="16" fill="#8D96A3" letter-spacing="4">EXPLORE PORTFOLIO</text>
+    <text text-anchor="end" x="972" y="576" font-size="20" fill="#35D0FF">امسح</text>
+    <text text-anchor="end" x="972" y="602" font-size="16" fill="#8D96A3">استكشف الموقع</text>
     <rect x="686.5" y="640" width="259" height="259" rx="12" fill="#0A0D11" stroke="#242A33"/>
     <rect x="714.5" y="668.0" width="7" height="7" fill="#F1F3F5"/>
 <rect x="721.5" y="668.0" width="7" height="7" fill="#F1F3F5"/>
@@ -519,10 +519,10 @@
   </g>
 
   <!-- footer -->
-  <text x="540" y="988" text-anchor="middle" font-family="'JetBrains Mono','Cascadia Mono','Roboto Mono',ui-monospace,'Courier New',monospace" font-size="12" fill="#242A33" opacity="0.9">15.5007°N · 32.5599°E — KHARTOUM, SUDAN</text>
+  <text x="540" y="988" text-anchor="middle" font-family="'Noto Kufi Arabic','Noto Sans Arabic','Amiri','Tahoma','Segoe UI',sans-serif" font-size="12" fill="#242A33" opacity="0.9">الخرطوم · 15.5007° شمالاً / 32.5599° شرقاً</text>
   <line x1="72" y1="1006" x2="1008" y2="1006" stroke="#242A33" stroke-width="1"/>
-  <g font-family="'JetBrains Mono','Cascadia Mono','Roboto Mono',ui-monospace,'Courier New',monospace">
-    <text  x="72" y="1052" font-size="18" fill="#8D96A3" letter-spacing="4">KHARTOUM / SUDAN</text>
-    <text text-anchor="end" x="1008" y="1052" font-size="18" fill="#8D96A3" letter-spacing="4">© 2026 TAJELSIR KHALID</text>
+  <g font-family="'Noto Kufi Arabic','Noto Sans Arabic','Amiri','Tahoma','Segoe UI',sans-serif">
+    <text text-anchor="end" x="616" y="1052" font-size="18" fill="#8D96A3">الخرطوم / السودان</text>
+    <text text-anchor="end" x="1008" y="1052" font-size="18" fill="#8D96A3">© 2026 تاج السر خالد</text>
   </g>
 </svg>

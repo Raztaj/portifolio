@@ -33,20 +33,20 @@
   <rect x="72" y="92" width="8" height="8" fill="#35D0FF"/>
 
   <!-- left copy -->
-  <g font-family="'Inter','Segoe UI','Helvetica Neue',system-ui,sans-serif">
-    <text x="72" y="176" font-size="20" font-weight="600" fill="#8D96A3" letter-spacing="9">SOFTWARE ENGINEER</text>
-    <text x="72" y="246" font-size="64" font-weight="700" fill="#F1F3F5" letter-spacing="-1">SYSTEMS BUILDE<tspan fill="#35D0FF">R</tspan></text>
-    <text x="72" y="280" font-size="19" font-weight="500" fill="#F1F3F5">Real-world systems — Arabic-first, local-first, zero-budget.</text>
+  <g font-family="'Manrope','Inter','Segoe UI','Helvetica Neue',system-ui,sans-serif">
+    <text x="72" y="170" font-size="20" font-weight="600" fill="#8D96A3" letter-spacing="9">SOFTWARE ENGINEER</text>
+    <text x="72" y="232" font-size="58" font-weight="700" fill="#F1F3F5" letter-spacing="-1">BUILDING FOR A BROKEN GRID</text>
+    <text x="72" y="268" font-size="19" font-weight="500" fill="#F1F3F5">Real-world systems — Arabic-first, local-first, zero-budget.</text>
   </g>
-  <g font-family="'Inter','Segoe UI','Helvetica Neue',system-ui,sans-serif">
-    <rect x="72" y="320" width="107" height="30" rx="15" fill="#0E1116" stroke="#242A33"/>
-    <text x="125.5" y="339.5" text-anchor="middle" font-size="13" letter-spacing="2.5" fill="#8D96A3">AUTOMATION</text><rect x="250" y="320" width="164" height="30" rx="15" fill="#0E1116" stroke="#242A33"/>
-    <text x="332" y="339.5" text-anchor="middle" font-size="13" letter-spacing="2.5" fill="#8D96A3">SECURITY-RESEARCH</text>
+  <g font-family="'Manrope','Inter','Segoe UI','Helvetica Neue',system-ui,sans-serif">
+    <rect x="72" y="310" width="132" height="30" rx="15" fill="#0E1116" stroke="#242A33"/>
+    <text x="138" y="329.5" text-anchor="middle" font-size="13" letter-spacing="2.5" fill="#8D96A3">AUTOMATION</text><rect x="292" y="310" width="206" height="30" rx="15" fill="#0E1116" stroke="#242A33"/>
+    <text x="395" y="329.5" text-anchor="middle" font-size="13" letter-spacing="2.5" fill="#8D96A3">SECURITY-RESEARCH</text>
   </g>
 
   <!-- accent tick under headline -->
-  <rect x="72" y="256" width="56" height="3" fill="#35D0FF"/>
-  <rect x="132" y="253" width="9" height="9" fill="#35D0FF" opacity="0.35"/>
+  <rect x="72" y="241" width="56" height="3" fill="#35D0FF"/>
+  <rect x="132" y="238" width="9" height="9" fill="#35D0FF" opacity="0.35"/>
 
   <!-- QR panel -->
   <g font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace">

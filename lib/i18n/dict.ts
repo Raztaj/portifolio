@@ -19,7 +19,7 @@ export const dictionaryEn = {
 
   hero: {
     eyebrow: "SOFTWARE ENGINEER",
-    heading: ["SYSTEMS", "BUILDER"],
+    heading: ["BUILDING FOR", "A BROKEN GRID"],
     blurb: "I build software for real-world constraints.",
     marketing: "Local-first systems built to survive contact with reality.",
     sub: "Software · Automation · Security",

@@ -3,7 +3,7 @@ export const site = {
   name: "TAJELSIR / SYSTEMS",
   engineer: "Tajelsir Khalid",
   role: "SOFTWARE ENGINEER",
-  role2: "SYSTEMS BUILDER",
+  role2: "BUILDING FOR A BROKEN GRID",
   blurb: "I build software for real-world constraints.",
   email: "tsgo132@gmail.com",
   linkedin:

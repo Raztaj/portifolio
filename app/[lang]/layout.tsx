@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Manrope, JetBrains_Mono, Noto_Kufi_Arabic } from "next/font/google";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getLocaleDir, getDictionary } from "@/lib/i18n";
 import "../globals.css";
 import Cursor from "@/components/cursor";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
 });
@@ -17,7 +17,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const plexArabic = IBM_Plex_Sans_Arabic({
+const kufi = Noto_Kufi_Arabic({
   variable: "--font-arabic",
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
@@ -45,7 +45,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: "/social-og.png",
+          url: locale === "ar" ? "/social-og-ar.png" : "/social-og.png",
           width: 1080,
           height: 1080,
           alt: "TAJELSIR / SYSTEMS — software for real-world constraints",
@@ -56,7 +56,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: "TAJELSIR / SYSTEMS",
       description: dict.metadata.ogDescription,
-      images: ["/social-og.png"],
+      images: [locale === "ar" ? "/social-og-ar.png" : "/social-og.png"],
     },
   };
 }
@@ -76,7 +76,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${inter.variable} ${jetbrains.variable} ${plexArabic.variable} antialiased`}
+      className={`${manrope.variable} ${jetbrains.variable} ${kufi.variable} antialiased`}
       data-scroll-behavior="smooth"
     >
       <body className="bg-bg text-fg font-sans">
