@@ -2,13 +2,13 @@
 
 @theme inline {
   --color-bg: #080a0d;
-  --color-surface: #0e1116;
-  --color-surface-2: #151922;
-  --color-line: #242a33;
-  --color-fg: #f1f3f5;
-  --color-muted: #8d96a3;
-  --color-accent: #35d0ff;
-  --color-accent-dark: #087ea4;
+  --color-surface: #141a22;
+  --color-surface-2: #1d2530;
+  --color-line: #34414e;
+  --color-fg: #f2f5f8;
+  --color-muted: #9aa6b5;
+  --color-accent: #3fd4ff;
+  --color-accent-dark: #0a8fc0;
   --color-success: #69e6a5;
   --color-warning: #ffc857;
   --color-error: #ff667a;
@@ -37,7 +37,7 @@ body {
 }
 
 ::selection {
-  background: rgba(53, 208, 255, 0.24);
+  background: rgba(63, 212, 255, 0.24);
   color: #ffffff;
 }
 
@@ -47,17 +47,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0e1116;
+  background: #141a22;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #242a33;
-  border: 2px solid #0e1116;
+  background: #34414e;
+  border: 2px solid #141a22;
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e3844;
+  background: #45546b;
 }
 
 :focus-visible {
@@ -71,5 +71,5 @@ body {
 }
 
 .hairline {
-  border-color: #242a33;
+  border-color: #34414e;
 }
