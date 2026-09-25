@@ -118,22 +118,22 @@ export const arProjects: Project[] = [
     ],
     media: [
       {
-        src: "/work/hasdo/map.jpg",
+        src: "/work/hasdo/map.png",
         alt: "الخريطة التفاعلية للسودان في HASDO",
         caption: "الخريطة التفاعلية للسودان — d3-GEO · GeoJSON دون اتصال",
       },
       {
-        src: "/work/hasdo/home.jpg",
+        src: "/work/hasdo/home.png",
         alt: "الصفحة الرئيسية العربية في HASDO",
         caption: "الرئيسية عربية أولًا — RTL كامل · IBM Plex Sans Arabic",
       },
       {
-        src: "/work/hasdo/projects.jpg",
+        src: "/work/hasdo/projects.png",
         alt: "دليل مشاريع HASDO",
         caption: "دليل المشاريع — محتوى وارد من نظام الإدارة",
       },
       {
-        src: "/work/hasdo/login.jpg",
+        src: "/work/hasdo/login.png",
         alt: "بوابة دخول المشرفين في HASDO",
         caption: "بوابة المشرفين — مصادقة بريد ومسارات محصّنة",
       },
@@ -257,7 +257,7 @@ export const arProjects: Project[] = [
     ],
     media: [
       {
-        src: "/work/easily/login.jpg",
+        src: "/work/easily/login.png",
         alt: "شاشة تسجيل الدخول في نظام التذاكر",
         caption: "صفحة الدخول — بوابة وحدة تحكم التذاكر",
       },
@@ -499,12 +499,12 @@ export const arProjects: Project[] = [
     ],
     media: [
       {
-        src: "/work/shockwave/hero.jpg",
+        src: "/work/shockwave/hero.png",
         alt: "واجهة موقع SHOCK WAVE",
         caption: "واجهة الموقع — عربي RTL · رأس مصفوفة متحركة",
       },
       {
-        src: "/work/shockwave/services.jpg",
+        src: "/work/shockwave/services.png",
         alt: "خط خدمات SHOCK WAVE",
         caption: "خط الخدمات — طلبات · عملاء · مخزون · مندوبون",
       },

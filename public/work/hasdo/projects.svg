@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="675" viewBox="0 0 1080 675">
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3FD4FF" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#3FD4FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="675" fill="#080A0D"/>
+  <rect width="1080" height="675" fill="url(#glow)"/>
+  <line x1="0.5" y1="0" x2="0.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="90.5" y1="0" x2="90.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="180.5" y1="0" x2="180.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="270.5" y1="0" x2="270.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="360.5" y1="0" x2="360.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="450.5" y1="0" x2="450.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="540.5" y1="0" x2="540.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="630.5" y1="0" x2="630.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="720.5" y1="0" x2="720.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="810.5" y1="0" x2="810.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="900.5" y1="0" x2="900.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="990.5" y1="0" x2="990.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/><line x1="1080.5" y1="0" x2="1080.5" y2="675" stroke="#34414E" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- chrome bar -->
+  <rect x="56" y="48" width="968" height="46" rx="10" fill="#0B0E13" stroke="#34414E"/>
+  <circle cx="78" cy="71" r="5" fill="#3FD4FF"/><circle cx="96" cy="71" r="5" fill="#FFC857"/><circle cx="114" cy="71" r="5" fill="#69E6A5"/>
+  <rect x="140" y="56" width="260" height="30" rx="8" fill="#141A22" stroke="#34414E"/>
+  <text x="152" y="76" font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace" font-size="12" fill="#9AA6B5">tajelsir.systems / hasdo / projects</text>
+  <text text-anchor="end" x="1004" y="76" font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace" font-size="11" fill="#3FD4FF" letter-spacing="3">DIAGRAM / OFFLINE</text>
+
+  <!-- header -->
+  <text x="70" y="146" font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace" font-size="13" fill="#9AA6B5" letter-spacing="4">FIELD SYSTEM /* 01 */</text>
+  <text x="70" y="190" font-family="'Manrope','Inter','Segoe UI',system-ui,sans-serif" font-size="26" font-weight="700" fill="#F2F5F8" letter-spacing="-1">PROJECTS DIRECTORY — CONTENT FROM THE ADMIN CMS</text>
+  <rect x="70" y="206" width="52" height="3" fill="#3FD4FF"/>
+
+  <g>
+    <line x1="185" y1="296" x2="515" y2="296" stroke="#34414E" stroke-width="1" stroke-opacity="0.8"/>
+    <line x1="515" y1="296" x2="845" y2="296" stroke="#34414E" stroke-width="1" stroke-opacity="0.8"/>
+    <line x1="515" y1="446" x2="845" y2="296" stroke="#3FD4FF" stroke-width="1.6" stroke-opacity="0.9"/>
+    <g font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace">
+    <rect x="70" y="250" width="230" height="92" rx="10" fill="#141A22" stroke="#34414E" stroke-width="1"/>
+    <text x="88" y="286" font-size="16" font-weight="700" fill="#F2F5F8" letter-spacing="1">SUDAN MAP</text>
+    <text x="88" y="310" font-size="11" fill="#9AA6B5">d3-geo · OCHA GEOJSON</text>
+    
+  </g>
+    <g font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace">
+    <rect x="400" y="250" width="230" height="92" rx="10" fill="#141A22" stroke="#34414E" stroke-width="1"/>
+    <text x="418" y="286" font-size="16" font-weight="700" fill="#F2F5F8" letter-spacing="1">PUBLIC SITE</text>
+    <text x="418" y="310" font-size="11" fill="#9AA6B5">Arabic RTL · 9 pages</text>
+    
+  </g>
+    <g font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace">
+    <rect x="730" y="250" width="230" height="92" rx="10" fill="#141A22" stroke="#34414E" stroke-width="1"/>
+    <text x="748" y="286" font-size="16" font-weight="700" fill="#F2F5F8" letter-spacing="1">SUPABASE</text>
+    <text x="748" y="310" font-size="11" fill="#9AA6B5">Postgres + Auth + RLS</text>
+    
+  </g>
+    <g font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace">
+    <rect x="400" y="400" width="230" height="92" rx="10" fill="#1D2530" stroke="#3FD4FF" stroke-width="1.6"/>
+    <text x="418" y="436" font-size="16" font-weight="700" fill="#F2F5F8" letter-spacing="1">ADMIN PANEL</text>
+    <text x="418" y="460" font-size="11" fill="#9AA6B5">login · CMS sections</text>
+    <rect x="600" y="436" width="12" height="12" rx="3" fill="none" stroke="#3FD4FF"/><circle cx="606" cy="442" r="3" fill="#3FD4FF"/>
+  </g>
+  </g>
+
+  <!-- footer -->
+  <line x1="70" y1="597" x2="1010" y2="597" stroke="#34414E" stroke-width="1"/>
+  <text x="70" y="623" font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace" font-size="12" fill="#9AA6B5" letter-spacing="2">REF HASDO/projects — 1080×675</text>
+  <text text-anchor="end" x="1010" y="623" font-family="'JetBrains Mono','Cascadia Mono',ui-monospace,monospace" font-size="12" fill="#9AA6B5" letter-spacing="2">SCHEMA GENERATED · BUILD CA</text>
+</svg>

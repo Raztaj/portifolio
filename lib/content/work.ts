@@ -132,22 +132,22 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        src: "/work/hasdo/map.jpg",
+        src: "/work/hasdo/map.png",
         alt: "HASDO interactive Sudan map",
         caption: "INTERACTIVE SUDAN MAP — d3-GEO · OFFLINE OCHA GEOJSON",
       },
       {
-        src: "/work/hasdo/home.jpg",
+        src: "/work/hasdo/home.png",
         alt: "HASDO Arabic RTL home page",
         caption: "ARABIC-FIRST HOME — FULL RTL · IBM PLEX SANS ARABIC",
       },
       {
-        src: "/work/hasdo/projects.jpg",
+        src: "/work/hasdo/projects.png",
         alt: "HASDO projects directory",
         caption: "PROJECTS DIRECTORY — CONTENT FROM THE ADMIN CMS",
       },
       {
-        src: "/work/hasdo/login.jpg",
+        src: "/work/hasdo/login.png",
         alt: "HASDO admin login",
         caption: "ADMIN GATE — EMAIL AUTH · SECURED ROUTES",
       },
@@ -291,7 +291,7 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        src: "/work/easily/login.jpg",
+        src: "/work/easily/login.png",
         alt: "TICKETING SYSTEM sign-in screen",
         caption: "SIGN-IN — THE ENTRY TO THE TICKETING CONSOLE",
       },
@@ -533,12 +533,12 @@ export const projects: Project[] = [
     ],
     media: [
       {
-        src: "/work/shockwave/hero.jpg",
+        src: "/work/shockwave/hero.png",
         alt: "SHOCK WAVE website hero",
         caption: "SITE HERO — ARABIC RTL · MATRIX HEADER",
       },
       {
-        src: "/work/shockwave/services.jpg",
+        src: "/work/shockwave/services.png",
         alt: "SHOCK WAVE service line",
         caption: "SERVICE LINE — ORDERS · CLIENTS · STOCK · RIDERS",
       },
