@@ -7,10 +7,12 @@ import { isLocale, getDictionary } from "@/lib/i18n";
 import { getProjectBySlug, getProjects, localizeHref } from "@/lib/content/locale";
 import type { MediaImage } from "@/lib/content/types";
 import { site } from "@/lib/site";
+import { alternatesFor, routeUrl } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import ArchDiagram from "@/components/arch-diagram";
+import JsonLd from "@/components/json-ld";
 import { MonoLabel, Chip, Divider } from "@/components/ui";
 
 export const dynamicParams = false;
@@ -34,6 +36,7 @@ export async function generateMetadata({
   return {
     title: `${project.title} — WORK / TAJELSIR SYSTEMS`,
     description: project.description,
+    alternates: alternatesFor(locale, `/work/${project.slug}`),
   };
 }
 
@@ -314,6 +317,21 @@ export default async function WorkPage({
   return (
     <main>
       <Nav lang={locale} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: project.title,
+          description: project.description,
+          url: routeUrl(locale, `/work/${project.slug}`),
+          inLanguage: locale,
+          applicationCategory: "WebApplication",
+          operatingSystem: "Web",
+          datePublished: project.year,
+          author: { "@type": "Person", name: "Tajelsir Khalid" },
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        }}
+      />
       <PageHeader
         lang={locale}
         crumb={`${project.index} / ${project.kind}`}

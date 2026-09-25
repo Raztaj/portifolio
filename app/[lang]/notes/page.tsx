@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
 import { getNotes, localizeHref } from "@/lib/content/locale";
+import { alternatesFor } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -19,6 +20,7 @@ export async function generateMetadata({
   return {
     title: "NOTES — TAJELSIR SYSTEMS",
     description: dict.notes.sub,
+    alternates: alternatesFor(locale, "/notes"),
   };
 }
 

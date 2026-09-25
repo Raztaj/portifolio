@@ -4,6 +4,7 @@ import type { Locale } from "@/lib/i18n";
 import { isLocale, getLocaleDir, getDictionary } from "@/lib/i18n";
 import "../globals.css";
 import Cursor from "@/components/cursor";
+import { site } from "@/lib/site";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -35,11 +36,11 @@ export async function generateMetadata({
   return {
     title: "TAJELSIR / SYSTEMS",
     description: dict.metadata.description,
-    metadataBase: new URL("https://portifolio-pink-gamma.vercel.app"),
+    metadataBase: new URL(site.origin),
     openGraph: {
       title: "TAJELSIR / SYSTEMS",
       description: dict.metadata.ogDescription,
-      url: "https://portifolio-pink-gamma.vercel.app",
+      url: site.origin,
       siteName: "TAJELSIR / SYSTEMS",
       locale: locale === "ar" ? "ar_AR" : "en_US",
       type: "website",

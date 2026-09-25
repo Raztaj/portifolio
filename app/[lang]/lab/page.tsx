@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
 import { getLabEntries } from "@/lib/content/locale";
+import { alternatesFor } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -19,6 +20,7 @@ export async function generateMetadata({
   return {
     title: "LAB — TAJELSIR SYSTEMS",
     description: dict.lab.sub,
+    alternates: alternatesFor(locale, "/lab"),
   };
 }
 

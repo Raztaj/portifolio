@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
 import { getNoteBySlug, getNotes, localizeHref } from "@/lib/content/locale";
+import { alternatesFor, routeUrl } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
+import JsonLd from "@/components/json-ld";
 import { MonoLabel, Divider } from "@/components/ui";
 
 export const dynamicParams = false;
@@ -30,6 +32,7 @@ export async function generateMetadata({
   return {
     title: `${note.title} — NOTES / TAJELSIR SYSTEMS`,
     description: note.intro,
+    alternates: alternatesFor(locale, `/notes/${note.slug}`),
   };
 }
 
@@ -50,6 +53,18 @@ export default async function NotePage({
   return (
     <main>
       <Nav lang={locale} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: note.title,
+          description: note.intro,
+          url: routeUrl(locale, `/notes/${note.slug}`),
+          inLanguage: locale,
+          datePublished: note.date,
+          author: { "@type": "Person", name: "Tajelsir Khalid" },
+        }}
+      />
       <PageHeader
         lang={locale}
         crumb={`${dict.notes.note} ${note.index}`}

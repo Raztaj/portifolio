@@ -1,4 +1,5 @@
 export const site = {
+  origin: "https://portifolio-pink-gamma.vercel.app",
   mark: "TK/",
   name: "TAJELSIR / SYSTEMS",
   engineer: "Tajelsir Khalid",

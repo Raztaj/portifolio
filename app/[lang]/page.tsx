@@ -1,14 +1,31 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
 import { getLabEntries, getNotes, getProjects, localizeHref } from "@/lib/content/locale";
 import { site, stack } from "@/lib/site";
+import { alternatesFor } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import Grid from "@/components/grid";
 import StatusConsole from "@/components/status-console";
 import WorkRows from "@/components/work-rows";
 import { MonoLabel, SectionHeading, Divider, ArrowLink } from "@/components/ui";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "en";
+  const dict = getDictionary(locale);
+  return {
+    title: "TAJELSIR / SYSTEMS",
+    description: dict.metadata.description,
+    alternates: alternatesFor(locale, "/"),
+  };
+}
 
 export default async function Home({
   params,

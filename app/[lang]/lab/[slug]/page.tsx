@@ -7,9 +7,11 @@ import { isLocale, getDictionary } from "@/lib/i18n";
 import { getLabEntries, localizeHref } from "@/lib/content/locale";
 import type { LabEntry, LabStatus } from "@/lib/content/lab";
 import { site } from "@/lib/site";
+import { alternatesFor, routeUrl } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
+import JsonLd from "@/components/json-ld";
 import { MonoLabel, Divider } from "@/components/ui";
 
 export const dynamicParams = false;
@@ -33,6 +35,7 @@ export async function generateMetadata({
   return {
     title: `${entry.name} — LAB / TAJELSIR SYSTEMS`,
     description: entry.question,
+    alternates: alternatesFor(locale, `/lab/${entry.slug}`),
   };
 }
 
@@ -123,6 +126,19 @@ export default async function LabSlugPage({
   return (
     <main>
       <Nav lang={locale} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          headline: entry.name,
+          description: entry.question,
+          url: routeUrl(locale, `/lab/${entry.slug}`),
+          inLanguage: locale,
+          datePublished: entry.year,
+          author: { "@type": "Person", name: "Tajelsir Khalid" },
+          publisher: { "@type": "Organization", name: "TAJELSIR / SYSTEMS" },
+        }}
+      />
       <PageHeader
         lang={locale}
         crumb={`LAB / ${dict.lab.categories[entry.category]}`}
