@@ -1,5 +1,7 @@
+import type { NoteSlug } from "./registry";
+
 export interface Note {
-  slug: string;
+  slug: NoteSlug;
   index: string;
   title: string;
   date: string;

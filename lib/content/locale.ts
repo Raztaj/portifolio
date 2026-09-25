@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import "./parity";
 import { projects } from "./work";
 import { arProjects } from "./ar";
 import { labEntries } from "./lab";
@@ -28,10 +29,4 @@ export function getNotes(locale: Locale) {
 
 export function getNoteBySlug(slug: string, locale: Locale) {
   return getNotes(locale).find((n) => n.slug === slug);
-}
-
-export function localizeHref(locale: Locale, path: string): string {
-  if (locale === "en") return path;
-  if (path === "/") return "/ar";
-  return `/ar${path}`;
 }

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
-import { getProjects, localizeHref } from "@/lib/content/locale";
+import { getProjects } from "@/lib/content/locale";
+import { localizeHref } from "@/lib/urls";
 
 export default function WorkRows({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);

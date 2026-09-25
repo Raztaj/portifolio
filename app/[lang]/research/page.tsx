@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
-import { getLabEntries, localizeHref } from "@/lib/content/locale";
-import { alternatesFor } from "@/lib/seo";
+import { getLabEntries } from "@/lib/content/locale";
+import { localizeHref } from "@/lib/urls";
+import { pageMetadata } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -17,11 +18,12 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : "en";
   const dict = getDictionary(locale);
-  return {
+  return pageMetadata({
+    locale,
+    path: "/research",
     title: "RESEARCH — TAJELSIR SYSTEMS",
     description: dict.research.sub,
-    alternates: alternatesFor(locale, "/research"),
-  };
+  });
 }
 
 export default async function ResearchPage({

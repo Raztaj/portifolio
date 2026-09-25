@@ -4,10 +4,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
-import { getLabEntries, localizeHref } from "@/lib/content/locale";
+import { getLabEntries } from "@/lib/content/locale";
+import { localizeHref } from "@/lib/urls";
 import type { LabEntry, LabStatus } from "@/lib/content/lab";
 import { site } from "@/lib/site";
-import { alternatesFor, routeUrl } from "@/lib/seo";
+import { pageMetadata, routeUrl } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -32,11 +33,12 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : "en";
   const entry = getLabEntries(locale).find((e) => e.slug === slug);
   if (!entry) return {};
-  return {
+  return pageMetadata({
+    locale,
+    path: `/lab/${entry.slug}`,
     title: `${entry.name} — LAB / TAJELSIR SYSTEMS`,
     description: entry.question,
-    alternates: alternatesFor(locale, `/lab/${entry.slug}`),
-  };
+  });
 }
 
 const STATUS_COLOR: Record<LabStatus, string> = {

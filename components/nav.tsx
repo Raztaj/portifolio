@@ -1,11 +1,12 @@
 "use client";
 
+import { localizeHref } from "@/lib/urls";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
-import { localizeHref } from "@/lib/content/locale";
+
 import { site } from "@/lib/site";
 import LangToggle from "./lang-toggle";
 

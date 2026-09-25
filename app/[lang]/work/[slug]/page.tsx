@@ -4,10 +4,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
-import { getProjectBySlug, getProjects, localizeHref } from "@/lib/content/locale";
+import { getProjectBySlug, getProjects } from "@/lib/content/locale";
+import { localizeHref } from "@/lib/urls";
 import type { MediaImage } from "@/lib/content/types";
 import { site } from "@/lib/site";
-import { alternatesFor, routeUrl } from "@/lib/seo";
+import { pageMetadata, routeUrl } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -33,11 +34,12 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : "en";
   const project = getProjectBySlug(slug, locale);
   if (!project) return {};
-  return {
+  return pageMetadata({
+    locale,
+    path: `/work/${project.slug}`,
     title: `${project.title} — WORK / TAJELSIR SYSTEMS`,
     description: project.description,
-    alternates: alternatesFor(locale, `/work/${project.slug}`),
-  };
+  });
 }
 
 type Labels = {

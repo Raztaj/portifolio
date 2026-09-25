@@ -89,7 +89,8 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Tajelsir Khalid",
-              url: "https://portifolio-pink-gamma.vercel.app",
+              url: site.origin,
+              sameAs: [site.linkedin],
               jobTitle: "Software Engineer",
               description:
                 layoutDict.metadata.description,

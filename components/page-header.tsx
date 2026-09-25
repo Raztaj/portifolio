@@ -1,6 +1,7 @@
+import { localizeHref } from "@/lib/urls";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
-import { localizeHref } from "@/lib/content/locale";
+
 import { MonoLabel } from "@/components/ui";
 
 export default function PageHeader({

@@ -1,8 +1,9 @@
+import { localizeHref } from "@/lib/urls";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
-import { localizeHref } from "@/lib/content/locale";
+
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 

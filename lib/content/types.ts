@@ -1,5 +1,9 @@
 export type WorkStatus = "ACTIVE" | "DEPLOYED" | "MAINTENANCE";
 
+import type { WorkSlug, LabSlug, NoteSlug } from "./registry";
+
+export type { WorkSlug, LabSlug, NoteSlug };
+
 export interface Constraint {
   id: string;
   label: string;
@@ -51,7 +55,7 @@ export interface MediaImage {
 }
 
 export interface Project {
-  slug: string;
+  slug: WorkSlug;
   index: string;
   kind: string;
   title: string;

@@ -8,9 +8,12 @@ export default function Cursor() {
   const ringRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches) {
-      setEnabled(true);
-    }
+    if (typeof window === "undefined") return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const hover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (reduced.matches || !hover.matches) return;
+    const id = requestAnimationFrame(() => setEnabled(true));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   useEffect(() => {

@@ -1,5 +1,8 @@
+const defaultOrigin = "https://portifolio-pink-gamma.vercel.app";
+
 export const site = {
-  origin: "https://portifolio-pink-gamma.vercel.app",
+  origin:
+    process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? defaultOrigin,
   mark: "TK/",
   name: "TAJELSIR / SYSTEMS",
   engineer: "Tajelsir Khalid",

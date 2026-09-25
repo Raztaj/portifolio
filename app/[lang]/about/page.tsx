@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
 import { stack, socials } from "@/lib/site";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -16,11 +16,12 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : "en";
   const dict = getDictionary(locale);
-  return {
+  return pageMetadata({
+    locale,
+    path: "/about",
     title: "ABOUT — TAJELSIR / SYSTEMS",
     description: dict.about.statementLead,
-    alternates: alternatesFor(locale, "/about"),
-  };
+  });
 }
 
 export default async function AboutPage({

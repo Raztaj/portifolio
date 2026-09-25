@@ -1,7 +1,8 @@
+import { localizeHref } from "@/lib/urls";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
-import { localizeHref } from "@/lib/content/locale";
+
 import { site, socials } from "@/lib/site";
 import LangToggle from "./lang-toggle";
 

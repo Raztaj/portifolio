@@ -2,8 +2,10 @@ export type LabCategory = "SECURITY" | "AUTOMATION" | "SYSTEMS" | "RESEARCH";
 
 export type LabStatus = "ACTIVE" | "RESOLVED" | "PROTOTYPE" | "EXPERIMENT" | "RESEARCH";
 
+import type { LabSlug } from "./registry";
+
 export interface LabEntry {
-  slug: string;
+  slug: LabSlug;
   index: string;
   category: LabCategory;
   tag: string;
