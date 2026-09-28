@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Manrope, JetBrains_Mono, Noto_Kufi_Arabic } from "next/font/google";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getLocaleDir, getDictionary } from "@/lib/i18n";
@@ -27,6 +28,10 @@ const kufi = Noto_Kufi_Arabic({
   preload: false,
 });
 
+export const viewport: Viewport = {
+  themeColor: "#f4f3ef",
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -39,7 +44,6 @@ export async function generateMetadata({
     title: "TAJELSIR / SYSTEMS",
     description: dict.metadata.description,
     metadataBase: new URL(site.origin),
-    themeColor: "#f4f3ef",
     openGraph: {
       title: "TAJELSIR / SYSTEMS",
       description: dict.metadata.ogDescription,
