@@ -14,6 +14,7 @@ export const dictionaryAr: Dictionary = {
     notes: "الملاحظات",
     about: "عن",
     linkedin: "LINKEDIN",
+    whatsapp: "WHATSAPP",
     openMenu: "افتح القائمة",
     closeMenu: "أغلق القائمة",
     menu: "القائمة",
@@ -278,6 +279,7 @@ export const dictionaryAr: Dictionary = {
     title: "404 — غير موجود",
     sub: "لا يوجد شيء في هذا العنوان؛ غالبًا حُذف أو كُتب خطأً.",
     backHome: "العودة للواجهة",
+    beamHome: "أعِدني للوطن ↗",
   },
 
   metadata: {

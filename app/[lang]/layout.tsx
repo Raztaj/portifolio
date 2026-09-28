@@ -63,7 +63,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: "TAJELSIR / SYSTEMS",
       description: dict.metadata.ogDescription,
-      images: [locale === "ar" ? "/social-og-ar.png" : "/social-og.png"],
+      images: [locale === "ar" ? "/social-tw-ar.png" : "/social-tw.png"],
     },
   };
 }

@@ -12,6 +12,7 @@ export const dictionaryEn = {
     notes: "NOTES",
     about: "ABOUT",
     linkedin: "LINKEDIN",
+    whatsapp: "WHATSAPP",
     openMenu: "Open menu",
     closeMenu: "Close menu",
     menu: "MENU",
@@ -277,6 +278,7 @@ export const dictionaryEn = {
     title: "404 — NOT FOUND",
     sub: "That path doesn't resolve. Likely removed or mistyped.",
     backHome: "BACK TO BASE",
+    beamHome: "BEAM ME HOME ↗",
   },
 
   metadata: {

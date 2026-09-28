@@ -43,9 +43,9 @@ export default function RootNotFound() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-[12px] uppercase tracking-[0.25em]">
           <Link
             href="/"
-            className="text-accent transition-colors hover:text-fg"
+            className="inline-flex items-center gap-3 border border-accent bg-accent px-6 py-3.5 text-white transition-colors hover:bg-transparent hover:text-accent"
           >
-            {dict.notFound.backHome} →
+            {dict.notFound.beamHome}
           </Link>
           <Link
             href="/ar"

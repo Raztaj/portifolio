@@ -50,6 +50,14 @@ export async function generateMetadata({
         }),
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      images: [ogPageImage({
+        locale,
+        slug: project.slug,
+        alt: `${project.title} — work case note / Tajelsir Systems`,
+      })],
+    },
   };
 }
 

@@ -113,6 +113,17 @@ export default function Nav({ lang }: { lang: Locale }) {
               ↗
             </span>
           </a>
+          <a
+            href={site.waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-1.5 border border-accent bg-accent px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-accent"
+          >
+            {dict.nav.whatsapp}
+            <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">
+              ↗
+            </span>
+          </a>
           <LangToggle
             lang={lang}
             otherLabel={lang === "en" ? "العربية" : "EN"}
@@ -168,6 +179,15 @@ export default function Nav({ lang }: { lang: Locale }) {
               className="flex items-center justify-between border border-line bg-surface px-4 py-3 font-mono text-[12px] uppercase tracking-[0.2em] text-fg transition-colors hover:text-accent"
             >
               {dict.nav.linkedin}
+              <span className="text-accent">↗</span>
+            </a>
+            <a
+              href={site.waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between border border-accent bg-accent px-4 py-3 font-mono text-[12px] uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-accent"
+            >
+              {dict.nav.whatsapp}
               <span className="text-accent">↗</span>
             </a>
             <div className="flex items-center justify-between px-1 pt-2">

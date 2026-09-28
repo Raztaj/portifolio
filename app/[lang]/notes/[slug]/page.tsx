@@ -47,6 +47,14 @@ export async function generateMetadata({
         }),
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      images: [ogPageImage({
+        locale,
+        slug: note.slug,
+        alt: `${note.title} — writing / Tajelsir Systems`,
+      })],
+    },
   };
 }
 
