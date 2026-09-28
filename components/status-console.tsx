@@ -20,6 +20,7 @@ export default function StatusConsole({
 }) {
   const dict = getDictionary(lang).status;
   const [now, setNow] = useState<Date | null>(null);
+  const [typed, setTyped] = useState("");
 
   useEffect(() => {
     let rafId = 0;
@@ -30,6 +31,21 @@ export default function StatusConsole({
       cancelAnimationFrame(rafId);
       clearInterval(id);
     };
+  }, []);
+
+  useEffect(() => {
+    const full = site.role2;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const id = requestAnimationFrame(() => setTyped(full));
+      return () => cancelAnimationFrame(id);
+    }
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setTyped(full.slice(0, i));
+      if (i >= full.length) clearInterval(id);
+    }, 42);
+    return () => clearInterval(id);
   }, []);
 
   const parts = new Intl.DateTimeFormat(lang === "ar" ? "ar-EG" : "en-GB", {
@@ -80,6 +96,13 @@ export default function StatusConsole({
           <dd className="text-fg">{pad(labs)}</dd>
         </div>
       </dl>
+      <div className="flex items-center gap-2 border-t border-line px-3 py-1.5">
+        <span className="text-accent">$</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg">
+          {typed}
+        </span>
+        <span aria-hidden className="caret inline-block h-3 w-1.5 bg-accent" />
+      </div>
     </div>
   );
 }

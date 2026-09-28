@@ -46,8 +46,30 @@ export default function Nav({ lang }: { lang: Locale }) {
     return rest || "/";
   })();
 
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  if (base !== "/" && activeSection !== null) {
+    setActiveSection(null);
+  }
+
+  useEffect(() => {
+    if (base !== "/") return;
+    const el = document.getElementById("work");
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          setActiveSection(entry.isIntersecting ? "work" : null);
+        }
+      },
+      { rootMargin: "-35% 0px -55% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [base]);
+
   const isActive = (href: string) => {
-    if (href === "/#work") return base === "/";
+    if (href === "/#work") return base === "/" && activeSection === "work";
     const match = href === "/" ? href : href.replace(/\/$/, "");
     return base === match || (match !== "/" && base.startsWith(`${match}/`));
   };

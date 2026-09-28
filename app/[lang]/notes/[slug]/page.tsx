@@ -10,6 +10,7 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import JsonLd from "@/components/json-ld";
+import CopyLink from "@/components/copy-link";
 import { MonoLabel, Divider } from "@/components/ui";
 
 export const dynamicParams = false;
@@ -88,13 +89,39 @@ export default async function NotePage({
       />
 
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <p className="mb-10 border-s-2 border-accent ps-4 font-sans text-lg font-medium leading-relaxed tracking-tight text-fg">
-          {note.intro}
-        </p>
+        <div className="mb-8 flex items-start justify-between gap-4">
+          <p className="border-s-2 border-accent ps-4 font-sans text-lg font-medium leading-relaxed tracking-tight text-fg">
+            {note.intro}
+          </p>
+          <CopyLink
+            url={routeUrl(locale, `/notes/${note.slug}`)}
+            label={dict.notes.copy}
+            copied={dict.notes.copied}
+          />
+        </div>
+        {note.sections.length > 0 && (
+          <nav className="mb-12 border-y border-line py-5">
+            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+              {dict.notes.toc}
+            </div>
+            <ul className="grid gap-2 sm:grid-cols-2">
+              {note.sections.map((section, idx) => (
+                <li key={section.heading}>
+                  <a
+                    href={`#sec-${String(idx + 1).padStart(2, "0")}`}
+                    className="font-mono text-[11px] uppercase tracking-[0.15em] text-fg transition-colors hover:text-accent"
+                  >
+                    {String(idx + 1).padStart(2, "0")} / {section.heading}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
         <div className="space-y-12">
           {note.sections.map((section, idx) => (
-            <section key={section.heading}>
-              <div className="mb-4">
+            <section key={section.heading} id={`sec-${String(idx + 1).padStart(2, "0")}`}>
+              <div className="mb-4 scroll-mt-16">
                 <MonoLabel>
                   {String(idx + 1).padStart(2, "0")}
                   <span className="text-muted"> / </span>

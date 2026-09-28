@@ -56,7 +56,9 @@ function Panel({
   return (
     <Link
       href={localizeHref(lang, `/work/${project.slug}`)}
-      className={`group block ${tones.wrap}`}
+      className={`group block transition-all duration-300 ${
+        tones.dark ? "hover:bg-[#101013]" : "hover:bg-bg hover:shadow-[0_32px_90px_-60px_rgba(21,94,239,0.5)]"
+      } ${tones.wrap}`}
     >
       <div className="mx-auto grid max-w-6xl grid-cols-12 items-center gap-x-4 gap-y-4 px-4 py-10 sm:px-6 sm:py-16">
         <div className="col-span-2 font-mono text-lg tracking-[0.2em] text-accent sm:col-span-1">
@@ -67,7 +69,9 @@ function Panel({
             {project.kind} · {project.year}
           </div>
           <h3
-            className={`mt-1 font-sans text-3xl font-semibold tracking-tight transition-colors group-hover:text-accent sm:text-4xl ${tones.text}`}
+            className={`mt-1 font-sans text-3xl font-semibold tracking-tight underline decoration-accent decoration-2 underline-offset-8 transition-[color,text-decoration-color] duration-300 group-hover:text-accent sm:text-4xl ${
+              tones.text
+            }`}
           >
             {project.title}
           </h3>
@@ -89,7 +93,7 @@ function Panel({
             }`}
           >
             {open}
-            <span className="rtl:inline rtl:rotate-180">→</span>
+            <span className="rtl:inline rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:-translate-x-1">→</span>
           </span>
         </div>
       </div>

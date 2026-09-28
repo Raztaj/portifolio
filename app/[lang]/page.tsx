@@ -13,6 +13,7 @@ import StatusConsole from "@/components/status-console";
 import WhatBuild from "@/components/what-build";
 import WorkPanels from "@/components/work-panels";
 import LabAccordion from "@/components/lab-accordion";
+import StatsStrip from "@/components/count-up";
 import { MonoLabel, SectionHeading, Divider } from "@/components/ui";
 
 export async function generateMetadata({
@@ -153,18 +154,7 @@ export default async function Home({
 
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="border-l border-line pl-4">
-                <div className="font-sans text-5xl font-semibold tracking-tight text-fg">
-                  {s.value}
-                </div>
-                <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
+          <StatsStrip items={stats} />
         </div>
       </section>
 

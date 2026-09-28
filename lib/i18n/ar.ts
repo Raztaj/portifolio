@@ -227,6 +227,9 @@ export const dictionaryAr: Dictionary = {
     next: "الملاحظة التالية",
     all: "كل الملاحظات",
     note: "ملاحظة",
+    toc: "في هذه الصفحة",
+    copy: "انسخ الرابط",
+    copied: "نُسخ ✓",
   },
 
   about: {

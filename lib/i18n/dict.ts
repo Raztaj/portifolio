@@ -226,6 +226,9 @@ export const dictionaryEn = {
     next: "NEXT NOTE",
     all: "ALL NOTES",
     note: "NOTE",
+    toc: "ON THIS PAGE",
+    copy: "COPY LINK",
+    copied: "COPIED ✓",
   },
 
   about: {
