@@ -118,22 +118,22 @@ export const arProjects: Project[] = [
     ],
     media: [
       {
-        src: "/work/hasdo/map.png",
+        src: "/work/hasdo/map-v2.png",
         alt: "الخريطة التفاعلية للسودان في HASDO",
         caption: "الخريطة التفاعلية للسودان — d3-GEO · GeoJSON دون اتصال",
       },
       {
-        src: "/work/hasdo/home.png",
+        src: "/work/hasdo/home-v2.png",
         alt: "الصفحة الرئيسية العربية في HASDO",
         caption: "الرئيسية عربية أولًا — RTL كامل · IBM Plex Sans Arabic",
       },
       {
-        src: "/work/hasdo/projects.png",
+        src: "/work/hasdo/projects-v2.png",
         alt: "دليل مشاريع HASDO",
         caption: "دليل المشاريع — محتوى وارد من نظام الإدارة",
       },
       {
-        src: "/work/hasdo/login.png",
+        src: "/work/hasdo/login-v2.png",
         alt: "بوابة دخول المشرفين في HASDO",
         caption: "بوابة المشرفين — مصادقة بريد ومسارات محصّنة",
       },
@@ -257,7 +257,7 @@ export const arProjects: Project[] = [
     ],
     media: [
       {
-        src: "/work/easily/login.png",
+        src: "/work/easily/login-v2.png",
         alt: "شاشة تسجيل الدخول في نظام التذاكر",
         caption: "صفحة الدخول — بوابة وحدة تحكم التذاكر",
       },
@@ -278,37 +278,37 @@ export const arProjects: Project[] = [
     links: [],
     media: [
       {
-        src: "/work/darthvader/01-banner.png",
+        src: "/work/darthvader/01-banner-v2.png",
         alt: "واجهة DARTHVADER 1.3.0 مع شعار DarthVader وسطر الافتتاح",
         caption: "شاشة الافتتاح — إطار استطلاع متدرج، سلبية أولًا",
       },
       {
-        src: "/work/darthvader/02-main-menu.png",
+        src: "/work/darthvader/02-main-menu-v2.png",
         alt: "قائمة DARTHVADER الرئيسية التفاعلية مع خيارات الفحص والباونتي وSAST وAPK والتخفي",
         caption: "القائمة الرئيسية — فحص · باونتي · SAST · APK · تخفّي",
       },
       {
-        src: "/work/darthvader/03-usage-flags.png",
+        src: "/work/darthvader/03-usage-flags-v2.png",
         alt: "خيارات --help للفحص والتقارير وفحص الشيفرة المصدرية دون اتصال",
         caption: "--HELP — خيارات الفحص والتقارير وSAST دون اتصال",
       },
       {
-        src: "/work/darthvader/04-usage-security.png",
+        src: "/work/darthvader/04-usage-security-v2.png",
         alt: "خيارات --help للباونتي وهندسة APK العكسية والأوضاع الموثّقة",
         caption: "--HELP — باونتي، هندسة APK عكسية وأوضاع موثّقة",
       },
       {
-        src: "/work/darthvader/05-sast-run.png",
+        src: "/work/darthvader/05-sast-run-v2.png",
         alt: "فحص شيفرة مصدرية محلي يبلّغ عن حقن SQL حرج",
         caption: "تشغيل --SRC — 3 ملفات، حقن SQL حرج مُجدول",
       },
       {
-        src: "/work/darthvader/06-finding-sqli.png",
+        src: "/work/darthvader/06-finding-sqli-v2.png",
         alt: "تفاصيل بلاغ حقن SQL الحرج مع CWE-89 وخطة المعالجة",
         caption: "تفاصيل البلاغ — CWE-89 حقن SQL، مصدر←منفذ",
       },
       {
-        src: "/work/darthvader/07-report-saved.png",
+        src: "/work/darthvader/07-report-saved-v2.png",
         alt: "ملف تقرير الفحص المحفوظ بصيغة Markdown الذي أنشأه DARTHVADER",
         caption: "حُفظ الناتج — إنشاء تقرير فحص الشيفرة",
       },
@@ -536,12 +536,12 @@ export const arProjects: Project[] = [
     ],
     media: [
       {
-        src: "/work/shockwave/hero.png",
+        src: "/work/shockwave/hero-v2.png",
         alt: "واجهة موقع SHOCK WAVE",
         caption: "واجهة الموقع — عربي RTL · رأس مصفوفة متحركة",
       },
       {
-        src: "/work/shockwave/services.png",
+        src: "/work/shockwave/services-v2.png",
         alt: "خط خدمات SHOCK WAVE",
         caption: "خط الخدمات — طلبات · عملاء · مخزون · مندوبون",
       },
