@@ -22,7 +22,8 @@ export const dictionaryEn = {
     heading: ["BUILDING FOR", "A BROKEN GRID"],
     statement: ["I BUILD SOFTWARE FOR", "REAL CONDITIONS."],
     motif: "BUILDING FOR A BROKEN GRID",
-    blurb: "I build software for real-world constraints.",
+    blurb:
+      "I design and build software systems, automation and security tooling for teams working under real-world constraints.",
     marketing: "Local-first systems built to survive contact with reality.",
     sub: "Software · Automation · Security",
     viewWork: "VIEW WORK",
@@ -266,9 +267,9 @@ export const dictionaryEn = {
     viewSource: "[ VIEW PROFILE ]",
     language: "LANGUAGE",
     cta: {
-      title: ["HAVE A PROBLEM", "WORTH BUILDING?"],
-      sub: "Systems, automation and security work — built for the conditions you actually have.",
-      link: "LET'S TALK",
+      title: ["DISCUSS A SYSTEM", "OR A PROJECT"],
+      sub: "A system or a project worth scoping? Let's outline the problem, the environment and the constraints — then build it right.",
+      link: "DISCUSS A PROJECT",
     },
   },
 

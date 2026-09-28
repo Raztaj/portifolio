@@ -248,14 +248,16 @@ function MediaGallery({
         </p>
       </div>
       <div className="overflow-hidden border border-line bg-surface">
-        <Image
-          src={first.src}
-          alt={first.alt}
-          width={1080}
-          height={675}
-          priority
-          className="block h-auto w-full"
-        />
+        <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
+          <Image
+            src={first.src}
+            alt={first.alt}
+            fill
+            priority
+            sizes="(max-width: 1152px) 100vw, 1152px"
+            className="object-cover"
+          />
+        </div>
         <div className="flex items-center gap-2 border-t border-line px-4 py-2.5">
           <span className="font-mono text-[11px] text-accent">01</span>
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
@@ -267,14 +269,15 @@ function MediaGallery({
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {rest.map((m, i) => (
             <figure key={m.src} className="border border-line bg-surface">
-              <Image
-                src={m.src}
-                alt={m.alt}
-                width={1080}
-                height={675}
-                sizes="(max-width: 640px) 100vw, 50vw"
-                className="block h-auto w-full"
-              />
+              <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
+                <Image
+                  src={m.src}
+                  alt={m.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
               <figcaption className="flex items-center gap-2 border-t border-line px-4 py-2.5">
                 <span className="font-mono text-[11px] text-accent">
                   {String(i + 2).padStart(2, "0")}
@@ -353,6 +356,28 @@ export default async function WorkPage({
         title={project.title}
         sub={project.description}
       />
+
+      {project.media && project.media.length > 0 && (
+        <section className="border-y border-line bg-surface">
+          <div className="relative aspect-[16/9] overflow-hidden bg-surface-2 sm:aspect-[21/9]">
+            <Image
+              src={project.media[0].src}
+              alt={project.media[0].alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 border-t border-white/15 bg-black/25 px-4 py-3 backdrop-blur-sm sm:px-6">
+              <span className="font-mono text-[11px] text-accent">FIG / 01</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/85">
+                {project.media[0].caption}
+              </span>
+            </div>
+          </div>
+        </section>
+      )}
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-wrap items-center gap-2 py-6">

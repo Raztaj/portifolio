@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { getProjects } from "@/lib/content/locale";
@@ -53,6 +54,7 @@ function Panel({
   open: string;
   tones: (typeof PANELS)[number];
 }) {
+  const img = project.media?.[0];
   return (
     <Link
       href={localizeHref(lang, `/work/${project.slug}`)}
@@ -76,7 +78,7 @@ function Panel({
             {project.title}
           </h3>
         </div>
-        <div className="col-span-12 sm:col-span-5">
+        <div className={`col-span-12 ${img ? "sm:col-span-4" : "sm:col-span-5"}`}>
           <p className={`text-sm leading-relaxed ${tones.desc}`}>{project.description}</p>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {project.stack.slice(0, 3).map((s) => (
@@ -86,16 +88,46 @@ function Panel({
             ))}
           </div>
         </div>
-        <div className="col-span-12 sm:col-span-2 sm:text-end">
-          <span
-            className={`inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] transition-colors group-hover:text-accent ${
-              tones.dark ? "text-white" : "text-muted"
-            }`}
-          >
-            {open}
-            <span className="rtl:inline rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:-translate-x-1">→</span>
-          </span>
-        </div>
+        {img ? (
+          <div className="col-span-12 sm:col-span-3">
+            <div className="overflow-hidden border border-line/70 bg-surface">
+              <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 22vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+            </div>
+            <div className="mt-2 flex items-center gap-2">
+              <span
+                className={`inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] transition-colors group-hover:text-accent ${
+                  tones.dark ? "text-white" : "text-muted"
+                }`}
+              >
+                {open}
+                <span className="rtl:inline rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:-translate-x-1">
+                  →
+                </span>
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className="col-span-12 sm:col-span-2 sm:text-end">
+            <span
+              className={`inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] transition-colors group-hover:text-accent ${
+                tones.dark ? "text-white" : "text-muted"
+              }`}
+            >
+              {open}
+              <span className="rtl:inline rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:-translate-x-1">
+                →
+              </span>
+            </span>
+          </div>
+        )}
       </div>
     </Link>
   );

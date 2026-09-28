@@ -276,6 +276,38 @@ export const arProjects: Project[] = [
       "استطلاع آلي يتعامل مع التفويض كضابط أمني حقيقي — هادئ حيث يلزم الهدوء.",
     stack: ["Python", "Bash", "HTTP/DNS/TLS", "CLI"],
     links: [],
+    media: [
+      {
+        src: "/work/darthvader/01-project-structure.png",
+        alt: "هيكل مشروع معمل DARTHVADER",
+        caption: "هيكل المشروع — تطبيق Flask هشّ عمدًا",
+      },
+      {
+        src: "/work/darthvader/02-login-page.png",
+        alt: "صفحة دخول معمل DARTHVADER",
+        caption: "صفحة الدخول — أول سطح يراه الماسح",
+      },
+      {
+        src: "/work/darthvader/03-env-leak.png",
+        alt: "تسريب ملف المتغيرات عبر مسار ثابت في المتصفح",
+        caption: "نتيجة حرجة — ملف .env مقروء عبر مسار ثابت",
+      },
+      {
+        src: "/work/darthvader/04-dashboard.png",
+        alt: "لوحة مشرف معمل DARTHVADER",
+        caption: "لوحة المشرف — مرخّصة بعد الإصلاح",
+      },
+      {
+        src: "/work/darthvader/05-mysql-dump.png",
+        alt: "تفريغ قاعدة بيانات MySQL بدون مصادقة",
+        caption: "إثبات تسريب البيانات — تفريغ القاعدة بلا مصادقة",
+      },
+      {
+        src: "/work/darthvader/06-fixed-curl.png",
+        alt: "إعادة فحص تُرجع 404 على المسار نفسه بعد الترقيع",
+        caption: "إعادة الفحص — 404 على المسار نفسه بعد الترقيع",
+      },
+    ],
     problem: [
       "أدوات الفحص تأتي افتراضيًا آلات ضجيج: صاخبة، بلا كبح، ومستعدة تضرب أي هدف.",
       "التفويض عندها غالبًا معلمة تمُرَّرها، وليس قيدًا تفرضه الأداة من ذاتها.",

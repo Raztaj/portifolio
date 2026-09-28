@@ -310,6 +310,38 @@ export const projects: Project[] = [
       "Automated reconnaissance that treats authorization as a first-class control — quiet where it should be quiet.",
     stack: ["Python", "Bash", "HTTP/DNS/TLS", "CLI"],
     links: [],
+    media: [
+      {
+        src: "/work/darthvader/01-project-structure.png",
+        alt: "DARTHVADER lab project structure",
+        caption: "PROJECT STRUCTURE — INTENTIONALLY VULNERABLE FLASK APP",
+      },
+      {
+        src: "/work/darthvader/02-login-page.png",
+        alt: "DARTHVADER lab login page",
+        caption: "LOGIN PAGE — THE FIRST SURFACE A SCANNER SEES",
+      },
+      {
+        src: "/work/darthvader/03-env-leak.png",
+        alt: "Env file leaked through a static route in the browser",
+        caption: "CRITICAL FINDING — .ENV READABLE VIA STATIC ROUTE",
+      },
+      {
+        src: "/work/darthvader/04-dashboard.png",
+        alt: "DARTHVADER lab admin dashboard",
+        caption: "ADMIN DASHBOARD — ROLE-GATED AFTER THE FIX",
+      },
+      {
+        src: "/work/darthvader/05-mysql-dump.png",
+        alt: "MySQL database dumped without authentication",
+        caption: "DATA LEAK PROOF — DATABASE DUMPED WITHOUT AUTH",
+      },
+      {
+        src: "/work/darthvader/06-fixed-curl.png",
+        alt: "Retest returning 404 on the same path after the fix",
+        caption: "RETEST OK — 404 ON THE SAME PATH AFTER THE PATCH",
+      },
+    ],
     problem: [
       "Scanning tools come by default as noise machines — loud, unthrottled, and happy to hit anything.",
       "Authorization is usually a flag you pass, not a control the tool itself enforces.",
