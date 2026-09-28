@@ -94,7 +94,7 @@ export default function ArchDiagram({
             markerHeight="7"
             orient="auto-start-reverse"
           >
-            <path d="M0 0 L10 5 L0 10 z" fill="#3fd4ff" />
+            <path d="M0 0 L10 5 L0 10 z" fill="#155eef" />
           </marker>
         </defs>
 
@@ -111,7 +111,7 @@ export default function ArchDiagram({
               y1={a.y + BOX_H / 2}
               x2={b.x}
               y2={b.y + BOX_H / 2}
-              stroke={lit ? "#3fd4ff" : "#34414e"}
+              stroke={lit ? "#155eef" : "#d8d8d2"}
               strokeWidth={lit ? 1.5 : 1}
               markerEnd="url(#arrow)"
             />
@@ -133,8 +133,8 @@ export default function ArchDiagram({
                 width={BOX_W}
                 height={BOX_H}
                 rx={6}
-                fill={lit ? "#1d2530" : "#141a22"}
-                stroke={lit ? "#3fd4ff" : "#34414e"}
+                fill={lit ? "#155eef" : "#ffffff"}
+                stroke={lit ? "#155eef" : "#d8d8d2"}
                 strokeWidth={lit ? 1.5 : 1}
               />
               <text
@@ -144,7 +144,7 @@ export default function ArchDiagram({
                 fontFamily="JetBrains Mono, ui-monospace, monospace"
                 fontSize="11"
                 letterSpacing="1.5"
-                fill={lit ? "#3fd4ff" : "#f2f5f8"}
+                fill={lit ? "#ffffff" : "#0b0b0b"}
               >
                 {n.label}
               </text>
@@ -156,7 +156,7 @@ export default function ArchDiagram({
                   fontFamily="IBM Plex Sans Arabic, ui-sans-serif, system-ui, sans-serif"
                   fontSize="9"
                   letterSpacing="0.5"
-                  fill="#9aa6b5"
+                  fill="#777872"
                 >
                   {n.sub}
                 </text>

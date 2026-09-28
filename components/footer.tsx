@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 
-import { site, socials } from "@/lib/site";
+import { site } from "@/lib/site";
 import LangToggle from "./lang-toggle";
 
 const SITE_LINKS: { id: "work" | "lab" | "research" | "notes" | "about"; href: string }[] = [
@@ -16,75 +16,94 @@ const SITE_LINKS: { id: "work" | "lab" | "research" | "notes" | "about"; href: s
 
 export default function Footer({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
+  const cta = dict.footer.cta;
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div>
-            <div className="font-mono text-sm font-semibold">
-              TK<span className="text-accent">/</span>
-            </div>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-              {dict.footer.role}
-              <br />
-              {site.location}
-            </p>
+    <footer>
+      <section className="border-t border-line bg-[#0b0b0b]">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            {dict.home.contactEyebrow}
           </div>
-
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-              {dict.footer.site}
-            </p>
-            <div className="mt-3 flex flex-col gap-2">
-              {SITE_LINKS.map((l) => (
-                <Link
-                  key={l.id}
-                  href={localizeHref(lang, l.href)}
-                  className="font-mono text-[11px] uppercase tracking-[0.2em] text-fg transition-colors hover:text-accent"
-                >
-                  {dict.nav[l.id]}
-                </Link>
-              ))}
-            </div>
+          <h2 className="mt-5 max-w-3xl font-sans text-4xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl">
+            {cta.title[0]}
+            <br />
+            {cta.title[1]}
+          </h2>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-white/60">{cta.sub}</p>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <a
+              href={`mailto:${site.email}`}
+              className="group inline-flex items-center gap-3 border border-accent bg-accent px-6 py-3.5 font-mono text-[13px] uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-accent"
+            >
+              {cta.link}
+              <span className="transition-transform group-hover:translate-x-1 rtl:-translate-x-1 rtl:rotate-180">
+                →
+              </span>
+            </a>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-accent"
+            >
+              LINKEDIN
+              <span className="transition-transform group-hover:translate-x-0.5">↗</span>
+            </a>
+            <a
+              href={site.waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-accent"
+            >
+              WHATSAPP
+              <span className="transition-transform group-hover:translate-x-0.5">↗</span>
+            </a>
           </div>
-
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-              {dict.footer.elsewhere}
-            </p>
-            <div className="mt-3 flex flex-col gap-2">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target={s.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  className="font-mono text-[11px] uppercase tracking-[0.2em] text-fg transition-colors hover:text-accent"
-                >
-                  {s.label} ↗
-                </a>
-              ))}
-            </div>
+          <div className="mt-14 font-mono text-[11px] tracking-[0.3em] text-white/40">
+            {dict.hero.motif}
           </div>
+        </div>
+      </section>
 
-          <div className="md:text-end">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-              {dict.footer.colophon}
-            </p>
-            <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-muted">
-              {dict.footer.builtWith} {site.builtWith}
-              <br />© {site.year} {site.engineer}
-              <br />
-              <Link
+      <div className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+          <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+            <div>
+              <div className="font-mono text-sm font-semibold">
+                TK<span className="text-accent">/</span>
+              </div>
+              <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                © {site.year} {site.engineer}
+                <br />
+                {dict.footer.builtWith} {dict.footer.buildLine}
+              </p>
+              <nav className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                {SITE_LINKS.map((l) => (
+                  <Link
+                    key={l.id}
+                    href={localizeHref(lang, l.href)}
+                    className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+                  >
+                    {dict.nav[l.id]}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+            <div className="flex items-center gap-4 md:flex-col md:items-end md:text-end">
+              <a
                 href={site.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent hover:text-fg"
+                className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
               >
-                {dict.footer.viewSource} ↗
-              </Link>
-            </p>
-            <div className="mt-4 md:flex md:justify-end">
+                LINKEDIN ↗
+              </a>
+              <a
+                href={`mailto:${site.email}`}
+                className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+              >
+                EMAIL ↗
+              </a>
               <LangToggle
                 lang={lang}
                 otherLabel={lang === "en" ? "العربية" : "EN"}

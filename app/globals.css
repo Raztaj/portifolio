@@ -1,23 +1,27 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg: #080a0d;
-  --color-surface: #141a22;
-  --color-surface-2: #1d2530;
-  --color-line: #34414e;
-  --color-fg: #f2f5f8;
-  --color-muted: #9aa6b5;
-  --color-accent: #3fd4ff;
-  --color-accent-dark: #0a8fc0;
-  --color-success: #69e6a5;
-  --color-warning: #ffc857;
-  --color-error: #ff667a;
+  --color-bg: #f4f3ef;
+  --color-surface: #ffffff;
+  --color-surface-2: #ecebe6;
+  --color-line: #d8d8d2;
+  --color-fg: #0b0b0b;
+  --color-muted: #777872;
+  --color-accent: #155eef;
+  --color-accent-dark: #0e47b5;
+  --color-success: #42d392;
+  --color-warning: #e0a719;
+  --color-error: #e5484d;
+  --color-cat-security: #e5484d;
+  --color-cat-automation: #8b5cf6;
+  --color-cat-systems: #0e9f6e;
+  --color-cat-research: #d97706;
   --font-sans: var(--font-manrope), var(--font-arabic), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-jetbrains), var(--font-arabic), ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo, monospace;
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html[lang="ar"] * {
@@ -39,8 +43,8 @@ body {
 }
 
 ::selection {
-  background: rgba(63, 212, 255, 0.24);
-  color: #ffffff;
+  background: rgba(21, 94, 239, 0.18);
+  color: #0b0b0b;
 }
 
 ::-webkit-scrollbar {
@@ -49,17 +53,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #141a22;
+  background: #f4f3ef;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #34414e;
-  border: 2px solid #141a22;
+  background: #d8d8d2;
+  border: 2px solid #f4f3ef;
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #45546b;
+  background: #c2c2bb;
 }
 
 :focus-visible {
@@ -73,5 +77,17 @@ body {
 }
 
 .hairline {
-  border-color: #34414e;
+  border-color: #d8d8d2;
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ticker-track {
+    animation: ticker 36s linear infinite;
+  }
 }

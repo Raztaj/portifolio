@@ -33,7 +33,7 @@ export default function Cursor() {
       const hit = Boolean((e.target as HTMLElement)?.closest?.("a, button, [data-tip]"));
       if (hit !== active && ringRef.current) {
         active = hit;
-        ringRef.current.style.borderColor = active ? "rgba(63, 212, 255, 0.85)" : "rgba(154, 166, 181, 0.3)";
+        ringRef.current.style.borderColor = active ? "rgba(21, 94, 239, 0.9)" : "rgba(119, 120, 114, 0.35)";
       }
     };
 
@@ -74,7 +74,7 @@ export default function Cursor() {
         className="absolute h-8 w-8 rounded-full border"
         style={{
           transform: "translate(-100px, -100px) translate(-50%, -50%)",
-          borderColor: "rgba(154, 166, 181, 0.3)",
+          borderColor: "rgba(119, 120, 114, 0.35)",
           transition: "border-color 0.15s ease",
         }}
       />
