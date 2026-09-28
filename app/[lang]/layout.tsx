@@ -4,6 +4,7 @@ import type { Locale } from "@/lib/i18n";
 import { isLocale, getLocaleDir, getDictionary } from "@/lib/i18n";
 import "../globals.css";
 import Cursor from "@/components/cursor";
+import SwRegister from "@/components/sw-register";
 import { site } from "@/lib/site";
 
 const manrope = Manrope({
@@ -38,6 +39,7 @@ export async function generateMetadata({
     title: "TAJELSIR / SYSTEMS",
     description: dict.metadata.description,
     metadataBase: new URL(site.origin),
+    themeColor: "#f4f3ef",
     openGraph: {
       title: "TAJELSIR / SYSTEMS",
       description: dict.metadata.ogDescription,
@@ -85,6 +87,12 @@ export default async function RootLayout({
     >
       <body className="bg-bg text-fg font-sans">
         <Cursor />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var p=location.pathname;if(p==="/"){var s=localStorage.getItem("lang");if(s==="ar"){location.replace("/ar"+location.hash);}}else if(p==="/ar"||p.indexOf("/ar/")===0){localStorage.setItem("lang","ar");}else if(p==="/en"||p.indexOf("/en/")===0){localStorage.setItem("lang","en");}}catch(e){}})();`,
+          }}
+        />
+        <SwRegister />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

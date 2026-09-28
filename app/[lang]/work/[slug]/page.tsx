@@ -8,7 +8,7 @@ import { getProjectBySlug, getProjects } from "@/lib/content/locale";
 import { localizeHref } from "@/lib/urls";
 import type { MediaImage } from "@/lib/content/types";
 import { site } from "@/lib/site";
-import { pageMetadata, routeUrl } from "@/lib/seo";
+import { pageMetadata, routeUrl, ogPageImage } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -34,12 +34,23 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : "en";
   const project = getProjectBySlug(slug, locale);
   if (!project) return {};
-  return pageMetadata({
-    locale,
-    path: `/work/${project.slug}`,
-    title: `${project.title} — WORK / TAJELSIR SYSTEMS`,
-    description: project.description,
-  });
+  return {
+    ...pageMetadata({
+      locale,
+      path: `/work/${project.slug}`,
+      title: `${project.title} — WORK / TAJELSIR SYSTEMS`,
+      description: project.description,
+    }),
+    openGraph: {
+      images: [
+        ogPageImage({
+          locale,
+          slug: project.slug,
+          alt: `${project.title} — work case note / Tajelsir Systems`,
+        }),
+      ],
+    },
+  };
 }
 
 type Labels = {

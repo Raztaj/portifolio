@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
 import { getNoteBySlug, getNotes } from "@/lib/content/locale";
 import { localizeHref } from "@/lib/urls";
-import { pageMetadata, routeUrl } from "@/lib/seo";
+import { pageMetadata, routeUrl, ogPageImage } from "@/lib/seo";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
@@ -30,12 +30,23 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : "en";
   const note = getNoteBySlug(slug, locale);
   if (!note) return {};
-  return pageMetadata({
-    locale,
-    path: `/notes/${note.slug}`,
-    title: `${note.title} — NOTES / TAJELSIR SYSTEMS`,
-    description: note.intro,
-  });
+  return {
+    ...pageMetadata({
+      locale,
+      path: `/notes/${note.slug}`,
+      title: `${note.title} — NOTES / TAJELSIR SYSTEMS`,
+      description: note.intro,
+    }),
+    openGraph: {
+      images: [
+        ogPageImage({
+          locale,
+          slug: note.slug,
+          alt: `${note.title} — writing / Tajelsir Systems`,
+        }),
+      ],
+    },
+  };
 }
 
 export default async function NotePage({

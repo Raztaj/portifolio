@@ -32,6 +32,13 @@ export default function LangToggle({
   return (
     <a
       href={href}
+      onClick={() => {
+        try {
+          localStorage.setItem("lang", target);
+        } catch {
+          /* noop */
+        }
+      }}
       aria-label={ariaLabel}
       className={`font-mono text-[11px] tracking-[0.2em] transition-colors ${
         plain

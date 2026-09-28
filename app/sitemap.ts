@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const n of notes) {
       entries.push({
         url: `${site.origin}${prefix}/notes/${n.slug}`,
-        lastModified: new Date(),
+        lastModified: new Date(`${n.date}-01-01`),
         changeFrequency: "monthly",
         priority: 0.7,
       });
