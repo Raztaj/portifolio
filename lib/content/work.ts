@@ -295,6 +295,26 @@ export const projects: Project[] = [
         alt: "TICKETING SYSTEM sign-in screen",
         caption: "SIGN-IN — THE ENTRY TO THE TICKETING CONSOLE",
       },
+      {
+        src: "/work/easily/dashboard-v2.png",
+        alt: "TICKETING SYSTEM dashboard with live ticket counters",
+        caption: "DASHBOARD — LIVE COUNTERS, DAILY VOLUME, AND QUICK BULK ACTIONS",
+      },
+      {
+        src: "/work/easily/tickets-v2.png",
+        alt: "TICKET LIST with status badges and PDF export",
+        caption: "TICKET LIST — QR-CODED, STATUS-TAGGED, ONE-CLICK PDF",
+      },
+      {
+        src: "/work/easily/users-v2.png",
+        alt: "TICKETING SYSTEM user and role management",
+        caption: "USERS — ROLE-GATED STAFF AND SCANNER ACCOUNTS",
+      },
+      {
+        src: "/work/easily/create-v2.png",
+        alt: "TICKETING SYSTEM manual ticket creation form",
+        caption: "NEW TICKET — MANUAL BOOKING, PRICE, AND EVENT",
+      },
     ],
   },
   {
