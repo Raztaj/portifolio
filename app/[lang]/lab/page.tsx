@@ -25,6 +25,10 @@ export async function generateMetadata({
   });
 }
 
+export async function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "ar" }];
+}
+
 export default async function LabPage({
   params,
 }: {

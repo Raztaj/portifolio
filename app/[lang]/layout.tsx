@@ -23,6 +23,7 @@ const kufi = Noto_Kufi_Arabic({
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: false,
 });
 
 export async function generateMetadata({
@@ -77,7 +78,9 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${manrope.variable} ${jetbrains.variable} ${kufi.variable} antialiased`}
+      className={`${manrope.variable} ${jetbrains.variable} ${
+        locale === "ar" ? kufi.variable : ""
+      } antialiased`}
       data-scroll-behavior="smooth"
     >
       <body className="bg-bg text-fg font-sans">
