@@ -74,10 +74,10 @@ function qrPanel({ title, sub, data, caption, captionFont = MONO, captionSize = 
 }
 
 const services = [
-  "أتمتة الطلبات والمبيعات عبر واتساب",
-  "أنظمة لإدارة العملاء والمخزون والفواتير",
+  "استقبال طلبات واتساب ومتابعتها تلقائياً",
+  "برامج لإدارة المبيعات والمخزون والفواتير",
   "مواقع وتطبيقات تعمل حتى مع ضعف الإنترنت",
-  "حماية أنظمتك وفحص الثغرات الأمنية",
+  "حماية أنظمتك وبياناتك من الاختراق",
 ];
 
 const R = 990; // right edge of the RTL column
@@ -86,11 +86,11 @@ const front = (b) => `${backdrop({ fill: C.bg, gridStroke: C.line, gridOpacity: 
 
   <!-- header -->
   <text x="60" y="76" font-family="${MONO}" font-size="30" font-weight="700" fill="${C.fg}">TK<tspan fill="${C.accent}">/</tspan></text>
-  <text x="${R}" y="74" font-family="${AR}" ${RTL} font-size="18" fill="${C.accent}">نبني لشبكةٍ مقطوعة.</text>
+  <text x="${R}" y="74" font-family="${AR}" ${RTL} font-size="18" fill="${C.accent}">برمجيات مصمّمة لواقع السودان</text>
 
   <!-- identity -->
   <g font-family="${AR}" ${RTL}>
-    <text x="${R}" y="140" font-size="19" font-weight="700" fill="${C.muted}">مهندس برمجيات · أنظمة وأتمتة</text>
+    <text x="${R}" y="140" font-size="19" font-weight="700" fill="${C.muted}">مهندس برمجيات · حلول تقنية للأعمال</text>
     <text x="${R}" y="208" font-size="56" font-weight="700" fill="${C.fg}">تاج السر خالد</text>
   </g>
   <rect x="${R - 56}" y="244" width="56" height="4" fill="${C.accent}"/>
@@ -117,7 +117,7 @@ const front = (b) => `${backdrop({ fill: C.bg, gridStroke: C.line, gridOpacity: 
   <!-- footer -->
   <text x="${R}" y="562" font-family="${MONO}" text-anchor="end" font-size="11" fill="${C.muted}" letter-spacing="5">TAJELSIR / SYSTEMS</text>
 
-  ${qrPanel({ title: "امسح الرمز", sub: "لتصفّح أعمالي ومشاريعي", data: SITE, caption: "portifolio-pink-gamma.vercel.app/ar" })}`;
+  ${qrPanel({ title: "امسح الرمز", sub: "للاطلاع على أعمالي", data: SITE, caption: "portifolio-pink-gamma.vercel.app/ar" })}`;
 
 const back = (b) => `${backdrop({ fill: C.fg, gridStroke: "#FFFFFF", gridOpacity: 0.06, grain: 0.05 }, b)}
 
@@ -126,13 +126,13 @@ const back = (b) => `${backdrop({ fill: C.fg, gridStroke: "#FFFFFF", gridOpacity
   <text x="700" y="298" text-anchor="middle" font-family="${MONO}" font-size="15" fill="#FFFFFF" fill-opacity="0.6" letter-spacing="8">TAJELSIR / SYSTEMS</text>
   <line x1="660" y1="332" x2="740" y2="332" stroke="${C.accent}" stroke-width="3"/>
   <g font-family="${AR}" direction="rtl" text-anchor="middle" fill="#FFFFFF">
-    <text x="700" y="384" font-size="26" font-weight="700">نبني لشبكةٍ مقطوعة.</text>
-    <text x="700" y="424" font-size="16" fill-opacity="0.6">برمجيات تعمل في ظروف السودان الحقيقية</text>
+    <text x="700" y="384" font-size="26" font-weight="700">برمجيات مصمّمة لواقع السودان</text>
+    <text x="700" y="424" font-size="16" fill-opacity="0.6">أنظمة موثوقة تعمل حتى مع انقطاع الشبكة</text>
     <text x="700" y="520" font-size="13" fill-opacity="0.45">الخرطوم · السودان</text>
   </g>
 
   <!-- WhatsApp: the one action a customer should take -->
-  ${qrPanel({ title: "راسلني على واتساب", sub: "للطلبات والاستفسارات مباشرةً", data: WA, caption: PHONE, captionSize: 16, captionFill: C.fg })}`;
+  ${qrPanel({ title: "راسلني على واتساب", sub: "للطلبات والاستفسارات", data: WA, caption: PHONE, captionSize: 16, captionFill: C.fg })}`;
 
 for (const [name, body] of [["front", front], ["back", back]]) {
   writeFileSync(`${OUT}/business-card-ar-${name}.svg`, svg(body, 0));
