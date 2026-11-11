@@ -101,13 +101,13 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Tajelsir Khalid",
+              name: site.engineer,
               url: site.origin,
               sameAs: [site.linkedin],
               jobTitle: "Software Engineer",
               description:
                 layoutDict.metadata.description,
-              email: "mailto:tsgo132@gmail.com",
+              email: `mailto:${site.email}`,
               knowsAbout: ["Software engineering", "Automation", "Application security"],
             }),
           }}

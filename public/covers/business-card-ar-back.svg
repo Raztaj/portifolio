@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="600" viewBox="0 0 1050 600">
+  <defs>
+  <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#155EFF" stop-opacity="0.12"/><stop offset="1" stop-color="#155EFF" stop-opacity="0"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 1 1 0 0"/></filter>
+</defs>
+  <rect width="1050" height="600" fill="#0B0B0B"/>
+  <rect width="1050" height="600" fill="url(#glow)"/>
+  <line x1="0.5" y1="0" x2="0.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="75.5" y1="0" x2="75.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="150.5" y1="0" x2="150.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="225.5" y1="0" x2="225.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="300.5" y1="0" x2="300.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="375.5" y1="0" x2="375.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="450.5" y1="0" x2="450.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="525.5" y1="0" x2="525.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="600.5" y1="0" x2="600.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="675.5" y1="0" x2="675.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="750.5" y1="0" x2="750.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="825.5" y1="0" x2="825.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="900.5" y1="0" x2="900.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="975.5" y1="0" x2="975.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="1050.5" y1="0" x2="1050.5" y2="600" stroke="#FFFFFF" stroke-opacity="0.06"/><line x1="20" y1="30" x2="40" y2="30" stroke="#155EFF" stroke-opacity="0.8"/><line x1="30" y1="20" x2="30" y2="40" stroke="#155EFF" stroke-opacity="0.8"/><line x1="1010" y1="30" x2="1030" y2="30" stroke="#155EFF" stroke-opacity="0.8"/><line x1="1020" y1="20" x2="1020" y2="40" stroke="#155EFF" stroke-opacity="0.8"/><line x1="20" y1="570" x2="40" y2="570" stroke="#155EFF" stroke-opacity="0.8"/><line x1="30" y1="560" x2="30" y2="580" stroke="#155EFF" stroke-opacity="0.8"/><line x1="1010" y1="570" x2="1030" y2="570" stroke="#155EFF" stroke-opacity="0.8"/><line x1="1020" y1="560" x2="1020" y2="580" stroke="#155EFF" stroke-opacity="0.8"/>
+
+  <text x="525" y="270" text-anchor="middle" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,monospace" font-size="110" font-weight="700" fill="#FFFFFF">TK<tspan fill="#155EFF">/</tspan></text>
+  <text x="525" y="318" text-anchor="middle" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,monospace" font-size="15" fill="#FFFFFF" fill-opacity="0.6" letter-spacing="8">TAJELSIR / SYSTEMS</text>
+  <line x1="485" y1="352" x2="565" y2="352" stroke="#155EFF" stroke-width="3"/>
+  <text x="525" y="404" text-anchor="middle" direction="rtl" font-family="'Noto Kufi Arabic','Noto Sans Arabic','Tahoma',sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">نبني لشبكةٍ مقطوعة.</text>
+  <text x="525" y="444" text-anchor="middle" direction="rtl" font-family="'Noto Kufi Arabic','Noto Sans Arabic','Tahoma',sans-serif" font-size="16" fill="#FFFFFF" fill-opacity="0.6">برمجيات تعمل في ظروف السودان الحقيقية</text>
+  <text x="525" y="540" text-anchor="middle" direction="rtl" font-family="'Noto Kufi Arabic','Noto Sans Arabic','Tahoma',sans-serif" font-size="13" fill="#FFFFFF" fill-opacity="0.45">الخرطوم · السودان</text>
+
+  <rect width="1050" height="600" fill="#000" filter="url(#grain)" opacity="0.05"/>
+</svg>

@@ -34,31 +34,18 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : "en";
   const project = getProjectBySlug(slug, locale);
   if (!project) return {};
-  return {
-    ...pageMetadata({
+  return pageMetadata({
+    locale,
+    path: `/work/${project.slug}`,
+    title: `${project.title} — WORK / TAJELSIR SYSTEMS`,
+    description: project.description,
+    type: "website",
+    image: ogPageImage({
       locale,
-      path: `/work/${project.slug}`,
-      title: `${project.title} — WORK / TAJELSIR SYSTEMS`,
-      description: project.description,
+      slug: project.slug,
+      alt: `${project.title} — work case note / Tajelsir Systems`,
     }),
-    openGraph: {
-      images: [
-        ogPageImage({
-          locale,
-          slug: project.slug,
-          alt: `${project.title} — work case note / Tajelsir Systems`,
-        }),
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [ogPageImage({
-        locale,
-        slug: project.slug,
-        alt: `${project.title} — work case note / Tajelsir Systems`,
-      })],
-    },
-  };
+  });
 }
 
 type Labels = {

@@ -15,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const path of topLevel) {
       entries.push({
         url: `${site.origin}${prefix}${path}`,
-        lastModified: new Date(),
         changeFrequency: "monthly",
         priority: path === "" ? 1 : 0.8,
       });
@@ -31,7 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const p of projects) {
       entries.push({
         url: `${site.origin}${prefix}/work/${p.slug}`,
-        lastModified: new Date(),
         changeFrequency: "yearly",
         priority: 0.9,
       });
@@ -39,7 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const l of labs) {
       entries.push({
         url: `${site.origin}${prefix}/lab/${l.slug}`,
-        lastModified: new Date(),
         changeFrequency: "yearly",
         priority: 0.6,
       });

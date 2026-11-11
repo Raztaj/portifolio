@@ -31,31 +31,18 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : "en";
   const note = getNoteBySlug(slug, locale);
   if (!note) return {};
-  return {
-    ...pageMetadata({
+  return pageMetadata({
+    locale,
+    path: `/notes/${note.slug}`,
+    title: `${note.title} — NOTES / TAJELSIR SYSTEMS`,
+    description: note.intro,
+    type: "article",
+    image: ogPageImage({
       locale,
-      path: `/notes/${note.slug}`,
-      title: `${note.title} — NOTES / TAJELSIR SYSTEMS`,
-      description: note.intro,
+      slug: note.slug,
+      alt: `${note.title} — writing / Tajelsir Systems`,
     }),
-    openGraph: {
-      images: [
-        ogPageImage({
-          locale,
-          slug: note.slug,
-          alt: `${note.title} — writing / Tajelsir Systems`,
-        }),
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [ogPageImage({
-        locale,
-        slug: note.slug,
-        alt: `${note.title} — writing / Tajelsir Systems`,
-      })],
-    },
-  };
+  });
 }
 
 export default async function NotePage({
