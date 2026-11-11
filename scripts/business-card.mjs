@@ -91,7 +91,7 @@ const front = (b) => `${backdrop({ fill: C.bg, gridStroke: C.line, gridOpacity: 
   <!-- identity -->
   <g font-family="${AR}" ${RTL}>
     <text x="${R}" y="140" font-size="19" font-weight="700" fill="${C.muted}">مهندس برمجيات · حلول تقنية للأعمال</text>
-    <text x="${R}" y="208" font-size="56" font-weight="700" fill="${C.fg}">تاج السر خالد</text>
+    <text x="${R}" y="208" font-size="50" font-weight="700" fill="${C.fg}">تاج السر خالد بن الوليد</text>
   </g>
   <rect x="${R - 56}" y="244" width="56" height="4" fill="${C.accent}"/>
   <rect x="${R - 66}" y="241" width="10" height="10" fill="${C.accent}" opacity="0.35"/>
