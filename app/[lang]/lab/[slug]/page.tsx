@@ -59,13 +59,13 @@ function MetaBlock({
   return (
     <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
       <div className="bg-surface p-5">
-        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
           {dict.lab.type}
         </div>
         <div className="mt-2 font-mono text-[13px] font-semibold text-fg">{entry.tag}</div>
       </div>
       <div className="bg-surface p-5">
-        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
           {dict.lab.status}
         </div>
         <div className={`mt-2 font-mono text-[13px] font-semibold ${STATUS_COLOR[entry.status]}`}>
@@ -73,7 +73,7 @@ function MetaBlock({
         </div>
       </div>
       <div className="bg-surface p-5">
-        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
           {dict.lab.stack}
         </div>
         <div className="mt-2 font-mono text-[12px] leading-relaxed text-fg">
@@ -81,7 +81,7 @@ function MetaBlock({
         </div>
       </div>
       <div className="bg-surface p-5 sm:col-span-2 lg:col-span-3">
-        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
           {dict.lab.question}
         </div>
         <div className="mt-2 font-sans text-lg font-medium leading-snug tracking-tight text-accent">
@@ -157,7 +157,7 @@ export default async function LabSlugPage({
 
         {entry.note && (
           <div className="mb-4 flex items-start gap-3 border border-warning/40 bg-warning/5 px-4 py-3">
-            <span className="mt-0.5 font-mono text-[11px] text-warning">⚠</span>
+            <span className="mt-0.5 font-mono text-xs text-warning">⚠</span>
             <p className="text-sm leading-relaxed text-warning/90">{entry.note}</p>
           </div>
         )}
@@ -170,7 +170,7 @@ export default async function LabSlugPage({
           <ol className="max-w-3xl space-y-3">
             {entry.approach.map((a, idx) => (
               <li key={idx} className="flex gap-4 text-sm leading-relaxed text-fg/90">
-                <span className="font-mono text-[11px] text-accent">
+                <span className="font-mono text-xs text-accent">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
                 {a}
@@ -223,13 +223,13 @@ export default async function LabSlugPage({
         <div className="flex flex-col gap-3 border-t border-line pb-24 pt-6 sm:flex-row sm:justify-between">
           <Link
             href={localizeHref(locale, `/lab/${prev.slug}`)}
-            className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
             <span className="rtl:inline rtl:rotate-180">←</span> {prev.index} / {prev.name}
           </Link>
           <Link
             href={localizeHref(locale, `/lab/${next.slug}`)}
-            className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
             {next.index} / {next.name} <span className="rtl:inline rtl:rotate-180">→</span>
           </Link>

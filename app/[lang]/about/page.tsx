@@ -99,7 +99,7 @@ export default async function AboutPage({
                 {stack.map((s) => (
                   <span
                     key={s}
-                    className="border border-line bg-surface px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"
+                    className="border border-line bg-surface px-2.5 py-1 font-mono text-xs uppercase tracking-[0.15em] text-muted"
                   >
                     {s}
                   </span>
@@ -116,7 +116,7 @@ export default async function AboutPage({
                     <div className="mt-1 font-sans text-sm font-semibold text-fg">
                       {t.role}
                     </div>
-                    <div className="font-mono text-[11px] text-muted">{t.detail}</div>
+                    <div className="font-mono text-xs text-muted">{t.detail}</div>
                   </div>
                 ))}
               </div>

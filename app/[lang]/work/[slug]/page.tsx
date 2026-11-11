@@ -89,7 +89,7 @@ function NumberedBlock({
       <div className="max-w-3xl space-y-4">
         {body.map((b, i) => (
           <p key={i} className="text-base leading-relaxed text-muted">
-            <span className="ms-3 font-mono text-[11px] text-accent">
+            <span className="ms-3 font-mono text-xs text-accent">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-fg/90">{b}</span>
@@ -115,7 +115,7 @@ function ConstraintGrid({
       <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-3 lg:grid-cols-6">
         {list.map((c) => (
           <div key={c.label} className="bg-surface p-4">
-            <div className="font-mono text-[11px] font-semibold leading-snug tracking-tight text-fg">
+            <div className="font-mono text-xs font-semibold leading-snug tracking-tight text-fg">
               {c.label}
             </div>
             {c.note && (
@@ -133,7 +133,7 @@ function ConstraintGrid({
 function DecisionCard({ title, body }: { title: string; body: string }) {
   return (
     <div className="border border-line bg-surface p-5">
-      <div className="font-mono text-[11px] font-semibold tracking-tight text-accent">
+      <div className="font-mono text-xs font-semibold tracking-tight text-accent">
         {title}
       </div>
       <p className="mt-3 text-sm leading-relaxed text-muted">{body}</p>
@@ -157,10 +157,10 @@ function TradeoffTable({
         <table className="w-full border-collapse">
           <thead>
             <tr className="border-b border-line">
-              <th className="py-3 pe-4 text-start font-mono text-[11px] font-normal uppercase tracking-[0.2em] text-muted">
+              <th className="py-3 pe-4 text-start font-mono text-xs font-normal uppercase tracking-[0.2em] text-muted">
                 {labels.decision}
               </th>
-              <th className="py-3 ps-4 text-start font-mono text-[11px] font-normal uppercase tracking-[0.2em] text-muted">
+              <th className="py-3 ps-4 text-start font-mono text-xs font-normal uppercase tracking-[0.2em] text-muted">
                 {labels.cost}
               </th>
             </tr>
@@ -197,10 +197,10 @@ function WhatBroke({
         {items.map((b, i) => (
           <div key={i} className="border border-line bg-surface">
             <div className="flex items-center gap-2 border-b border-line px-4 py-2">
-              <span className="font-mono text-[11px] text-accent">
+              <span className="font-mono text-xs text-accent">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                 {labels.assumption}
               </span>
             </div>
@@ -208,13 +208,13 @@ function WhatBroke({
               {b.assumption}
             </p>
             <div className="flex items-center gap-2 border-t border-line bg-bg px-4 py-2">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-error">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-error">
                 {labels.failed}
               </span>
             </div>
             <p className="bg-bg px-4 pb-3 text-sm leading-relaxed text-muted">{b.failure}</p>
             <div className="flex items-center gap-2 border-t border-line bg-bg px-4 py-2">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-success">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-success">
                 {labels.fix}
               </span>
             </div>
@@ -254,8 +254,8 @@ function MediaGallery({
           />
         </div>
         <div className="flex items-center gap-2 border-t border-line px-4 py-2.5">
-          <span className="font-mono text-[11px] text-accent">01</span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+          <span className="font-mono text-xs text-accent">01</span>
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
             {first.caption}
           </span>
         </div>
@@ -274,10 +274,10 @@ function MediaGallery({
                 />
               </div>
               <figcaption className="flex items-center gap-2 border-t border-line px-4 py-2.5">
-                <span className="font-mono text-[11px] text-accent">
+                <span className="font-mono text-xs text-accent">
                   {String(i + 2).padStart(2, "0")}
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {m.caption}
                 </span>
               </figcaption>
@@ -365,8 +365,8 @@ export default async function WorkPage({
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 border-t border-white/15 bg-black/25 px-4 py-3 backdrop-blur-sm sm:px-6">
-              <span className="font-mono text-[11px] text-accent">FIG / 01</span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/85">
+              <span className="font-mono text-xs text-accent">FIG / 01</span>
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/85">
                 {project.media[0].caption}
               </span>
             </div>
@@ -379,7 +379,7 @@ export default async function WorkPage({
           {project.stack.map((s) => (
             <Chip key={s}>{s}</Chip>
           ))}
-          <span className="ms-auto font-mono text-[11px] uppercase tracking-[0.2em] text-success">
+          <span className="ms-auto font-mono text-xs uppercase tracking-[0.2em] text-success">
             ● {project.status}
           </span>
         </div>
@@ -396,7 +396,7 @@ export default async function WorkPage({
                   href={l.href ?? "#"}
                   target={l.href?.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="border border-line bg-surface-2 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg transition-colors hover:border-accent hover:text-accent"
+                  className="border border-line bg-surface-2 px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-fg transition-colors hover:border-accent hover:text-accent"
                 >
                   {l.label} ↗
                 </a>
@@ -462,13 +462,13 @@ export default async function WorkPage({
             </div>
             <div className="grid gap-6 lg:grid-cols-2">
               <div>
-                <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                <div className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {labels.threatModel}
                 </div>
                 <ol className="space-y-2">
                   {project.security.threatModel.map((t, idx) => (
                     <li key={t} className="flex gap-3 text-sm leading-relaxed text-fg/90">
-                      <span className="font-mono text-[11px] text-accent">
+                      <span className="font-mono text-xs text-accent">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                       {t}
@@ -477,7 +477,7 @@ export default async function WorkPage({
                 </ol>
               </div>
               <div>
-                <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                <div className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {labels.mitigation}
                 </div>
                 <ul className="space-y-2">
@@ -506,7 +506,7 @@ export default async function WorkPage({
           <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-3">
             {project.result.map((r) => (
               <div key={r.label} className="bg-bg p-5">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {r.label}
                 </div>
                 <div className="mt-2 font-mono text-base font-semibold tracking-tight text-accent">
@@ -552,13 +552,13 @@ export default async function WorkPage({
         <div className="flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:justify-between">
           <Link
             href={localizeHref(locale, `/work/${prev.slug}`)}
-            className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
             <span className="rtl:inline rtl:rotate-180">←</span> {prev.index} / {prev.title}
           </Link>
           <Link
             href={localizeHref(locale, `/work/${next.slug}`)}
-            className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
             {next.index} / {next.title} <span className="rtl:inline rtl:rotate-180">→</span>
           </Link>

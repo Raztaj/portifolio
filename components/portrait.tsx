@@ -19,12 +19,12 @@ export default function Portrait({
         className="object-cover"
         priority
       />
-      <div aria-hidden className="absolute right-0 top-0 z-10 h-12 w-12 bg-accent" />
-      <div className="absolute bottom-3 left-3 right-3 z-10 flex items-end justify-between gap-3">
-        <span className="bg-surface px-2 font-mono text-[10px] uppercase tracking-[0.2em] text-fg">
+      <div aria-hidden className="absolute end-0 top-0 z-10 h-12 w-12 bg-accent" />
+      <div className="absolute bottom-3 start-3 end-3 z-10 flex items-end justify-between gap-3">
+        <span className="bg-surface px-2 font-mono text-xs uppercase tracking-[0.2em] text-fg">
           {caption}
         </span>
-        <span className="bg-accent px-2 font-mono text-[10px] tracking-[0.2em] text-white">
+        <span className="bg-accent px-2 font-mono text-xs tracking-[0.2em] text-white">
           {code}
         </span>
       </div>

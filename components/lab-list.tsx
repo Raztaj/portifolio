@@ -46,7 +46,7 @@ export default function LabList({ lang, entries }: { lang: Locale; entries: LabE
         <button
           onClick={() => setFilter("ALL")}
           aria-pressed={filter === "ALL"}
-          className={`border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors ${
+          className={`border px-2.5 py-1 font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
             filter === "ALL"
               ? "border-accent bg-surface-2 text-accent"
               : "border-line bg-transparent text-muted hover:text-fg"
@@ -59,7 +59,7 @@ export default function LabList({ lang, entries }: { lang: Locale; entries: LabE
             key={c}
             onClick={() => setFilter(c)}
             aria-pressed={filter === c}
-            className={`border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors ${
+            className={`border px-2.5 py-1 font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
               filter === c
                 ? "border-accent bg-surface-2 text-accent"
                 : "border-line bg-transparent text-muted hover:text-fg"
@@ -68,7 +68,7 @@ export default function LabList({ lang, entries }: { lang: Locale; entries: LabE
             [{dict.lab.categories[c]}]
           </button>
         ))}
-        <span className="ms-auto font-mono text-[11px] tracking-[0.2em] text-muted">
+        <span className="ms-auto font-mono text-xs tracking-[0.2em] text-muted">
           {String(filtered.length).padStart(2, "0")}
         </span>
       </div>
@@ -81,22 +81,22 @@ export default function LabList({ lang, entries }: { lang: Locale; entries: LabE
             className="group block py-5 transition-colors hover:bg-surface"
           >
             <div className="grid grid-cols-12 items-baseline gap-2 sm:gap-4">
-              <span className="col-span-2 font-mono text-[11px] tracking-[0.2em] text-accent sm:col-span-1">
+              <span className="col-span-2 font-mono text-xs tracking-[0.2em] text-accent sm:col-span-1">
                 {entry.index}
               </span>
               <div className="col-span-10 sm:col-span-4">
                 <div className="font-mono text-sm font-semibold tracking-tight text-fg group-hover:text-accent">
                   {entry.name}
                 </div>
-                <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+                <div className="mt-0.5 font-mono text-xs uppercase tracking-[0.15em] text-muted">
                   {entry.tag} / {entry.status}
                 </div>
               </div>
               <div className="col-span-6 col-start-3 sm:col-span-4 sm:col-start-auto">
-                <div className="font-mono text-[11px] text-muted">
+                <div className="font-mono text-xs text-muted">
                   {entry.stack.join(" · ")}
                 </div>
-                <div className="mt-1.5 block font-mono text-[11px] leading-none tracking-tight">
+                <div className="mt-1.5 block font-mono text-xs leading-none tracking-tight">
                   <span className={COLOR[entry.status]}>
                     {"█".repeat(Math.max(1, Math.round(FILL[entry.status] / 5)))}
                   </span>

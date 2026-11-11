@@ -15,14 +15,14 @@ export default function RootNotFound() {
       <div className="mx-auto flex min-h-[60vh] max-w-6xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6">
         <div className="w-full max-w-xl overflow-hidden border border-line bg-surface">
           <div className="flex items-center justify-between border-b border-line px-4 py-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
               TK/ · 404
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
               SIGNAL LOST
             </span>
           </div>
-          <div dir="ltr" className="space-y-2 px-4 py-6 text-start font-mono text-[11px] leading-relaxed">
+          <div dir="ltr" className="space-y-2 px-4 py-6 text-start font-mono text-xs leading-relaxed">
             <div className="text-accent">
               0x00F404 &gt; take_chute // route_miss
             </div>

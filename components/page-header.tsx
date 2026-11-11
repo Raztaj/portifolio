@@ -26,7 +26,7 @@ export default function PageHeader({
           <MonoLabel accent={false}>{crumb}</MonoLabel>
           <Link
             href={localizeHref(lang, backHref)}
-            className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
             <span aria-hidden className="rtl:hidden">
               ←

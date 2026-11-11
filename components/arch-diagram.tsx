@@ -94,7 +94,7 @@ export default function ArchDiagram({
             markerHeight="7"
             orient="auto-start-reverse"
           >
-            <path d="M0 0 L10 5 L0 10 z" fill="#155eef" />
+            <path d="M0 0 L10 5 L0 10 z" className="fill-accent" />
           </marker>
         </defs>
 
@@ -111,7 +111,7 @@ export default function ArchDiagram({
               y1={a.y + BOX_H / 2}
               x2={b.x}
               y2={b.y + BOX_H / 2}
-              stroke={lit ? "#155eef" : "#d8d8d2"}
+              className={lit ? "stroke-accent" : "stroke-line"}
               strokeWidth={lit ? 1.5 : 1}
               markerEnd="url(#arrow)"
             />
@@ -133,8 +133,7 @@ export default function ArchDiagram({
                 width={BOX_W}
                 height={BOX_H}
                 rx={6}
-                fill={lit ? "#155eef" : "#ffffff"}
-                stroke={lit ? "#155eef" : "#d8d8d2"}
+                className={lit ? "fill-accent stroke-accent" : "fill-surface stroke-line"}
                 strokeWidth={lit ? 1.5 : 1}
               />
               <text
@@ -144,7 +143,7 @@ export default function ArchDiagram({
                 fontFamily="JetBrains Mono, ui-monospace, monospace"
                 fontSize="11"
                 letterSpacing="1.5"
-                fill={lit ? "#ffffff" : "#0b0b0b"}
+                className={lit ? "fill-white" : "fill-fg"}
               >
                 {n.label}
               </text>
@@ -156,7 +155,7 @@ export default function ArchDiagram({
                   fontFamily="IBM Plex Sans Arabic, ui-sans-serif, system-ui, sans-serif"
                   fontSize="9"
                   letterSpacing="0.5"
-                  fill="#777872"
+                  className="fill-muted"
                 >
                   {n.sub}
                 </text>

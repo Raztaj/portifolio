@@ -1,7 +1,7 @@
 "use client";
 
 import { localizeHref } from "@/lib/urls";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
@@ -25,11 +25,45 @@ export default function Nav({ lang }: { lang: Locale }) {
   const [open, setOpen] = useState(false);
   const dict = getDictionary(lang);
 
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const button = buttonRef.current;
+    const focusables = () => [
+      ...(button ? [button] : []),
+      ...Array.from(panelRef.current?.querySelectorAll<HTMLElement>("a[href]") ?? []),
+    ];
+    focusables()[1]?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        button?.focus();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
   const [seenPath, setSeenPath] = useState(pathname);
@@ -84,7 +118,7 @@ export default function Nav({ lang }: { lang: Locale }) {
           TK<span className="text-accent">/</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
@@ -92,7 +126,7 @@ export default function Nav({ lang }: { lang: Locale }) {
                 key={link.id}
                 href={localizeHref(lang, link.href)}
                 aria-current={active ? "page" : undefined}
-                className={`font-mono text-[11px] uppercase tracking-[0.2em] transition-colors ${
+                className={`font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
                   active
                     ? "text-accent underline underline-offset-4"
                     : "text-muted hover:text-accent"
@@ -106,10 +140,10 @@ export default function Nav({ lang }: { lang: Locale }) {
             href={site.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+            className="group flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
             {dict.nav.linkedin}
-            <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">
+            <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
               ↗
             </span>
           </a>
@@ -117,10 +151,10 @@ export default function Nav({ lang }: { lang: Locale }) {
             href={site.waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-1.5 border border-accent bg-accent px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-accent"
+            className="group flex items-center gap-1.5 border border-accent bg-accent px-3 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-accent"
           >
             {dict.nav.whatsapp}
-            <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">
+            <span className="text-white transition-transform group-hover:text-accent group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
               ↗
             </span>
           </a>
@@ -133,11 +167,13 @@ export default function Nav({ lang }: { lang: Locale }) {
         </nav>
 
         <button
+          ref={buttonRef}
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? dict.nav.closeMenu : dict.nav.openMenu}
           aria-expanded={open}
-          className="flex h-9 w-9 items-center justify-center text-fg hover:text-accent md:hidden"
+          aria-controls="mobile-menu"
+          className="flex h-9 w-9 items-center justify-center text-fg hover:text-accent lg:hidden"
         >
           {open ? (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
@@ -152,7 +188,7 @@ export default function Nav({ lang }: { lang: Locale }) {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-bg md:hidden">
+        <div id="mobile-menu" ref={panelRef} className="border-t border-line bg-bg lg:hidden">
           <nav className="mx-auto max-w-6xl space-y-1 px-4 py-4 sm:px-6">
             {NAV_LINKS.map((link) => {
               const active = isActive(link.href);
@@ -188,10 +224,10 @@ export default function Nav({ lang }: { lang: Locale }) {
               className="flex items-center justify-between border border-accent bg-accent px-4 py-3 font-mono text-[12px] uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-accent"
             >
               {dict.nav.whatsapp}
-              <span className="text-accent">↗</span>
+              <span aria-hidden>↗</span>
             </a>
             <div className="flex items-center justify-between px-1 pt-2">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                 {dict.footer.language}
               </span>
               <LangToggle

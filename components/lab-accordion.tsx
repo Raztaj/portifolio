@@ -51,7 +51,7 @@ export default function LabAccordion({
                   {entry.name}
                 </span>
               </span>
-              <span className="hidden font-mono text-[10px] uppercase tracking-[0.15em] text-muted sm:inline">
+              <span className="hidden font-mono text-xs uppercase tracking-[0.15em] text-muted sm:inline">
                 {entry.tag} / {entry.status}
               </span>
               <span
@@ -65,16 +65,16 @@ export default function LabAccordion({
               <div className="border-t border-line bg-surface-2/50 px-4 pb-6 sm:px-6">
                 <div className="grid gap-x-10 gap-y-2 pt-5 sm:grid-cols-[240px_1fr]">
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                    <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                       {stackLabel}
                     </div>
-                    <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.1em] text-fg">
+                    <div className="mt-1 font-mono text-xs uppercase tracking-[0.1em] text-fg">
                       {entry.stack.join(" · ")}
                     </div>
                   </div>
                   <div>
                     <div
-                      className={`font-mono text-[10px] uppercase tracking-[0.2em] ${color.split(" ")[1]}`}
+                      className={`font-mono text-xs uppercase tracking-[0.2em] ${color.split(" ")[1]}`}
                     >
                       {entry.category} · {entry.status}
                     </div>
@@ -83,7 +83,7 @@ export default function LabAccordion({
                     </p>
                     <Link
                       href={localizeHref(lang, `/lab/${entry.slug}`)}
-                      className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
+                      className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
                     >
                       {readLabel}
                       <span className="rtl:inline rtl:rotate-180">→</span>

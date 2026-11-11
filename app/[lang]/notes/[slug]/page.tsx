@@ -96,7 +96,7 @@ export default async function NotePage({
         </div>
         {note.sections.length > 0 && (
           <nav className="mb-12 border-y border-line py-5">
-            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            <div className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">
               {dict.notes.toc}
             </div>
             <ul className="grid gap-2 sm:grid-cols-2">
@@ -104,7 +104,7 @@ export default async function NotePage({
                 <li key={section.heading}>
                   <a
                     href={`#sec-${String(idx + 1).padStart(2, "0")}`}
-                    className="font-mono text-[11px] uppercase tracking-[0.15em] text-fg transition-colors hover:text-accent"
+                    className="font-mono text-xs uppercase tracking-[0.15em] text-fg transition-colors hover:text-accent"
                   >
                     {String(idx + 1).padStart(2, "0")} / {section.heading}
                   </a>
@@ -140,7 +140,7 @@ export default async function NotePage({
           {others.length > 0 ? (
             <a
               href={localizeHref(locale, `/notes/${others[0].slug}`)}
-              className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+              className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
             >
               <span className="rtl:inline rtl:rotate-180">←</span> {dict.notes.next} /{" "}
               {others[0].title}
@@ -150,7 +150,7 @@ export default async function NotePage({
           )}
           <Link
             href={localizeHref(locale, "/notes")}
-            className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           >
             {dict.notes.all} <span className="rtl:inline rtl:rotate-180">→</span>
           </Link>

@@ -62,7 +62,7 @@ export default async function ResearchPage({
             </div>
             <div className="grid gap-6 p-6 lg:grid-cols-3">
               <div className="lg:col-span-2">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {atlas.tag} / {atlas.status}
                 </div>
                 <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
@@ -76,7 +76,7 @@ export default async function ResearchPage({
                 </p>
               </div>
               <div className="flex items-start justify-between lg:flex-col lg:justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-success">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-success">
                   ● {atlas.status}
                 </span>
                 <Link
@@ -101,12 +101,12 @@ export default async function ResearchPage({
               className="group flex flex-wrap items-baseline justify-between gap-3 py-6"
             >
               <div className="flex items-baseline gap-4">
-                <span className="font-mono text-[11px] text-accent">{e.index}</span>
+                <span className="font-mono text-xs text-accent">{e.index}</span>
                 <span className="font-sans text-lg font-medium tracking-tight text-fg group-hover:text-accent">
                   {e.name}
                 </span>
               </div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                 {e.tag} / {e.status} {dict.research.open}{" "}
                 <span className="rtl:inline rtl:rotate-180">→</span>
               </span>

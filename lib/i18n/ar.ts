@@ -23,16 +23,14 @@ export const dictionaryAr: Dictionary = {
   hero: {
     eyebrow: "مهندس برمجيات",
     heading: ["بناءٌ", "لشبكةٍ مقطوعة"],
-    statement: ["أبني برمجيات", "لظروفٍ حقيقية."],
+    statement: ["أبني برمجيات", "لظروفٍ حقيقية"],
     motif: "بناءٌ لشبكةٍ مقطوعة",
     blurb:
       "أصمّم وأبني أنظمة برمجيات وأدوات أتمتة وأمنٍ لفرق تعمل تحت قيود العالم الحقيقي.",
     marketing: "أنظمة محلية أولًا، مصنوعة لتحتّمِل واقع إنترنت متقطعًا.",
-    sub: "برمجيات · أتمتة · أمن",
     viewWork: "استعرض المشاريع",
     cta: "ابدأ مشروعًا",
     linkedin: "LINKEDIN",
-    metaBar: ["الخرطوم، السودان", "محلي أولًا", "أنظمة بميزانية صفر"],
   },
 
   ticker: [
@@ -48,12 +46,14 @@ export const dictionaryAr: Dictionary = {
 
   status: {
     title: "حالة النظام",
-    online: "متصل",
+    available: "متاح",
     localTime: "الوقت المحلي",
     location: "الموقع",
     focus: "التركيز",
-    projects: "المشاريع",
-    labs: "التجارب",
+    availability: "التوفّر",
+    availabilityValue: "متاح لمشاريع جديدة",
+    replies: "الرد",
+    repliesValue: "خلال ٢٤ ساعة",
   },
 
   home: {
@@ -111,10 +111,6 @@ export const dictionaryAr: Dictionary = {
     allEntries: "كل المدخلات",
     labCmd: "ls experiments",
     portraitSlot: "صورة شخصية",
-    statSystems: "أنظمة",
-    statExperiments: "تجارب",
-    statNotes: "ملاحظات",
-    statLangs: "لغات",
     philosophyHead: ["لا أبني", "للظروف المثالية."],
     philosophyBody: "أبني للظروف التي توجد فعلًا.",
     philosophyChips: [

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import { isLocale, getDictionary } from "@/lib/i18n";
-import { getLabEntries, getNotes, getProjects } from "@/lib/content/locale";
+import { getLabEntries, getProjects } from "@/lib/content/locale";
 import { localizeHref } from "@/lib/urls";
 import { site, stack } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
@@ -13,7 +13,6 @@ import StatusConsole from "@/components/status-console";
 import WhatBuild from "@/components/what-build";
 import WorkPanels from "@/components/work-panels";
 import LabAccordion from "@/components/lab-accordion";
-import StatsStrip from "@/components/count-up";
 import { MonoLabel, SectionHeading, Divider } from "@/components/ui";
 
 export async function generateMetadata({
@@ -46,14 +45,6 @@ export default async function Home({
   const dict = getDictionary(locale);
   const projects = getProjects(locale);
   const labEntries = getLabEntries(locale);
-  const notes = getNotes(locale);
-
-  const stats = [
-    { value: String(labEntries.length).padStart(2, "0"), label: dict.home.statExperiments },
-    { value: String(projects.length).padStart(2, "0"), label: dict.home.statSystems },
-    { value: String(notes.length).padStart(2, "0"), label: dict.home.statNotes },
-    { value: "AR/EN", label: dict.home.statLangs },
-  ];
 
   const buildItems = dict.home.whatBuildItems;
 
@@ -66,7 +57,7 @@ export default async function Home({
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-7">
               <MonoLabel accent={false}>{dict.hero.eyebrow}</MonoLabel>
-              <h1 className="mt-4 font-sans text-5xl font-semibold leading-[0.98] tracking-tight text-fg sm:text-7xl">
+              <h1 className="mt-4 font-sans text-5xl font-semibold leading-[0.98] tracking-tight rtl:leading-[1.3] text-fg sm:text-7xl">
                 {dict.hero.statement[0]}
                 <br />
                 {dict.hero.statement[1]}
@@ -75,9 +66,6 @@ export default async function Home({
               <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
                 {dict.hero.blurb}
               </p>
-              <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5 font-mono text-[11px] uppercase tracking-[0.2em]">
-                <span className="text-accent">{dict.hero.sub}</span>
-              </div>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
                   href={localizeHref(locale, "/#work")}
@@ -93,25 +81,8 @@ export default async function Home({
                   className="group inline-flex items-center gap-2 px-2 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
                 >
                   {dict.hero.linkedin}
-                  <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">↗</span>
+                  <span className="text-accent transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">↗</span>
                 </a>
-              </div>
-              <div className="mt-10 border-t border-line pt-5">
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                  <span className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                    <span className="inline-block h-1 w-1 rounded-full bg-accent" />
-                    {dict.hero.motif}
-                  </span>
-                  {dict.hero.metaBar.map((m) => (
-                    <span
-                      key={m}
-                      className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
-                    >
-                      <span className="inline-block h-1 w-1 rounded-full bg-line" />
-                      {m}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
 
@@ -122,7 +93,7 @@ export default async function Home({
                 alt={locale === "ar" ? "صورة شخصية" : "Engineer portrait"}
               />
               <div className="mt-6">
-                <StatusConsole lang={locale} projects={projects.length} labs={labEntries.length} />
+                <StatusConsole lang={locale} />
               </div>
             </div>
           </div>
@@ -152,12 +123,6 @@ export default async function Home({
         <WorkPanels lang={locale} />
       </section>
 
-      <section className="border-y border-line bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <StatsStrip items={stats} />
-        </div>
-      </section>
-
       <section>
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-3">
@@ -167,7 +132,7 @@ export default async function Home({
               className="group inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
             >
               {dict.home.allEntries}
-              <span className="transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">→</span>
+              <span className="transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 rtl:rotate-180">→</span>
             </a>
           </div>
           <LabAccordion
@@ -179,12 +144,12 @@ export default async function Home({
         </div>
       </section>
 
-      <section className="border-y border-line bg-[#0b0b0b]">
+      <section className="border-y border-line bg-ink">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             {dict.home.quote[0]} {dict.home.quote[1]}
           </div>
-          <h2 className="mt-6 max-w-4xl font-sans text-4xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl">
+          <h2 className="mt-6 max-w-4xl font-sans text-4xl font-semibold leading-[1.02] tracking-tight rtl:leading-[1.3] text-white sm:text-6xl">
             {dict.home.philosophyHead[0]}
             <br />
             {dict.home.philosophyHead[1]}
@@ -197,7 +162,7 @@ export default async function Home({
             {dict.home.philosophyChips.map((c) => (
               <span
                 key={c}
-                className="border border-white/20 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-white/70"
+                className="border border-white/20 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.15em] text-white/70"
               >
                 {c}
               </span>
@@ -215,7 +180,7 @@ export default async function Home({
               className="group inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
             >
               {dict.home.fullProfile}
-              <span className="transition-transform group-hover:translate-x-0.5 rtl:-translate-x-0.5">→</span>
+              <span className="transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 rtl:rotate-180">→</span>
             </a>
           </div>
           <div className="grid gap-10 lg:grid-cols-2">
@@ -224,14 +189,14 @@ export default async function Home({
               <p className="mt-3 max-w-md text-base leading-relaxed text-muted">{dict.home.aboutP2}</p>
             </div>
             <div>
-              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+              <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                 {dict.home.stackLabel}
               </div>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {stack.map((s) => (
                   <span
                     key={s}
-                    className="border border-line bg-surface px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"
+                    className="border border-line bg-surface px-2.5 py-1 font-mono text-xs uppercase tracking-[0.15em] text-muted"
                   >
                     {s}
                   </span>

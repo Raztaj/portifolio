@@ -5,19 +5,7 @@ import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
-function pad(n: number) {
-  return String(n).padStart(2, "0");
-}
-
-export default function StatusConsole({
-  lang,
-  projects,
-  labs,
-}: {
-  lang: Locale;
-  projects: number;
-  labs: number;
-}) {
+export default function StatusConsole({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang).status;
   const [now, setNow] = useState<Date | null>(null);
   const [typed, setTyped] = useState("");
@@ -64,15 +52,15 @@ export default function StatusConsole({
   return (
     <div className="w-full border border-line bg-surface">
       <div className="flex items-center justify-between border-b border-line px-3 py-1.5">
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
           {dict.title}
         </span>
-        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-success">
+        <span className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-success">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-success" />
-          {dict.online}
+          {dict.available}
         </span>
       </div>
-      <dl className="divide-y divide-line font-mono text-[11px]">
+      <dl className="divide-y divide-line font-mono text-xs">
         <div className="flex justify-between px-3 py-1.5">
           <dt className="text-muted">{dict.localTime}</dt>
           <dd className="tabular-nums text-fg">
@@ -88,17 +76,17 @@ export default function StatusConsole({
           <dd className="text-accent">{site.focus}</dd>
         </div>
         <div className="flex justify-between px-3 py-1.5">
-          <dt className="text-muted">{dict.projects}</dt>
-          <dd className="text-fg">{pad(projects)}</dd>
+          <dt className="text-muted">{dict.availability}</dt>
+          <dd className="text-fg">{dict.availabilityValue}</dd>
         </div>
         <div className="flex justify-between px-3 py-1.5">
-          <dt className="text-muted">{dict.labs}</dt>
-          <dd className="text-fg">{pad(labs)}</dd>
+          <dt className="text-muted">{dict.replies}</dt>
+          <dd className="text-fg">{dict.repliesValue}</dd>
         </div>
       </dl>
       <div className="flex items-center gap-2 border-t border-line px-3 py-1.5">
         <span className="text-accent">$</span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-fg">
           {typed}
         </span>
         <span aria-hidden className="caret inline-block h-3 w-1.5 bg-accent" />

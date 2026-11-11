@@ -20,11 +20,11 @@ const PANELS: {
     text: "text-fg",
     label: "text-muted",
     desc: "text-muted",
-    chip: "text-muted/80",
+    chip: "text-muted",
   },
   {
     dark: true,
-    wrap: "bg-[#0b0b0b]",
+    wrap: "bg-ink",
     text: "text-white",
     label: "text-white/50",
     desc: "text-white/70",
@@ -59,7 +59,7 @@ function Panel({
     <Link
       href={localizeHref(lang, `/work/${project.slug}`)}
       className={`group block transition-all duration-300 ${
-        tones.dark ? "hover:bg-[#101013]" : "hover:bg-bg hover:shadow-[0_32px_90px_-60px_rgba(21,94,239,0.5)]"
+        tones.dark ? "hover:bg-ink-2" : "hover:bg-bg hover:shadow-[0_32px_90px_-60px_rgba(21,94,239,0.5)]"
       } ${tones.wrap}`}
     >
       <div className="mx-auto grid max-w-6xl grid-cols-12 items-center gap-x-4 gap-y-4 px-4 py-10 sm:px-6 sm:py-16">
@@ -67,7 +67,7 @@ function Panel({
           {project.index}
         </div>
         <div className="col-span-10 sm:col-span-4">
-          <div className={`font-mono text-[10px] uppercase tracking-[0.2em] ${tones.label}`}>
+          <div className={`font-mono text-xs uppercase tracking-[0.2em] ${tones.label}`}>
             {project.kind} · {project.year}
           </div>
           <h3
@@ -82,7 +82,7 @@ function Panel({
           <p className={`text-sm leading-relaxed ${tones.desc}`}>{project.description}</p>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {project.stack.slice(0, 3).map((s) => (
-              <span key={s} className={`font-mono text-[10px] uppercase tracking-[0.15em] ${tones.chip}`}>
+              <span key={s} className={`font-mono text-xs uppercase tracking-[0.15em] ${tones.chip}`}>
                 {s}
               </span>
             ))}
@@ -108,7 +108,7 @@ function Panel({
                 }`}
               >
                 {open}
-                <span className="rtl:inline rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:-translate-x-1">
+                <span className="transition-transform rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                   →
                 </span>
               </span>
@@ -122,7 +122,7 @@ function Panel({
               }`}
             >
               {open}
-              <span className="rtl:inline rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:-translate-x-1">
+              <span className="transition-transform rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                 →
               </span>
             </span>

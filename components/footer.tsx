@@ -19,12 +19,12 @@ export default function Footer({ lang }: { lang: Locale }) {
   const cta = dict.footer.cta;
   return (
     <footer>
-      <section className="border-t border-line bg-[#0b0b0b]">
+      <section className="border-t border-line bg-ink">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             {dict.home.contactEyebrow}
           </div>
-          <h2 className="mt-5 max-w-3xl font-sans text-4xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl">
+          <h2 className="mt-5 max-w-3xl font-sans text-4xl font-semibold leading-[1.02] tracking-tight rtl:leading-[1.3] text-white sm:text-6xl">
             {cta.title[0]}
             <br />
             {cta.title[1]}
@@ -36,7 +36,7 @@ export default function Footer({ lang }: { lang: Locale }) {
               className="group inline-flex items-center gap-3 border border-accent bg-accent px-6 py-3.5 font-mono text-[13px] uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-accent"
             >
               {cta.link}
-              <span className="transition-transform group-hover:translate-x-1 rtl:-translate-x-1 rtl:rotate-180">
+              <span className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180">
                 →
               </span>
             </a>
@@ -47,7 +47,7 @@ export default function Footer({ lang }: { lang: Locale }) {
               className="group inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-accent"
             >
               LINKEDIN
-              <span className="transition-transform group-hover:translate-x-0.5">↗</span>
+              <span className="transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">↗</span>
             </a>
             <a
               href={site.waLink}
@@ -56,10 +56,10 @@ export default function Footer({ lang }: { lang: Locale }) {
               className="group inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-accent"
             >
               WHATSAPP
-              <span className="transition-transform group-hover:translate-x-0.5">↗</span>
+              <span className="transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">↗</span>
             </a>
           </div>
-          <div className="mt-14 font-mono text-[11px] tracking-[0.3em] text-white/40">
+          <div className="mt-14 font-mono text-xs tracking-[0.3em] text-white/40">
             {dict.hero.motif}
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Footer({ lang }: { lang: Locale }) {
               <div className="font-mono text-sm font-semibold">
                 TK<span className="text-accent">/</span>
               </div>
-              <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+              <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">
                 © {site.year} {site.engineer}
                 <br />
                 {dict.footer.builtWith} {dict.footer.buildLine}
@@ -82,7 +82,7 @@ export default function Footer({ lang }: { lang: Locale }) {
                   <Link
                     key={l.id}
                     href={localizeHref(lang, l.href)}
-                    className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+                    className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
                   >
                     {dict.nav[l.id]}
                   </Link>
@@ -94,13 +94,13 @@ export default function Footer({ lang }: { lang: Locale }) {
                 href={site.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+                className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
               >
                 LINKEDIN ↗
               </a>
               <a
                 href={`mailto:${site.email}`}
-                className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+                className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
               >
                 EMAIL ↗
               </a>

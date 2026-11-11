@@ -14,7 +14,7 @@ export default function Ticker({ items }: { items: readonly string[] }) {
     </div>
   );
   return (
-    <div className="overflow-hidden border-y border-line bg-[#0b0b0b] py-3">
+    <div className="overflow-hidden border-y border-line bg-ink py-3">
       <div className="ticker-track flex w-max">
         {row("a")}
         {row("b")}

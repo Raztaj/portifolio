@@ -60,7 +60,7 @@ export default async function NotesPage({
               className="group flex flex-col justify-between border border-line bg-surface p-5 transition-colors hover:border-accent"
             >
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {dict.notes.note} {n.index} · {n.date}
                 </div>
                 <h2 className="mt-3 font-sans text-lg font-semibold leading-snug tracking-tight text-fg group-hover:text-accent">
@@ -69,7 +69,7 @@ export default async function NotesPage({
                 <p className="mt-2 text-sm leading-relaxed text-muted">{n.intro}</p>
               </div>
               <div className="mt-6 flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                   {n.words}
                 </span>
                 <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-accent">

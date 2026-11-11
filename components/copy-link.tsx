@@ -24,7 +24,7 @@ export default function CopyLink({
         setTimeout(() => setDone(false), 2000);
       }}
       aria-label={label}
-      className={`shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors ${
+      className={`shrink-0 font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
         done ? "text-success" : "text-accent hover:text-fg"
       } ${className}`}
     >

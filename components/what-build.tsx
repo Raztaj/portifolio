@@ -56,7 +56,7 @@ export default function WhatBuild({
               <div className="border-t border-line bg-surface-2/50 px-4 pb-6 sm:px-6">
                 <div className="grid gap-x-10 gap-y-2 pt-5 sm:grid-cols-[240px_1fr]">
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                    <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                       {stackLabel}
                     </div>
                     <div className="mt-1 font-mono text-[12px] uppercase tracking-[0.1em] text-fg">
@@ -64,7 +64,7 @@ export default function WhatBuild({
                     </div>
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                    <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
                       {item.title}
                     </div>
                     <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted">
@@ -72,7 +72,7 @@ export default function WhatBuild({
                     </p>
                     <Link
                       href={localizeHref(lang, item.href)}
-                      className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
+                      className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-accent transition-colors hover:text-fg"
                     >
                       {item.cta}
                       <span className="rtl:inline rtl:rotate-180">→</span>

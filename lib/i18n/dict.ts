@@ -21,16 +21,14 @@ export const dictionaryEn = {
   hero: {
     eyebrow: "SOFTWARE ENGINEER",
     heading: ["BUILDING FOR", "A BROKEN GRID"],
-    statement: ["I BUILD SOFTWARE FOR", "REAL CONDITIONS."],
+    statement: ["I BUILD SOFTWARE FOR", "REAL CONDITIONS"],
     motif: "BUILDING FOR A BROKEN GRID",
     blurb:
       "I design and build software systems, automation and security tooling for teams working under real-world constraints.",
     marketing: "Local-first systems built to survive contact with reality.",
-    sub: "Software · Automation · Security",
     viewWork: "VIEW WORK",
     cta: "WORK WITH ME",
     linkedin: "LINKEDIN",
-    metaBar: ["Khartoum, Sudan", "Local-first", "Zero-budget systems"],
   },
 
   ticker: [
@@ -46,12 +44,14 @@ export const dictionaryEn = {
 
   status: {
     title: "SYSTEM STATUS",
-    online: "ONLINE",
+    available: "AVAILABLE",
     localTime: "LOCAL TIME",
     location: "LOCATION",
     focus: "FOCUS",
-    projects: "PROJECTS",
-    labs: "LABS",
+    availability: "AVAILABILITY",
+    availabilityValue: "OPEN TO PROJECTS",
+    replies: "REPLIES",
+    repliesValue: "WITHIN 24H",
   },
 
   home: {
@@ -109,10 +109,6 @@ export const dictionaryEn = {
     allEntries: "ALL ENTRIES",
     labCmd: "ls experiments",
     portraitSlot: "PORTRAIT",
-    statSystems: "SYSTEMS",
-    statExperiments: "EXPERIMENTS",
-    statNotes: "NOTES",
-    statLangs: "LANGUAGES",
     philosophyHead: ["I DON'T BUILD", "FOR PERFECT CONDITIONS."],
     philosophyBody: "I build for the conditions that actually exist.",
     philosophyChips: [

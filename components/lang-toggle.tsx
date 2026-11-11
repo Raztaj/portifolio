@@ -40,7 +40,7 @@ export default function LangToggle({
         }
       }}
       aria-label={ariaLabel}
-      className={`font-mono text-[11px] tracking-[0.2em] transition-colors ${
+      className={`font-mono text-xs tracking-[0.2em] transition-colors ${
         plain
           ? "text-muted hover:text-accent"
           : "border border-line bg-surface px-3 py-1.5 text-accent hover:text-fg"

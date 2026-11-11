@@ -22,7 +22,7 @@ export default function WorkRows({ lang }: { lang: Locale }) {
               </span>
             </div>
             <div className="col-span-10 sm:col-span-5">
-              <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+              <div className="mb-1 font-mono text-xs uppercase tracking-[0.2em] text-muted">
                 {p.kind} · {p.year}
               </div>
               <h3 className="font-sans text-2xl font-semibold tracking-tight text-fg transition-colors group-hover:text-accent sm:text-3xl">
@@ -37,7 +37,7 @@ export default function WorkRows({ lang }: { lang: Locale }) {
                 {p.stack.slice(0, 3).map((s) => (
                   <span
                     key={s}
-                    className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted/70"
+                    className="font-mono text-xs uppercase tracking-[0.15em] text-muted"
                   >
                     {s}
                   </span>
@@ -45,7 +45,7 @@ export default function WorkRows({ lang }: { lang: Locale }) {
               </div>
             </div>
             <div className="col-span-12 mt-4 flex items-center justify-between sm:col-span-2 sm:mt-0 sm:justify-end">
-              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted sm:hidden">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted sm:hidden">
                 {p.status}
               </span>
               <span className="hidden items-center gap-2 font-mono text-[12px] uppercase tracking-[0.2em] text-muted transition-colors group-hover:text-accent sm:inline-flex">
