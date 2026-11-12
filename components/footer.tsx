@@ -77,7 +77,7 @@ export default function Footer({ lang }: { lang: Locale }) {
                 <br />
                 {dict.footer.builtWith} {dict.footer.buildLine}
               </p>
-              <nav className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+              <nav className="mt-4 flex flex-wrap gap-x-6 gap-y-4">
                 {SITE_LINKS.map((l) => (
                   <Link
                     key={l.id}

@@ -19,7 +19,7 @@ export async function generateMetadata({
   return pageMetadata({
     locale,
     path: "/about",
-    title: "ABOUT — TAJELSIR / SYSTEMS",
+    title: "ABOUT — TAJELSIR SYSTEMS",
     description: dict.about.statementLead,
   });
 }

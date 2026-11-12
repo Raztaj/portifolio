@@ -601,6 +601,144 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "pixory",
+    index: "05",
+    kind: "CLIENT WEBSITE",
+    title: "PIXORY",
+    year: "2026",
+    status: "DEPLOYED",
+    description:
+      "Arabic-first website for PIXORY Production & Marketing, a content studio in Hafar Al-Batin — services, packages and studio spaces, with every path ending in a WhatsApp conversation.",
+    tagline:
+      "A one-page studio site where the conversion is a WhatsApp message, not a form nobody reads.",
+    stack: ["HTML", "CSS", "Vanilla JS", "Cloudflare Workers", "WebP", "Schema.org"],
+    links: [{ label: "LIVE SITE", href: "https://pixory-site.tsgo132.workers.dev/" }],
+    problem: [
+      "The studio sells five service lines, eight packages and five physical spaces — too much catalogue for a phone screen.",
+      "Saudi clients book over WhatsApp. A contact form that lands in an unread inbox loses the lead.",
+      "Prices depend on scope, so the site has to sell without listing a single number.",
+      "Most visitors arrive from Instagram on a phone, often on mobile data.",
+    ],
+    constraints: [
+      { id: "RTL", label: "ARABIC / RTL" },
+      { id: "WA", label: "WHATSAPP-FIRST" },
+      { id: "NOPRICE", label: "NO PRICES" },
+      { id: "MOBILE", label: "PHONE-FIRST" },
+      { id: "STATIC", label: "NO BUILD STEP" },
+      { id: "BRAND", label: "STUDIO BRAND" },
+    ],
+    architectureIntro:
+      "No backend. One static page served from Cloudflare's edge; every call to action builds a pre-filled wa.me link, so the enquiry lands in the studio's WhatsApp already tagged with the service.",
+    architectureNodes: [
+      { id: "ig", label: "INSTAGRAM / SEARCH", sub: "where visitors come from" },
+      { id: "edge", label: "CLOUDFLARE EDGE", sub: "static assets · cache headers" },
+      { id: "page", label: "STATIC PAGE", sub: "HTML · CSS · vanilla JS" },
+      { id: "form", label: "ENQUIRY FORM", sub: "composed in the browser" },
+      { id: "wa", label: "WHATSAPP", sub: "pre-filled per service" },
+    ],
+    architectureEdges: [
+      { from: "ig", to: "edge" },
+      { from: "edge", to: "page" },
+      { from: "page", to: "form" },
+      { from: "page", to: "wa" },
+      { from: "form", to: "wa" },
+    ],
+    decisions: [
+      {
+        title: "Why a static page and no framework?",
+        body: "It is one page of content that changes a few times a year. Plain HTML, CSS and a small script load fast on mobile data, have no build to break, and the client can be handed the folder.",
+      },
+      {
+        title: "Why does every button open WhatsApp?",
+        body: "That is where the studio already answers clients. Each service and package sends its own pre-filled message, so the first message already names what the client wants.",
+      },
+      {
+        title: "Why does the form not submit anywhere?",
+        body: "It composes a WhatsApp message in the browser and opens the chat. No server, no stored personal data, no inbox to monitor — and the lead arrives in the channel the team actually reads.",
+      },
+      {
+        title: "Why a separate phone layout instead of just stacking?",
+        body: "Stacking the desktop page on a phone produced an endless scroll. On phones, service cards collapse to tap-to-open rows, packages and spaces become swipe rows, and the form folds behind a button.",
+      },
+      {
+        title: "Why no prices?",
+        body: "Every job is scoped. Showing what each package includes, and saying the quote follows a message, sets expectations without anchoring on a number.",
+      },
+    ],
+    tradeoffs: [
+      { decision: "WhatsApp as the only lead channel", cost: "Visitors without WhatsApp fall back to a phone call" },
+      { decision: "Static HTML, no CMS", cost: "Content changes need a developer edit" },
+      { decision: "No prices on the page", cost: "Some visitors leave before asking" },
+      { decision: "Phone-only layout rules", cost: "Two layouts to keep in sync" },
+    ],
+    security: {
+      note: "There is no backend to breach, so the work is keeping it that way and not leaking client data through the browser.",
+      threatModel: [
+        "Enquiry details stored or logged somewhere they shouldn't be",
+        "The page being framed by another site",
+        "MIME-sniffing of served assets",
+      ],
+      mitigation: [
+        "Form text never leaves the browser except into the visitor's own WhatsApp",
+        "X-Frame-Options and nosniff headers on every response",
+        "Strict referrer policy on outbound links",
+      ],
+    },
+    whatsBroken: [
+      {
+        assumption: "more WhatsApp buttons means more enquiries",
+        failure:
+          "On phones the sticky WhatsApp bar sat under the hero's own WhatsApp button, and the contact section repeated the band right above it — the page felt stuffed.",
+        solution:
+          "The sticky bar now appears only between the hero and the contact section, and the duplicate band is hidden on phones.",
+      },
+      {
+        assumption: "display: none means the image isn't downloaded",
+        failure:
+          "The hero collage images hidden on phones were still being fetched on every mobile visit.",
+        solution:
+          "Lazy-loaded them so they only download where they are actually shown, and served right-sized logos.",
+      },
+      {
+        assumption: "the menu needs a call to action",
+        failure:
+          "A WhatsApp button inside the phone menu duplicated the sticky bar one tap away.",
+        solution:
+          "Removed it; the menu now just navigates, including a plain link to the contact section.",
+      },
+    ],
+    result: [
+      { label: "STATUS", value: "DEPLOYED" },
+      { label: "CLIENT", value: "CONTENT STUDIO · KSA" },
+      { label: "RAIL", value: "WHATSAPP-FIRST" },
+      { label: "STACK", value: "STATIC · NO BUILD" },
+      { label: "WEIGHT", value: "~220 KB FIRST LOAD" },
+      { label: "LANG", value: "ARABIC / RTL" },
+    ],
+    media: [
+      {
+        src: "/work/pixory/hero-v2.png",
+        alt: "PIXORY website hero on desktop",
+        caption: "HERO — ARABIC RTL · POSTER COLLAGE",
+      },
+      {
+        src: "/work/pixory/mobile-v2.png",
+        alt: "PIXORY website on a phone: hero, services list and package swipe row",
+        caption: "PHONE — TAP-TO-OPEN SERVICES · SWIPE PACKAGES · STICKY WHATSAPP",
+      },
+      {
+        src: "/work/pixory/packages-v2.png",
+        alt: "PIXORY monthly social media packages",
+        caption: "PACKAGES — SCOPE NOT PRICE",
+      },
+      {
+        src: "/work/pixory/spaces-v2.png",
+        alt: "PIXORY studio spaces section",
+        caption: "SPACES — PODCAST · WHITE STUDIO · LOUNGE",
+      },
+    ],
+  },
 ];
 
 export function getProject(slug: string) {

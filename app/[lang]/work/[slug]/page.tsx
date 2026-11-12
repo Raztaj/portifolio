@@ -365,7 +365,7 @@ export default async function WorkPage({
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 border-t border-white/15 bg-black/25 px-4 py-3 backdrop-blur-sm sm:px-6">
-              <span className="font-mono text-xs text-accent">FIG / 01</span>
+              <span className="shrink-0 whitespace-nowrap font-mono text-xs text-accent">FIG / 01</span>
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/85">
                 {project.media[0].caption}
               </span>

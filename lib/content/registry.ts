@@ -1,4 +1,4 @@
-export const workSlugs = ["hasdo", "easily", "darthvader", "shockwave"] as const;
+export const workSlugs = ["hasdo", "easily", "darthvader", "shockwave", "pixory"] as const;
 
 export const labSlugs = [
   "darthvader",

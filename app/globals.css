@@ -121,3 +121,15 @@ html[lang="ar"] .text-\[12px\] {
     animation: caret-blink 1.1s step-end infinite;
   }
 }
+/* Touch screens: small mono text links get a ≥40px invisible hit area
+   without changing layout (links with their own padding are left alone). */
+@media (pointer: coarse) {
+  a.font-mono:not([class*="py-"]):not([class*="h-"]) {
+    position: relative;
+  }
+  a.font-mono:not([class*="py-"]):not([class*="h-"])::after {
+    content: "";
+    position: absolute;
+    inset: -12px -6px;
+  }
+}
